@@ -1,0 +1,137 @@
+{
+  "version": "9.3.0",
+  "generated": "2026-08-04T08:00:00Z",
+  "root": "interactive-fiction",
+  "files": {
+    ".gitignore": {
+      "sha256": "f5161c436fd0fd867c8508f379fb6da634eca963cd8fe92647d6981b887f9286",
+      "bytes": 157
+    },
+    "LICENSE": {
+      "sha256": "d543cba7276eaf899a59cfd6c89d8c13b114228336ea605f2dfa53970883a375",
+      "bytes": 1089
+    },
+    "README.md": {
+      "sha256": "02079fd111ffd7938d6f9499c426aeca0357f015b683886b161aa34c1e0868a4",
+      "bytes": 5258
+    },
+    "SKILL.md": {
+      "sha256": "9a6ea037185f2642727a3b0fdb5576d62bc86db57c14cabf0463f243c7f07279",
+      "bytes": 21070
+    },
+    "VERSION": {
+      "sha256": "e6105f63414eedcb2cfd8c390ca29c2f642fe25bbdd143f80565fa852c64b0df",
+      "bytes": 5
+    },
+    "extended/character_card.md": {
+      "sha256": "1a89dfe0b9c29842d266fd9e085ed9312ee656a93d886b4674160487c8929864",
+      "bytes": 10753
+    },
+    "extended/creation_world.md": {
+      "sha256": "f3783c497c36eb67f2b54d7f5895efc327ce19746ec582cfb2f7309f5cfaff34",
+      "bytes": 9741
+    },
+    "extended/deep_character_creation.md": {
+      "sha256": "b219fc033da17c5393162bcaad7ca68293a88f414c311c96df7a636748b79383",
+      "bytes": 9655
+    },
+    "extended/distillation.md": {
+      "sha256": "ada96b3b95491777a8d0e4d0e9dd11b2911f89c517613c78481e450a46952aac",
+      "bytes": 10630
+    },
+    "extended/event_behaviors.md": {
+      "sha256": "1de7fd788948b0e53b8ee7f378fcda67a8990fb34974780e12a83d60db3d0678",
+      "bytes": 5739
+    },
+    "extended/features.md": {
+      "sha256": "098fec3e6f7dff011a507509bc0447208f87777d1aebfefed0176506ade5a506",
+      "bytes": 14438
+    },
+    "extended/route_system.md": {
+      "sha256": "25fb37126bbf91a5cb9eeb65d2853ec90c38eccebdb2d6ec7df5c0898d9aacbf",
+      "bytes": 28384
+    },
+    "extended/side_chars.md": {
+      "sha256": "2d4382d162e09f66b642f915c63711300e9327dc8db7a2e4d549ffbf3ffec847",
+      "bytes": 9420
+    },
+    "extended/storage_runtime.md": {
+      "sha256": "a07b532392306c70bd94320744dbf0ad3aca2bc0b9e7df0f92d0884b329c3efe",
+      "bytes": 14174
+    },
+    "extended/subagent_mode.md": {
+      "sha256": "6e6b6f7cc31f966863c855432fc4acffe95c8516a61e61b4963622c4a26aabe9",
+      "bytes": 4920
+    },
+    "extended/title_distillation.md": {
+      "sha256": "fdc8c29995b1f3ddf81b0e404336927de771dbfce83fc5488f0b15b88bb0350e",
+      "bytes": 5609
+    },
+    "modes/immersion.md": {
+      "sha256": "d01f7a36a8910121dc5d91b8ab3631bc1c3018083b0edbecad22a11096a8f85f",
+      "bytes": 2322
+    },
+    "modes/mainline.md": {
+      "sha256": "ac9173b775a626fa714ceb801422d894ce1d8c7810e74d4f693bbce49ffd49b8",
+      "bytes": 914
+    },
+    "modes/shuangwen.md": {
+      "sha256": "c1164c9f1a9b719c6b5535dd6007afbadcf91fca64f6c19343caecadf16950dc",
+      "bytes": 3160
+    },
+    "references/appearance.md": {
+      "sha256": "890650974f6c1c2a593a8e17606791a3cb1c57199b74ff4e9f3126c03788b7f0",
+      "bytes": 13385
+    },
+    "references/changelog.md": {
+      "sha256": "5743229ac5b0fc1eba26bdcd72f0186a94daab0b26573ac3f9b4be8313d2ad7b",
+      "bytes": 6229
+    },
+    "references/character-card-usage.md": {
+      "sha256": "d27b2ed7532c8cb669e6a4ea4b627ff21dd193be6eb764770d998c01a81307c7",
+      "bytes": 4775
+    },
+    "references/command_nav.md": {
+      "sha256": "bcc5a0e1c3c8cfa2d927c839d1ad20d189000fccae4c6a02be0b698763ed666b",
+      "bytes": 7589
+    },
+    "references/delegation-context.md": {
+      "sha256": "0f83cf0497ec6e7afeaae18e488f422bd7d21d4a57c8913c701a40b709af9d64",
+      "bytes": 5349
+    },
+    "references/deployment.md": {
+      "sha256": "1e68b8e02b74a6f976acf853f86ba03cd6d2874c9a1ae0b2ec07933b117c52d4",
+      "bytes": 2702
+    },
+    "references/intimacy-escalation-motifs.md": {
+      "sha256": "4e964f9360aef6deb506384bbccbf07be995b8dcda9aba1d7b2efe8f9f854594",
+      "bytes": 1512
+    },
+    "references/intimate-character-voice.md": {
+      "sha256": "c14b1848503c0dd9eeb0e880957a3d8aeba850d11dc19eb4c4c9812dca3e5983",
+      "bytes": 2621
+    },
+    "references/options-quickref.md": {
+      "sha256": "f93a02528dadb34932c59241661f44f487b2df0fc1d1eaf5b60055b342898ab7",
+      "bytes": 2447
+    },
+    "references/original-role-data.md": {
+      "sha256": "0fa178778dc61e626bc458a6f1018246aacd139d33dfeed9f4e7a48790b0e2ff",
+      "bytes": 3328
+    },
+    "references/switch-rules.md": {
+      "sha256": "3e8cc90d04167c2ddb9cd59616171793679f07376bd9b778f6e264b9905741ea",
+      "bytes": 2205
+    },
+    "references/usage-guide.md": {
+      "sha256": "c7187b4ce2e32550e3046e49603adfd2bd61464dbd8625c58495eb24ea7e0c31",
+      "bytes": 4852
+    },
+    "references/writing_guide.md": {
+      "sha256": "01de5522c82f1f952c733ada59372623cca1af7fc458b3c4fd6b4b1ffe35bc55",
+      "bytes": 19371
+    }
+  },
+  "total_files": 32,
+  "total_bytes": 233803
+}

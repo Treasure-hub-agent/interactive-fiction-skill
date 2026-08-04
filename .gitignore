@@ -1,0 +1,13 @@
+# 运行产物（skill 运行时生成，非仓库内容）
+output/
+*.log
+
+# 本地环境
+.env
+.venv/
+__pycache__/
+*.pyc
+
+# 系统文件
+.DS_Store
+Thumbs.db
