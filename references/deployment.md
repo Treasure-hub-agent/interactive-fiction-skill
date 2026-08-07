@@ -14,6 +14,7 @@ interactive-fiction/
 ├── MANIFEST.json                   # 文件清单与哈希
 ├── VERSION                         # 版本号（单点溯源）
 ├── .gitignore                      # Git 忽略规则
+├── docs/                            # 设计文档与版本规划（不参与运行时加载）
 ├── modes/                          # 模式文件（爽文/主线/沉浸）
 ├── extended/                       # 扩展模块（按需加载）
 └── references/                     # 参考文档与写作规范

@@ -1,9 +1,9 @@
 # interactive-fiction
 
-> **互动小说创作完整规范 v9.3.0** —— 让 AI agent 写出「有选项、有张力、有沉浸感」的互动小说。
+> **互动小说创作完整规范 v9.3.1** —— 让 AI agent 写出「有选项、有张力、有沉浸感」的互动小说。
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-9.3.0-orange.svg)](VERSION)
+[![Version](https://img.shields.io/badge/version-9.3.1-orange.svg)](VERSION)
 
 ---
 
@@ -43,13 +43,15 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 
 复制后重新加载 / 重启客户端即可识别，发送「加载小说包」即可开局。
 
+> 部署、升级与验证详见 `references/deployment.md`。
+
 ---
 
 ## 核心能力
 
 | 能力 | 说明 |
 |------|------|
-| 🔴 铁律 #0 选项机制 | 每轮正文输出后强制跟 A/B/C/D/E 五选项，正文结束不结束对话 |
+| 🔴 铁律 #0 选项机制 | 每轮正文输出后强制跟 A/B/C/D/E 五选项（参考指引+兜底），自由输入等权/优先推进；正文结束不结束对话 |
 | 🎭 视角一致性 | 主角「我/你」、对象「他/她」切换有硬规则，多角色切换有格式约束 |
 | 📏 字数区间 | 500-1200 字主区间，紧迫战斗 250-400 字，情感/氛围 800-1200 字 |
 | 💾 存档系统 | 轻量/持久/里程碑三档，断连恢复、切换小说、导出 |
@@ -91,6 +93,7 @@ interactive-fiction/
 ├── SKILL.md              # P0 常驻核心规则（铁律、视角、字数、选项）
 ├── MANIFEST.json         # 文件清单 + SHA256 校验
 ├── VERSION               # 当前版本号
+├── docs/                 # 设计文档与版本规划（不参与运行时加载）
 ├── extended/             # P1/P2 按需加载：角色卡、蒸馏、事件、存储
 ├── modes/                # 主线/沉浸/爽文三种模式
 └── references/           # 指令导航、写作指南、使用指南、切换规则等

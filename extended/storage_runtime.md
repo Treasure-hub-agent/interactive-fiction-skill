@@ -222,11 +222,12 @@
 | `seg` | 选中该选项的段落号 |
 | `picked` | 选中字母（A/B/C） |
 | `tag` | 策略标签 |
-| `type` | **扩展枚举**：`consequence`（选择后果）/ `foreshadow`（伏笔）/ `promise`（承诺）；兼容现有叙事类型值（如「关系」）继续可用 |
+| `type` | **扩展枚举**：`consequence`（选择后果）/ `foreshadow`（伏笔）/ `promise`（承诺）；兼容既有叙事类型值（如「关系」「flag」等）继续可用 |
 | `detail` | 回收/回响内容来源（回响核对时提供呼应素材） |
 | `tier` | 即时/短期/长期 |
 | `surface_by` | **回收节点**（到期段落号；原草案 `due_seg` 复用此字段，不新增） |
 | `foreclosed` | 未选路径/已关闭状态（未选选项的后果列于此，回收时同步核对） |
+| `flag` | object\|string\|null（可选） | dilemma / 世界状态长期印记（如 `知身份=真`）；见 `references/writing_guide.md` §10-11 |
 
 **回收纪律**：
 - 到期必回收，**正面呈现**（延续 v9.0.0「叙事显影」原则），禁旁白带过

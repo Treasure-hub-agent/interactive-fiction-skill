@@ -44,8 +44,8 @@
                                                  "bytes":  9420
                                              },
                   "extended/storage_runtime.md":  {
-                                                      "sha256":  "183c478e192ac834cec96a85c923e2fb89bc9a21ebe4fd4e5c2b9109b83b1ef9",
-                                                      "bytes":  15770
+                                                      "sha256":  "b3248f512443817aaf47a6f5b544a5e156b8dbedf50014da6a4f9d88f310b41e",
+                                                      "bytes":  15935
                                                   },
                   "extended/subagent_mode.md":  {
                                                     "sha256":  "6e6b6f7cc31f966863c855432fc4acffe95c8516a61e61b4963622c4a26aabe9",
@@ -72,16 +72,16 @@
                                              "bytes":  3160
                                          },
                   "README.md":  {
-                                    "sha256":  "02079fd111ffd7938d6f9499c426aeca0357f015b683886b161aa34c1e0868a4",
-                                    "bytes":  5258
+                                    "sha256":  "7256e5606de0df7977956cea3f8d9325f60d530555a04d804ed8851e48f9b44c",
+                                    "bytes":  5473
                                 },
                   "references/appearance.md":  {
                                                    "sha256":  "890650974f6c1c2a593a8e17606791a3cb1c57199b74ff4e9f3126c03788b7f0",
                                                    "bytes":  13385
                                                },
                   "references/changelog.md":  {
-                                                  "sha256":  "0fc4be138adb363edd5083912eee02fbfe8b15e229991ed0e73c094793d2fcdd",
-                                                  "bytes":  7441
+                                                  "sha256":  "ce002eda89a96d68748a33dc566ee8ea496dd18d3706ccf53fc4fdceb8e2e085",
+                                                  "bytes":  7459
                                               },
                   "references/character-card-usage.md":  {
                                                              "sha256":  "d27b2ed7532c8cb669e6a4ea4b627ff21dd193be6eb764770d998c01a81307c7",
@@ -96,8 +96,8 @@
                                                            "bytes":  5349
                                                        },
                   "references/deployment.md":  {
-                                                   "sha256":  "1e68b8e02b74a6f976acf853f86ba03cd6d2874c9a1ae0b2ec07933b117c52d4",
-                                                   "bytes":  2702
+                                                   "sha256":  "a15ee4e201362fa9cc2342eea1ca52b2fc44ce60872b9c9eeb1f14556abba3d8",
+                                                   "bytes":  2805
                                                },
                   "references/intimacy-escalation-motifs.md":  {
                                                                    "sha256":  "4e964f9360aef6deb506384bbccbf07be995b8dcda9aba1d7b2efe8f9f854594",
@@ -124,12 +124,12 @@
                                                     "bytes":  5107
                                                 },
                   "references/writing_guide.md":  {
-                                                      "sha256":  "01de5522c82f1f952c733ada59372623cca1af7fc458b3c4fd6b4b1ffe35bc55",
-                                                      "bytes":  19371
+                                                      "sha256":  "1db6fbafcbba494b7979dc2580217c5029c39ab84c7ce96153a4185242f8334b",
+                                                      "bytes":  19467
                                                   },
                   "SKILL.md":  {
-                                   "sha256":  "e4b0b6179a2868a182e95376da0afcb1f6337753645cb8c3a2b24df2c3fe161a",
-                                   "bytes":  23192
+                                   "sha256":  "56a6a5855ee2a8da10d916cf7703b6f234ec11c7fa96e0113b9c99b4656645a1",
+                                   "bytes":  23338
                                },
                   "VERSION":  {
                                   "sha256":  "10ba73729037af18a205cb7f273f8676ef03aec9610e248d138c8f385457cda8",
@@ -137,5 +137,5 @@
                               }
               },
     "total_files":  33,
-    "total_bytes":  246603
+    "total_bytes":  247346
 }
