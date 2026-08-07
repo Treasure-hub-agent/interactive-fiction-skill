@@ -11,6 +11,10 @@
                                                                            "sha256":  "722f34e8909ceade8db8a353956b05a36242e150baab62731be470d1cb2d3e8d",
                                                                            "bytes":  7272
                                                                        },
+                  "docs/superpowers/specs/2026-08-07-data-layer-design.md":  {
+                                                                                 "sha256":  "e379342fe653084fd71024ad80b5de2a0b73d5cbde5e154d9229e915d92c257c",
+                                                                                 "bytes":  8072
+                                                                             },
                   "extended/character_card.md":  {
                                                      "sha256":  "1a89dfe0b9c29842d266fd9e085ed9312ee656a93d886b4674160487c8929864",
                                                      "bytes":  10753
@@ -136,6 +140,6 @@
                                   "bytes":  5
                               }
               },
-    "total_files":  33,
-    "total_bytes":  247346
+    "total_files":  34,
+    "total_bytes":  255418
 }
