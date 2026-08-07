@@ -7,6 +7,10 @@
                                      "sha256":  "f5161c436fd0fd867c8508f379fb6da634eca963cd8fe92647d6981b887f9286",
                                      "bytes":  157
                                  },
+                  "docs/superpowers/plans/2026-08-07-data-layer.md":  {
+                                                                          "sha256":  "db3093e6fca54f3cf52bfe5eecaf657b74b8ce85c28f5681973d7f8a484294f4",
+                                                                          "bytes":  19014
+                                                                      },
                   "docs/superpowers/specs/2026-08-06-v931-design.md":  {
                                                                            "sha256":  "722f34e8909ceade8db8a353956b05a36242e150baab62731be470d1cb2d3e8d",
                                                                            "bytes":  7272
@@ -140,6 +144,6 @@
                                   "bytes":  5
                               }
               },
-    "total_files":  34,
-    "total_bytes":  255418
+    "total_files":  35,
+    "total_bytes":  274432
 }
