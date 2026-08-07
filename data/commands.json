@@ -1,0 +1,6 @@
+[
+  { "domain": "激活", "aliases": ["加载小说包", "加载互动小说技能包"], "effect": "弹出路线选择", "load": null },
+  { "domain": "存档", "aliases": ["存档", "存一下", "记个档"], "effect": "手动持久存档", "load": "extended/storage_runtime.md" },
+  { "domain": "进度", "aliases": ["进度"], "effect": "剧情进度仪表盘", "load": "extended/route_system.md" },
+  { "domain": "帮助", "aliases": ["帮助", "使用指南"], "effect": "加载使用指南", "load": "references/usage-guide.md" }
+]
