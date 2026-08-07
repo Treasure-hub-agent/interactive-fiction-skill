@@ -1,5 +1,5 @@
 {
-    "version":  "9.3.1",
+    "version":  "9.4.0",
     "generated":  "2026-08-07T00:00:00Z",
     "root":  "interactive-fiction",
     "files":  {
@@ -7,6 +7,18 @@
                                      "sha256":  "f5161c436fd0fd867c8508f379fb6da634eca963cd8fe92647d6981b887f9286",
                                      "bytes":  157
                                  },
+                  "data/commands.json":  {
+                                             "sha256":  "4da7f48415e61714dbce45542833c5697be196f86d964994bb7dc6761e2dd04f",
+                                             "bytes":  537
+                                         },
+                  "data/tags.json":  {
+                                         "sha256":  "b351cb15dbfbde837992a493de888f3130b8e9e31730a80e017b339fe54bae27",
+                                         "bytes":  1041
+                                     },
+                  "data/wordcount.json":  {
+                                              "sha256":  "0708f4b4f90a5419a07b057b785751736ac490c9047a952a5c21cf6f46b6f705",
+                                              "bytes":  376
+                                          },
                   "docs/superpowers/plans/2026-08-07-data-layer.md":  {
                                                                           "sha256":  "db3093e6fca54f3cf52bfe5eecaf657b74b8ce85c28f5681973d7f8a484294f4",
                                                                           "bytes":  19014
@@ -88,16 +100,16 @@
                                                    "bytes":  13385
                                                },
                   "references/changelog.md":  {
-                                                  "sha256":  "ce002eda89a96d68748a33dc566ee8ea496dd18d3706ccf53fc4fdceb8e2e085",
-                                                  "bytes":  7459
+                                                  "sha256":  "05b3fc171809789456013efda4982d2244052a8c0b3e3cf740698bc01b8337ca",
+                                                  "bytes":  8156
                                               },
                   "references/character-card-usage.md":  {
                                                              "sha256":  "d27b2ed7532c8cb669e6a4ea4b627ff21dd193be6eb764770d998c01a81307c7",
                                                              "bytes":  4775
                                                          },
                   "references/command_nav.md":  {
-                                                    "sha256":  "f0c8ef48d28f3b96b3242bf2a39b061aef01885c2ca88f5981968fbfa4feaa7c",
-                                                    "bytes":  7737
+                                                    "sha256":  "d3cb5611d14d1d5b7640fc2a6267807075034a997449c6adc3c774d070f27d3b",
+                                                    "bytes":  7889
                                                 },
                   "references/delegation-context.md":  {
                                                            "sha256":  "0f83cf0497ec6e7afeaae18e488f422bd7d21d4a57c8913c701a40b709af9d64",
@@ -116,8 +128,8 @@
                                                                  "bytes":  2621
                                                              },
                   "references/options-quickref.md":  {
-                                                         "sha256":  "8e8833ebdae91525167e95adb98d8f027f583e7d9313798496f10f0f05392bfb",
-                                                         "bytes":  2642
+                                                         "sha256":  "0e2d52286d64017149811c6d942e63210df6e829a2648138137ec27844873026",
+                                                         "bytes":  3069
                                                      },
                   "references/original-role-data.md":  {
                                                            "sha256":  "0fa178778dc61e626bc458a6f1018246aacd139d33dfeed9f4e7a48790b0e2ff",
@@ -135,15 +147,19 @@
                                                       "sha256":  "1db6fbafcbba494b7979dc2580217c5029c39ab84c7ce96153a4185242f8334b",
                                                       "bytes":  19467
                                                   },
+                  "schema/novel_runtime.schema.json":  {
+                                                           "sha256":  "73832ead719fd53bd2f28c6286892ffd71bf55543a41e78a60cd85e80ef52608",
+                                                           "bytes":  2064
+                                                       },
                   "SKILL.md":  {
-                                   "sha256":  "56a6a5855ee2a8da10d916cf7703b6f234ec11c7fa96e0113b9c99b4656645a1",
-                                   "bytes":  23338
+                                   "sha256":  "151735c7315527cc9657009b233b8e126a38111b83fb959e7d1f7a67d9925143",
+                                   "bytes":  23863
                                },
                   "VERSION":  {
-                                  "sha256":  "10ba73729037af18a205cb7f273f8676ef03aec9610e248d138c8f385457cda8",
+                                  "sha256":  "c07c326d672ea94555c2f690a0963aafdde017b1d3b4612bc10347f1813b8660",
                                   "bytes":  5
                               }
               },
-    "total_files":  35,
-    "total_bytes":  274432
+    "total_files":  39,
+    "total_bytes":  280251
 }
