@@ -198,7 +198,7 @@
 | `cp{}` | object | 攻略进度快照 | 变化时 |
 | `scs{}` | object | 配角后台 `{l,a,t}` | 后台活动生成时 |
 | `npcs{}` | object | 配角角色卡 | 配角达标时 |
-| `choices[]` | array | 选择后果账本（含 seg/picked/tag/type/detail/tier） | 选定 A/B/C 后 |
+| `choices[]` | array | 选择后果账本（含 seg/picked/tag/type/detail/tier/surface_by/foreclosed，见 §`choices[]` 升级字段规范） | 选定 A/B/C 后 |
 | `st{}` | object | 主角动态状态 `{位置,目标,情绪,携带物品}` | 状态变化时 |
 | `theme` | string\|null | 主题锚点（null=纯爽文） | 开局配置时 |
 | `prv` | string | 前情提要（≤200字） | 每轮 |
@@ -207,6 +207,32 @@
 | `seg_count` | int | 正文段计数（驱动锚定钩子） | 每轮 |
 | `ms` | int | 最近持久存档编号 | 手动存档后 |
 | `scs_bak` | object\|null | 场景卡模式快照 | 进入场景卡时 |
+
+#### `choices[]` 升级字段规范（v9.3.1）
+
+> 不新增 `open_loops` 字段/文件：直接升级现有 `choices[]`，保持 `novel_runtime.json` 结构兼容，旧存档无缝兼容。
+
+条目结构：
+```json
+{ "seg":12, "picked":"B", "tag":"稳健周旋", "type":"consequence", "detail":"示例势力对主角仍存轻视", "tier":"即时", "surface_by":14, "foreclosed":["A","C"] }
+```
+
+| 字段 | 语义 |
+|------|------|
+| `seg` | 选中该选项的段落号 |
+| `picked` | 选中字母（A/B/C） |
+| `tag` | 策略标签 |
+| `type` | **扩展枚举**：`consequence`（选择后果）/ `foreshadow`（伏笔）/ `promise`（承诺）；兼容现有叙事类型值（如「关系」）继续可用 |
+| `detail` | 回收/回响内容来源（回响核对时提供呼应素材） |
+| `tier` | 即时/短期/长期 |
+| `surface_by` | **回收节点**（到期段落号；原草案 `due_seg` 复用此字段，不新增） |
+| `foreclosed` | 未选路径/已关闭状态（未选选项的后果列于此，回收时同步核对） |
+
+**回收纪律**：
+- 到期必回收，**正面呈现**（延续 v9.0.0「叙事显影」原则），禁旁白带过
+- 同时 open 条目上限 **5–8 条**，超出按「旧后果优先回收」
+- 拖延超 3 轮未回收 → 迷你状态条轻提示（如 `· 有未回收后果 ·`）
+- 回响核对（事件触发）：场景切换 / 时间跳跃 / 关键角色回归 / 新章节开始时，检查最近 3–5 个关键条目是否需要自然呼应；同一场景连续推进不强制
 
 ### 写入策略
 

@@ -1,6 +1,6 @@
 {
-    "version":  "9.3.0",
-    "generated":  "2026-08-06T16:00:00Z",
+    "version":  "9.3.1",
+    "generated":  "2026-08-07T00:00:00Z",
     "root":  "interactive-fiction",
     "files":  {
                   ".gitignore":  {
@@ -8,8 +8,8 @@
                                      "bytes":  157
                                  },
                   "docs/superpowers/specs/2026-08-06-v931-design.md":  {
-                                                                           "sha256":  "9ca56178e3665fdc06bd5d9d7e1249189f9628820400b8d5f5c4350d7527e303",
-                                                                           "bytes":  7269
+                                                                           "sha256":  "722f34e8909ceade8db8a353956b05a36242e150baab62731be470d1cb2d3e8d",
+                                                                           "bytes":  7272
                                                                        },
                   "extended/character_card.md":  {
                                                      "sha256":  "1a89dfe0b9c29842d266fd9e085ed9312ee656a93d886b4674160487c8929864",
@@ -44,8 +44,8 @@
                                                  "bytes":  9420
                                              },
                   "extended/storage_runtime.md":  {
-                                                      "sha256":  "a07b532392306c70bd94320744dbf0ad3aca2bc0b9e7df0f92d0884b329c3efe",
-                                                      "bytes":  14174
+                                                      "sha256":  "183c478e192ac834cec96a85c923e2fb89bc9a21ebe4fd4e5c2b9109b83b1ef9",
+                                                      "bytes":  15770
                                                   },
                   "extended/subagent_mode.md":  {
                                                     "sha256":  "6e6b6f7cc31f966863c855432fc4acffe95c8516a61e61b4963622c4a26aabe9",
@@ -80,16 +80,16 @@
                                                    "bytes":  13385
                                                },
                   "references/changelog.md":  {
-                                                  "sha256":  "5743229ac5b0fc1eba26bdcd72f0186a94daab0b26573ac3f9b4be8313d2ad7b",
-                                                  "bytes":  6229
+                                                  "sha256":  "0fc4be138adb363edd5083912eee02fbfe8b15e229991ed0e73c094793d2fcdd",
+                                                  "bytes":  7441
                                               },
                   "references/character-card-usage.md":  {
                                                              "sha256":  "d27b2ed7532c8cb669e6a4ea4b627ff21dd193be6eb764770d998c01a81307c7",
                                                              "bytes":  4775
                                                          },
                   "references/command_nav.md":  {
-                                                    "sha256":  "bcc5a0e1c3c8cfa2d927c839d1ad20d189000fccae4c6a02be0b698763ed666b",
-                                                    "bytes":  7589
+                                                    "sha256":  "f0c8ef48d28f3b96b3242bf2a39b061aef01885c2ca88f5981968fbfa4feaa7c",
+                                                    "bytes":  7737
                                                 },
                   "references/delegation-context.md":  {
                                                            "sha256":  "0f83cf0497ec6e7afeaae18e488f422bd7d21d4a57c8913c701a40b709af9d64",
@@ -108,8 +108,8 @@
                                                                  "bytes":  2621
                                                              },
                   "references/options-quickref.md":  {
-                                                         "sha256":  "f93a02528dadb34932c59241661f44f487b2df0fc1d1eaf5b60055b342898ab7",
-                                                         "bytes":  2447
+                                                         "sha256":  "8e8833ebdae91525167e95adb98d8f027f583e7d9313798496f10f0f05392bfb",
+                                                         "bytes":  2642
                                                      },
                   "references/original-role-data.md":  {
                                                            "sha256":  "0fa178778dc61e626bc458a6f1018246aacd139d33dfeed9f4e7a48790b0e2ff",
@@ -120,22 +120,22 @@
                                                      "bytes":  2205
                                                  },
                   "references/usage-guide.md":  {
-                                                    "sha256":  "c7187b4ce2e32550e3046e49603adfd2bd61464dbd8625c58495eb24ea7e0c31",
-                                                    "bytes":  4852
+                                                    "sha256":  "8aefeb9ad60fac5403d9a9a6821ef658b98fd43eef50795ae64512c53e39ede5",
+                                                    "bytes":  5107
                                                 },
                   "references/writing_guide.md":  {
                                                       "sha256":  "01de5522c82f1f952c733ada59372623cca1af7fc458b3c4fd6b4b1ffe35bc55",
                                                       "bytes":  19371
                                                   },
                   "SKILL.md":  {
-                                   "sha256":  "9a6ea037185f2642727a3b0fdb5576d62bc86db57c14cabf0463f243c7f07279",
-                                   "bytes":  21070
+                                   "sha256":  "e4b0b6179a2868a182e95376da0afcb1f6337753645cb8c3a2b24df2c3fe161a",
+                                   "bytes":  23192
                                },
                   "VERSION":  {
-                                  "sha256":  "e6105f63414eedcb2cfd8c390ca29c2f642fe25bbdd143f80565fa852c64b0df",
+                                  "sha256":  "10ba73729037af18a205cb7f273f8676ef03aec9610e248d138c8f385457cda8",
                                   "bytes":  5
                               }
               },
     "total_files":  33,
-    "total_bytes":  241072
+    "total_bytes":  246603
 }
