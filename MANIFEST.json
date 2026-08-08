@@ -100,16 +100,16 @@
                                              "bytes":  3160
                                          },
                   "README.md":  {
-                                    "sha256":  "bef9b44146ef9d7a31a46f1d5016837e5927898e98ca03e9200fcb1c8f5d3d0f",
-                                    "bytes":  5473
+                                    "sha256":  "64cb5679d1c7d261f3c37470842f4fb835c9a6d2bfbe1b5c393a7db5a7099710",
+                                    "bytes":  7531
                                 },
                   "references/appearance.md":  {
                                                    "sha256":  "890650974f6c1c2a593a8e17606791a3cb1c57199b74ff4e9f3126c03788b7f0",
                                                    "bytes":  13385
                                                },
                   "references/changelog.md":  {
-                                                  "sha256":  "6688ef3c0399932e4e06f8cb2d5344e79622807ae5aa80a1682446668dac1e03",
-                                                  "bytes":  8217
+                                                  "sha256":  "71774622b2d4764b98a9530f93f47c4404bf814403216396d5eb2074407aee9e",
+                                                  "bytes":  9776
                                               },
                   "references/character-card-usage.md":  {
                                                              "sha256":  "d27b2ed7532c8cb669e6a4ea4b627ff21dd193be6eb764770d998c01a81307c7",
@@ -169,5 +169,5 @@
                               }
               },
     "total_files":  41,
-    "total_bytes":  292958
+    "total_bytes":  296575
 }
