@@ -4,8 +4,8 @@
     "root":  "interactive-fiction",
     "files":  {
                   ".gitignore":  {
-                                     "sha256":  "f5161c436fd0fd867c8508f379fb6da634eca963cd8fe92647d6981b887f9286",
-                                     "bytes":  157
+                                     "sha256":  "d417e11bd2b9dfad40aad772ddc7bc910cc0c618811614c57b832ec020f2693f",
+                                     "bytes":  469
                                  },
                   "data/_README.md":  {
                                           "sha256":  "995e8d0e98a33947fb2ab863daa259e3841f1041348d3c9ac124c47481caeb3d",
@@ -100,8 +100,8 @@
                                              "bytes":  3160
                                          },
                   "README.md":  {
-                                    "sha256":  "78b1d56139e268b662ec63799c0971a9585d03375730bcb61020e98bf87aa392",
-                                    "bytes":  7537
+                                    "sha256":  "1f30fb87e20359b282e88e13293365920ae72e888594657458dac8207526541e",
+                                    "bytes":  7456
                                 },
                   "references/appearance.md":  {
                                                    "sha256":  "890650974f6c1c2a593a8e17606791a3cb1c57199b74ff4e9f3126c03788b7f0",
@@ -169,5 +169,5 @@
                               }
               },
     "total_files":  41,
-    "total_bytes":  296545
+    "total_bytes":  296776
 }
