@@ -73,7 +73,7 @@
 
 ### Phase 2：分维度提取
 
-按 profile/personality/interaction/memory/relations 五维依次提取。每条标注证据级别（verbatim=角色原话 / artifact=官方设定文本 / impression=其他角色评价）。profile 维度含**存在形态**（人类 / 非人 / 化身 / 组织 / 多身份），覆盖神祇、机械生命、妖兽、组织化身、多身份间谍等特殊角色。`memory` 与 `relations` 交叉事件仅在 memory 中详写，relations 中仅写关系影响。
+按 profile/personality/interaction/memory/relations 五维依次提取。每条标注证据级别（verbatim=角色原话 / artifact=官方设定文本 / impression=其他角色评价）。profile 维度含**存在形态**（人类 / 非人 / 化身 / 组织 / 多身份），覆盖神明、人造人、兽耳、福瑞、历史人物等角色。`memory` 与 `relations` 交叉事件仅在 memory 中详写，relations 中仅写关系影响。
 
 ### 信息充足度评估（强制）
 

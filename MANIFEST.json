@@ -52,8 +52,8 @@
                                                               "bytes":  9724
                                                           },
                   "extended/distillation.md":  {
-                                                   "sha256":  "b67c8604177ada07c6c8ef331e6fa2fd0acd9d5c425b0674873d0a014f0c55d3",
-                                                   "bytes":  12015
+                                                   "sha256":  "6161c25a30c569a59665dd4f01f86524f5b88f9d2e1f42f0d2b5845a824eee92",
+                                                   "bytes":  11997
                                                },
                   "extended/event_behaviors.md":  {
                                                       "sha256":  "b4651c1dcf3d69bd9520604da76925d4dd1b95fa09391d9cb89a33ede025f30c",
@@ -100,16 +100,16 @@
                                              "bytes":  3160
                                          },
                   "README.md":  {
-                                    "sha256":  "3377f6e011a5fcbeb5636433bbbdc1790d4fe6184bdf6a8cb2cbc85cbba496c7",
-                                    "bytes":  7549
+                                    "sha256":  "78b1d56139e268b662ec63799c0971a9585d03375730bcb61020e98bf87aa392",
+                                    "bytes":  7537
                                 },
                   "references/appearance.md":  {
                                                    "sha256":  "890650974f6c1c2a593a8e17606791a3cb1c57199b74ff4e9f3126c03788b7f0",
                                                    "bytes":  13385
                                                },
                   "references/changelog.md":  {
-                                                  "sha256":  "71774622b2d4764b98a9530f93f47c4404bf814403216396d5eb2074407aee9e",
-                                                  "bytes":  9776
+                                                  "sha256":  "63f106b713dcb317b983b1b91ffa596bb1086c75bb2fbaa356aed4ac8f815668",
+                                                  "bytes":  9758
                                               },
                   "references/character-card-usage.md":  {
                                                              "sha256":  "d27b2ed7532c8cb669e6a4ea4b627ff21dd193be6eb764770d998c01a81307c7",
@@ -169,5 +169,5 @@
                               }
               },
     "total_files":  41,
-    "total_bytes":  296593
+    "total_bytes":  296545
 }
