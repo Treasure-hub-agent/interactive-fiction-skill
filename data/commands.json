@@ -108,5 +108,24 @@
     ],
     "effect": "加载使用指南",
     "load": "references/usage-guide.md"
+  },
+  {
+    "domain": "子Agent",
+    "aliases": [
+      "切换子Agent生成",
+      "子Agent模式"
+    ],
+    "effect": "切换正文生成模式（子Agent ↔ 主Agent直出）",
+    "load": "extended/subagent_mode.md"
+  },
+  {
+    "domain": "短篇",
+    "aliases": [
+      "角色卡短篇",
+      "{角色名}短篇",
+      "用角色卡开短篇"
+    ],
+    "effect": "进入角色卡短篇模式（独立短篇）",
+    "load": "extended/character_card.md"
   }
 ]

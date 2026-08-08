@@ -204,6 +204,7 @@
 | `prv` | string | 前情提要（≤200字） | 每轮 |
 | `ex` | int | 导出游标 | 主线导出后 |
 | `eb` | int | 缓冲区字节数 | 每轮 |
+| `distill` | object\|null | 蒸馏来源与可信度 `{source, credibility, missing}`（见 `extended/title_distillation.md`） | 标题检索蒸馏时 |
 | `seg_count` | int | 正文段计数（驱动锚定钩子） | 每轮 |
 | `ms` | int | 最近持久存档编号 | 手动存档后 |
 | `scs_bak` | object\|null | 场景卡模式快照 | 进入场景卡时 |
@@ -304,6 +305,14 @@
 → 用户发送「删除小说《XXX》」
 → 二次确认后从 _index.json.nvs[] 移除对应条目
 → 若被删除的是当前激活小说 → act 置 null
+```
+
+**重新开始（归零）**：
+```
+→ 用户发送「重新开始」
+→ novel_runtime.json 重置为初始新开局状态（v/rn/md 等保留当前路线配置，进度字段归零）
+→ 已有存档文件与 _index.json 记录保留，不删除
+→ 回到启动页；旧存档仍可通过「查看存档」/「加载XX路线存档」访问
 ```
 
 ### 紧急降级

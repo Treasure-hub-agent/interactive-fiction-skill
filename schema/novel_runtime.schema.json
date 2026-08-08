@@ -46,6 +46,21 @@
     "prv":        { "type": "string", "maxLength": 200 },
     "ex":         { "type": "integer" },
     "eb":         { "type": "integer" },
+    "distill":    {
+      "type": ["object", "null"],
+      "properties": {
+        "source": { "type": "string" },
+        "credibility": {
+          "type": "object",
+          "properties": {
+            "worldview": { "type": "string" },
+            "protagonist": { "type": "string" },
+            "mainPlot": { "type": "string" }
+          }
+        },
+        "missing": { "type": "array", "items": { "type": "string" } }
+      }
+    },
     "seg_count":  { "type": "integer" },
     "ms":         { "type": "integer" },
     "scs_bak":    { "type": ["object", "null"] }
