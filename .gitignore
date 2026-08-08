@@ -2,6 +2,10 @@
 output/
 *.log
 
+# 数据层（v9.4.0）：data/ 与 schema/ 为需跟踪的静态规则数据，勿加入忽略
+# data/*.json（词库/字数/指令/随机池）与 schema/*.json（运行时格式）均纳入版本管理，
+# 由 MANIFEST.json 做 SHA256 完整性校验；output/ 为蒸馏中间产物暂存区，保持忽略
+
 # 本地环境
 .env
 .venv/
