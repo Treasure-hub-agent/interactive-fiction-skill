@@ -37,6 +37,7 @@
           "foreclosed": { "type": "array", "items": { "type": "string" } },
           "flag":       { "type": ["string", "object", "boolean", "null"] }
         },
+        "required": ["seg", "picked", "type", "detail", "tier", "surface_by"],
         "additionalProperties": true
       }
     },
