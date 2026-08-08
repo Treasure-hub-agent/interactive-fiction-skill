@@ -7,13 +7,21 @@
                                      "sha256":  "f5161c436fd0fd867c8508f379fb6da634eca963cd8fe92647d6981b887f9286",
                                      "bytes":  157
                                  },
+                  "data/_README.md":  {
+                                          "sha256":  "995e8d0e98a33947fb2ab863daa259e3841f1041348d3c9ac124c47481caeb3d",
+                                          "bytes":  1828
+                                      },
                   "data/commands.json":  {
-                                             "sha256":  "9a10c047c5ca2e88d9bc8d1fe7a7acc8608a58ded3541328412f630ef6b31b1f",
-                                             "bytes":  2313
+                                             "sha256":  "7154a88150157c629d333dd44bf0e6b5e41b2fe71c4f1427a523642c51828c25",
+                                             "bytes":  2783
                                          },
+                  "data/random_pool.json":  {
+                                                "sha256":  "10120da68c6b5871e15d95993a48d09d011828ea7a3c2fae7be72823570fcf86",
+                                                "bytes":  1810
+                                            },
                   "data/tags.json":  {
-                                         "sha256":  "f7e1c5458c337a39999e6774f1221b5aedcf5c40be7e16c1d73cd3e7c74939ed",
-                                         "bytes":  1038
+                                         "sha256":  "72ef2ef24032d3d46b06eeacd15d4afa120e3b7bd61019f4215108dcd2401cc7",
+                                         "bytes":  1711
                                      },
                   "data/wordcount.json":  {
                                               "sha256":  "0708f4b4f90a5419a07b057b785751736ac490c9047a952a5c21cf6f46b6f705",
@@ -32,40 +40,40 @@
                                                                                  "bytes":  8072
                                                                              },
                   "extended/character_card.md":  {
-                                                     "sha256":  "1a89dfe0b9c29842d266fd9e085ed9312ee656a93d886b4674160487c8929864",
-                                                     "bytes":  10753
+                                                     "sha256":  "8fbd3445e108ef2b9b009236ecb98ffd0445ab82e98a48bbec5bbf39bca723fb",
+                                                     "bytes":  10822
                                                  },
                   "extended/creation_world.md":  {
                                                      "sha256":  "f3783c497c36eb67f2b54d7f5895efc327ce19746ec582cfb2f7309f5cfaff34",
                                                      "bytes":  9741
                                                  },
                   "extended/deep_character_creation.md":  {
-                                                              "sha256":  "b219fc033da17c5393162bcaad7ca68293a88f414c311c96df7a636748b79383",
-                                                              "bytes":  9655
+                                                              "sha256":  "2f3b4e9e59a28acea552b96c39a8ac3cfd40dc6e362b76eb1016fdb415afde04",
+                                                              "bytes":  9724
                                                           },
                   "extended/distillation.md":  {
-                                                   "sha256":  "ada96b3b95491777a8d0e4d0e9dd11b2911f89c517613c78481e450a46952aac",
-                                                   "bytes":  10630
+                                                   "sha256":  "b67c8604177ada07c6c8ef331e6fa2fd0acd9d5c425b0674873d0a014f0c55d3",
+                                                   "bytes":  12015
                                                },
                   "extended/event_behaviors.md":  {
-                                                      "sha256":  "1de7fd788948b0e53b8ee7f378fcda67a8990fb34974780e12a83d60db3d0678",
-                                                      "bytes":  5739
+                                                      "sha256":  "b4651c1dcf3d69bd9520604da76925d4dd1b95fa09391d9cb89a33ede025f30c",
+                                                      "bytes":  5974
                                                   },
                   "extended/features.md":  {
-                                               "sha256":  "098fec3e6f7dff011a507509bc0447208f87777d1aebfefed0176506ade5a506",
-                                               "bytes":  14438
+                                               "sha256":  "a1fac834f7b75f683bf7d67bdc69ed97f059803535c80b2adf77efc4f7d45a36",
+                                               "bytes":  14636
                                            },
                   "extended/route_system.md":  {
-                                                   "sha256":  "864395a3b72bbb7ea99f46a820bb3d1a6ec3fad1b3186fa864e04ae4639087c1",
-                                                   "bytes":  28609
+                                                   "sha256":  "553eb766e8f73befc8f7de11f6ab2cfebcd8928540018d172006be7f9e78f65a",
+                                                   "bytes":  29489
                                                },
                   "extended/side_chars.md":  {
                                                  "sha256":  "2d4382d162e09f66b642f915c63711300e9327dc8db7a2e4d549ffbf3ffec847",
                                                  "bytes":  9420
                                              },
                   "extended/storage_runtime.md":  {
-                                                      "sha256":  "c3890a8a75265accb6f829ed2470b569bce28cc57c28dc8428d6c3c1148ced4e",
-                                                      "bytes":  16501
+                                                      "sha256":  "aa666e1e2d4439707363c656a9227a6ad55554f663560516a07d1071a82bae63",
+                                                      "bytes":  17006
                                                   },
                   "extended/subagent_mode.md":  {
                                                     "sha256":  "6e6b6f7cc31f966863c855432fc4acffe95c8516a61e61b4963622c4a26aabe9",
@@ -108,8 +116,8 @@
                                                              "bytes":  4775
                                                          },
                   "references/command_nav.md":  {
-                                                    "sha256":  "d3cb5611d14d1d5b7640fc2a6267807075034a997449c6adc3c774d070f27d3b",
-                                                    "bytes":  7889
+                                                    "sha256":  "319a3603a99012bde2ec847512a84aa2639d592cd3c8699590818733d246f4cc",
+                                                    "bytes":  8133
                                                 },
                   "references/delegation-context.md":  {
                                                            "sha256":  "0f83cf0497ec6e7afeaae18e488f422bd7d21d4a57c8913c701a40b709af9d64",
@@ -128,8 +136,8 @@
                                                                  "bytes":  2621
                                                              },
                   "references/options-quickref.md":  {
-                                                         "sha256":  "034e6ee2cb25bdd152946df5e6a57760a065b254a5ba51009904cb1cfe73196d",
-                                                         "bytes":  3062
+                                                         "sha256":  "57a8258479cb347a4937f7a98a296bf8aa498f7c546b18880aa830dcdf6c2934",
+                                                         "bytes":  3105
                                                      },
                   "references/original-role-data.md":  {
                                                            "sha256":  "0fa178778dc61e626bc458a6f1018246aacd139d33dfeed9f4e7a48790b0e2ff",
@@ -148,18 +156,18 @@
                                                       "bytes":  19467
                                                   },
                   "schema/novel_runtime.schema.json":  {
-                                                           "sha256":  "82bceafb70515cf12b847c56d5fac230c6701f76a40e1d963bed59aa0ab3fc93",
-                                                           "bytes":  2143
+                                                           "sha256":  "016fba773b4e36c2361188b4f651f2dd768c03123736da01e822f080a6a45bfa",
+                                                           "bytes":  2587
                                                        },
                   "SKILL.md":  {
-                                   "sha256":  "8fc4b7c89fb324d6b24af85a3f336fa2f4a6d12060f8235b0a3cd2e134033172",
-                                   "bytes":  24691
+                                   "sha256":  "1d0c66553604269a71cf3a2368408b38ca53f3729d0f434cf346b19c7bf00c3d",
+                                   "bytes":  24905
                                },
                   "VERSION":  {
                                   "sha256":  "c07c326d672ea94555c2f690a0963aafdde017b1d3b4612bc10347f1813b8660",
                                   "bytes":  5
                               }
               },
-    "total_files":  39,
-    "total_bytes":  283815
+    "total_files":  41,
+    "total_bytes":  292882
 }
