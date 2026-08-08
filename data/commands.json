@@ -1,0 +1,131 @@
+[
+  {
+    "domain": "激活",
+    "aliases": [
+      "加载小说包",
+      "加载互动小说技能包",
+      "加载小说包·穿越",
+      "加载小说包·自创",
+      "加载小说包·创世",
+      "加载小说包·随机",
+      "继续上次",
+      "继续上次进度"
+    ],
+    "effect": "弹出路线选择 / 继续上次进度",
+    "load": null
+  },
+  {
+    "domain": "存档",
+    "aliases": [
+      "存档",
+      "存一下",
+      "记个档",
+      "查看存档"
+    ],
+    "effect": "手动持久存档 / 列出存档",
+    "load": "extended/storage_runtime.md"
+  },
+  {
+    "domain": "进度",
+    "aliases": [
+      "进度"
+    ],
+    "effect": "剧情进度仪表盘",
+    "load": "extended/route_system.md"
+  },
+  {
+    "domain": "模式",
+    "aliases": [
+      "切换爽文模式",
+      "切换主线模式"
+    ],
+    "effect": "切换叙事模式",
+    "load": "modes/shuangwen.md / modes/mainline.md"
+  },
+  {
+    "domain": "视角",
+    "aliases": [
+      "切换第一人称",
+      "切换第二人称",
+      "切换第三人称"
+    ],
+    "effect": "切换叙事视角",
+    "load": "references/switch-rules.md"
+  },
+  {
+    "domain": "角色",
+    "aliases": [
+      "弹出角色卡",
+      "弹出{角色名}角色卡",
+      "角色卡管理",
+      "管理角色卡"
+    ],
+    "effect": "查看 / 管理角色卡",
+    "load": "extended/character_card.md"
+  },
+  {
+    "domain": "查询",
+    "aliases": [
+      "关系",
+      "人物志",
+      "当前目标",
+      "世界观"
+    ],
+    "effect": "查询对应状态",
+    "load": null
+  },
+  {
+    "domain": "导出",
+    "aliases": [
+      "导出小说"
+    ],
+    "effect": "追加正文到导出文件",
+    "load": "extended/storage_runtime.md"
+  },
+  {
+    "domain": "沉浸",
+    "aliases": [
+      "沉浸模式"
+    ],
+    "effect": "进入沉浸模式（退出恢复选项）",
+    "load": "modes/immersion.md"
+  },
+  {
+    "domain": "小说",
+    "aliases": [
+      "小说列表",
+      "我的小说",
+      "切换小说"
+    ],
+    "effect": "小说管理 / 切换",
+    "load": "extended/storage_runtime.md"
+  },
+  {
+    "domain": "帮助",
+    "aliases": [
+      "帮助",
+      "使用指南"
+    ],
+    "effect": "加载使用指南",
+    "load": "references/usage-guide.md"
+  },
+  {
+    "domain": "子Agent",
+    "aliases": [
+      "切换子Agent生成",
+      "子Agent模式"
+    ],
+    "effect": "切换正文生成模式（子Agent ↔ 主Agent直出）",
+    "load": "extended/subagent_mode.md"
+  },
+  {
+    "domain": "短篇",
+    "aliases": [
+      "角色卡短篇",
+      "{角色名}短篇",
+      "用角色卡开短篇"
+    ],
+    "effect": "进入角色卡短篇模式（独立短篇）",
+    "load": "extended/character_card.md"
+  }
+]
