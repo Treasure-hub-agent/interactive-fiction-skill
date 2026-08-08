@@ -1,9 +1,9 @@
 # interactive-fiction
 
-> **互动小说创作完整规范 v9.3.1** —— 让 AI agent 写出「有选项、有张力、有沉浸感」的互动小说。
+> **互动小说创作完整规范 v9.4.0** —— 让 AI agent 写出「有选项、有张力、有沉浸感」的互动小说。
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-9.3.1-orange.svg)](VERSION)
+[![Version](https://img.shields.io/badge/version-9.4.0-orange.svg)](VERSION)
 
 ---
 

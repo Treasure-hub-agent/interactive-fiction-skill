@@ -1,7 +1,7 @@
 ---
 name: interactive-fiction
 description: "可选项驱动的互动小说创作完整规范：支持穿越/自创/创世/随机开局，内置视角一致性、字数区间、选项机制、存档系统与角色卡体系。"
-version: 9.3.1
+version: 9.4.0
 author: interactive-fiction team
 license: MIT
 platforms: [linux, macos, windows]
