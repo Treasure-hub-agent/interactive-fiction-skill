@@ -1,6 +1,6 @@
 {
     "version":  "9.4.0",
-    "generated":  "2026-08-07T00:00:00Z",
+    "generated":  "2026-08-08T00:00:00Z",
     "root":  "interactive-fiction",
     "files":  {
                   ".gitignore":  {
@@ -8,12 +8,12 @@
                                      "bytes":  157
                                  },
                   "data/commands.json":  {
-                                             "sha256":  "4da7f48415e61714dbce45542833c5697be196f86d964994bb7dc6761e2dd04f",
-                                             "bytes":  537
+                                             "sha256":  "9a10c047c5ca2e88d9bc8d1fe7a7acc8608a58ded3541328412f630ef6b31b1f",
+                                             "bytes":  2313
                                          },
                   "data/tags.json":  {
-                                         "sha256":  "b351cb15dbfbde837992a493de888f3130b8e9e31730a80e017b339fe54bae27",
-                                         "bytes":  1041
+                                         "sha256":  "f7e1c5458c337a39999e6774f1221b5aedcf5c40be7e16c1d73cd3e7c74939ed",
+                                         "bytes":  1038
                                      },
                   "data/wordcount.json":  {
                                               "sha256":  "0708f4b4f90a5419a07b057b785751736ac490c9047a952a5c21cf6f46b6f705",
@@ -64,8 +64,8 @@
                                                  "bytes":  9420
                                              },
                   "extended/storage_runtime.md":  {
-                                                      "sha256":  "b3248f512443817aaf47a6f5b544a5e156b8dbedf50014da6a4f9d88f310b41e",
-                                                      "bytes":  15935
+                                                      "sha256":  "9458655c60f01b24c688ec84faa21d3a54bab9be16a7ed9cbe2ca4ace9ce58a5",
+                                                      "bytes":  16374
                                                   },
                   "extended/subagent_mode.md":  {
                                                     "sha256":  "6e6b6f7cc31f966863c855432fc4acffe95c8516a61e61b4963622c4a26aabe9",
@@ -92,7 +92,7 @@
                                              "bytes":  3160
                                          },
                   "README.md":  {
-                                    "sha256":  "7256e5606de0df7977956cea3f8d9325f60d530555a04d804ed8851e48f9b44c",
+                                    "sha256":  "bef9b44146ef9d7a31a46f1d5016837e5927898e98ca03e9200fcb1c8f5d3d0f",
                                     "bytes":  5473
                                 },
                   "references/appearance.md":  {
@@ -128,8 +128,8 @@
                                                                  "bytes":  2621
                                                              },
                   "references/options-quickref.md":  {
-                                                         "sha256":  "0e2d52286d64017149811c6d942e63210df6e829a2648138137ec27844873026",
-                                                         "bytes":  3069
+                                                         "sha256":  "034e6ee2cb25bdd152946df5e6a57760a065b254a5ba51009904cb1cfe73196d",
+                                                         "bytes":  3062
                                                      },
                   "references/original-role-data.md":  {
                                                            "sha256":  "0fa178778dc61e626bc458a6f1018246aacd139d33dfeed9f4e7a48790b0e2ff",
@@ -148,12 +148,12 @@
                                                       "bytes":  19467
                                                   },
                   "schema/novel_runtime.schema.json":  {
-                                                           "sha256":  "73832ead719fd53bd2f28c6286892ffd71bf55543a41e78a60cd85e80ef52608",
-                                                           "bytes":  2064
+                                                           "sha256":  "82bceafb70515cf12b847c56d5fac230c6701f76a40e1d963bed59aa0ab3fc93",
+                                                           "bytes":  2143
                                                        },
                   "SKILL.md":  {
-                                   "sha256":  "151735c7315527cc9657009b233b8e126a38111b83fb959e7d1f7a67d9925143",
-                                   "bytes":  23863
+                                   "sha256":  "b13f0fef2322aaf6ac3527b6f2a25fe9ca8824edebc038ab3c734f32b3844c8e",
+                                   "bytes":  24454
                                },
                   "VERSION":  {
                                   "sha256":  "c07c326d672ea94555c2f690a0963aafdde017b1d3b4612bc10347f1813b8660",
@@ -161,5 +161,5 @@
                               }
               },
     "total_files":  39,
-    "total_bytes":  280251
+    "total_bytes":  283126
 }
