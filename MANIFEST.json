@@ -56,16 +56,16 @@
                                                "bytes":  14438
                                            },
                   "extended/route_system.md":  {
-                                                   "sha256":  "25fb37126bbf91a5cb9eeb65d2853ec90c38eccebdb2d6ec7df5c0898d9aacbf",
-                                                   "bytes":  28384
+                                                   "sha256":  "864395a3b72bbb7ea99f46a820bb3d1a6ec3fad1b3186fa864e04ae4639087c1",
+                                                   "bytes":  28609
                                                },
                   "extended/side_chars.md":  {
                                                  "sha256":  "2d4382d162e09f66b642f915c63711300e9327dc8db7a2e4d549ffbf3ffec847",
                                                  "bytes":  9420
                                              },
                   "extended/storage_runtime.md":  {
-                                                      "sha256":  "9458655c60f01b24c688ec84faa21d3a54bab9be16a7ed9cbe2ca4ace9ce58a5",
-                                                      "bytes":  16374
+                                                      "sha256":  "c3890a8a75265accb6f829ed2470b569bce28cc57c28dc8428d6c3c1148ced4e",
+                                                      "bytes":  16501
                                                   },
                   "extended/subagent_mode.md":  {
                                                     "sha256":  "6e6b6f7cc31f966863c855432fc4acffe95c8516a61e61b4963622c4a26aabe9",
@@ -80,8 +80,8 @@
                                   "bytes":  1089
                               },
                   "modes/immersion.md":  {
-                                             "sha256":  "d01f7a36a8910121dc5d91b8ab3631bc1c3018083b0edbecad22a11096a8f85f",
-                                             "bytes":  2322
+                                             "sha256":  "0f38718c496e6ce4b9167b783ad59e05f5f246cc829c06386501ffb4cb5c6a33",
+                                             "bytes":  2422
                                          },
                   "modes/mainline.md":  {
                                             "sha256":  "ac9173b775a626fa714ceb801422d894ce1d8c7810e74d4f693bbce49ffd49b8",
@@ -152,8 +152,8 @@
                                                            "bytes":  2143
                                                        },
                   "SKILL.md":  {
-                                   "sha256":  "b13f0fef2322aaf6ac3527b6f2a25fe9ca8824edebc038ab3c734f32b3844c8e",
-                                   "bytes":  24454
+                                   "sha256":  "8fc4b7c89fb324d6b24af85a3f336fa2f4a6d12060f8235b0a3cd2e134033172",
+                                   "bytes":  24691
                                },
                   "VERSION":  {
                                   "sha256":  "c07c326d672ea94555c2f690a0963aafdde017b1d3b4612bc10347f1813b8660",
@@ -161,5 +161,5 @@
                               }
               },
     "total_files":  39,
-    "total_bytes":  283126
+    "total_bytes":  283815
 }
