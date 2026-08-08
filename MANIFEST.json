@@ -72,12 +72,12 @@
                                                  "bytes":  9420
                                              },
                   "extended/storage_runtime.md":  {
-                                                      "sha256":  "aa666e1e2d4439707363c656a9227a6ad55554f663560516a07d1071a82bae63",
-                                                      "bytes":  17006
+                                                      "sha256":  "8ccf2d2cee514236efe0efa426bd49dda69e37329e7b97fb589185d40807cc48",
+                                                      "bytes":  17018
                                                   },
                   "extended/subagent_mode.md":  {
-                                                    "sha256":  "6e6b6f7cc31f966863c855432fc4acffe95c8516a61e61b4963622c4a26aabe9",
-                                                    "bytes":  4920
+                                                    "sha256":  "74cbb551ac46d9532eacd44c934b5875d3726f26bb9b45cc7a85f5ed6e68ba9d",
+                                                    "bytes":  4923
                                                 },
                   "extended/title_distillation.md":  {
                                                          "sha256":  "fdc8c29995b1f3ddf81b0e404336927de771dbfce83fc5488f0b15b88bb0350e",
@@ -108,8 +108,8 @@
                                                    "bytes":  13385
                                                },
                   "references/changelog.md":  {
-                                                  "sha256":  "05b3fc171809789456013efda4982d2244052a8c0b3e3cf740698bc01b8337ca",
-                                                  "bytes":  8156
+                                                  "sha256":  "6688ef3c0399932e4e06f8cb2d5344e79622807ae5aa80a1682446668dac1e03",
+                                                  "bytes":  8217
                                               },
                   "references/character-card-usage.md":  {
                                                              "sha256":  "d27b2ed7532c8cb669e6a4ea4b627ff21dd193be6eb764770d998c01a81307c7",
@@ -136,7 +136,7 @@
                                                                  "bytes":  2621
                                                              },
                   "references/options-quickref.md":  {
-                                                         "sha256":  "57a8258479cb347a4937f7a98a296bf8aa498f7c546b18880aa830dcdf6c2934",
+                                                         "sha256":  "2f9222cc38cc7a99a2643cbb5d9182bd090d555643c77b12b016ea43c23966f0",
                                                          "bytes":  3105
                                                      },
                   "references/original-role-data.md":  {
@@ -169,5 +169,5 @@
                               }
               },
     "total_files":  41,
-    "total_bytes":  292882
+    "total_bytes":  292958
 }
