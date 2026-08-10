@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "novel_runtime",
+  "type": "object",
+  "properties": {
+    "v":          { "type": "string" },
+    "ua":         { "type": "string" },
+    "nm":         { "type": "string" },
+    "rn":         { "type": "string" },
+    "md":         { "type": "string" },
+    "vw":         { "type": "integer", "enum": [1, 2, 3] },
+    "ch":         { "type": "integer" },
+    "sc":         { "type": "string" },
+    "wc":         { "type": "integer" },
+    "mp":         { "type": "string" },
+    "dv":         { "type": ["integer", "null"] },
+    "cc":         { "type": ["string", "null"] },
+    "sb":         { "type": "array", "items": { "type": "string" } },
+    "kp":         { "type": "array", "items": { "type": "string" } },
+    "pf":         { "type": "array", "items": { "type": "object" } },
+    "rs":         { "type": "object" },
+    "cp":         { "type": "object" },
+    "scs":        { "type": "object" },
+    "npcs":       { "type": "object" },
+    "choices":    {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "seg":        { "type": "integer" },
+          "picked":     { "type": "string" },
+          "tag":        { "type": "string" },
+          "type":       { "type": "string" },
+          "detail":     { "type": "string" },
+          "tier":       { "type": "string" },
+          "surface_by": { "type": "integer" },
+          "foreclosed": { "type": "array", "items": { "type": "string" } },
+          "flag":       { "type": ["string", "object", "boolean", "null"] }
+        },
+        "required": ["seg", "picked", "type", "detail", "tier", "surface_by"],
+        "additionalProperties": true
+      }
+    },
+    "st":         { "type": "object" },
+    "theme":      { "type": ["string", "null"] },
+    "prv":        { "type": "string", "maxLength": 200 },
+    "ex":         { "type": "integer" },
+    "eb":         { "type": "integer" },
+    "distill":    {
+      "type": ["object", "null"],
+      "properties": {
+        "source": { "type": "string" },
+        "credibility": {
+          "type": "object",
+          "properties": {
+            "worldview": { "type": "string" },
+            "protagonist": { "type": "string" },
+            "mainPlot": { "type": "string" }
+          }
+        },
+        "missing": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "seg_count":  { "type": "integer" },
+    "ms":         { "type": "integer" },
+    "scs_bak":    { "type": ["object", "null"] }
+  },
+  "additionalProperties": true
+}
