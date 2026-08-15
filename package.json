@@ -1,6 +1,6 @@
 {
   "name": "@treasure-hub-agent/interactive-fiction-skill",
-  "version": "9.4.0",
+  "version": "10.0.0",
   "description": "可选项驱动的互动小说创作完整规范：支持穿越/自创/创世/随机开局，内置视角一致性、字数区间、选项机制、存档系统与角色卡体系。",
   "license": "MIT",
   "author": "Treasure-hub-agent",
@@ -25,12 +25,16 @@
     "references",
     "schema"
   ],
+  "scripts": {
+    "validate": "python3 scripts/validate.py",
+    "gen-manifest": "python3 scripts/gen_manifest.py"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Treasure-hub-agent/interactive-fiction-skill.git"
   },
-  "homepage": "https://github.com/Treasure-hub-agent/interactive",
+  "homepage": "https://github.com/Treasure-hub-agent/interactive-fiction-skill",
   "bugs": {
-    "url": "https://github.com/Treasure-hub-agent/interactive/issues"
+    "url": "https://github.com/Treasure-hub-agent/interactive-fiction-skill/issues"
   }
 }

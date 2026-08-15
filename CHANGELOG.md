@@ -2,6 +2,24 @@
 
 完整版本历史与变更说明见 [references/changelog.md](references/changelog.md)。
 
-## 当前版本：9.4.0
+## 当前版本：10.0.0
 
-详情见 [Releases](https://github.com/Treasure-hub-agent/interactive/releases)。
+### v10.0.0（2026-08-14）情感叙事升级 + 玩法完善
+
+**💗 情感描写强化（核心）**
+- 新增「情感递进」三阶段：心动 → 暧昧 → 定情，聚焦微表情、视线交汇、潜台词对话与氛围意象
+- 内置心动场景示范写法；扩充意象库：潜台词对话、信物、雨天共伞、并肩而行、称谓递进、耳语低音
+- 选项标签池升级：温柔靠近 / 克制心动 / 主动试探 / 热烈回应 / 退让留白 / 欲言又止 / 心意暗涌
+
+**🧭 指令与玩法完善**
+- 指令域扩至 16 类：新增场景卡、回顾、回退/重做；查询域新增伏笔/悬念
+- 存档支持「加载存档 #N」「删除存档 #N」批量管理；导出支持全量 + md/txt 双格式
+- 蒸馏新增「对话试演」模式；穿越开局支持 AI 推荐作品、自动识别已有角色卡
+- 沉浸模式指令边界明确；回响核对并入锚定钩子，每 8 段硬核对
+
+**📦 工程与体验**
+- 新增 validate.py 工程门禁：版本一致性、标签去重、文件引用完整性自动校验
+- wordcount 补充情感场景区间；schema 全字段中文注释
+- VERSION / package.json / MANIFEST.json / SKILL.md frontmatter 全部同步至 10.0.0
+
+详情见 [Releases](https://github.com/Treasure-hub-agent/interactive-fiction-skill/releases)。

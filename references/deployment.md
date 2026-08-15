@@ -1,6 +1,6 @@
 # 部署与安装指南
 
-> 当前版本以 `SKILL.md` YAML 头中 `version` 字段为准（参见项目根目录 `VERSION` 文件）。
+> **版本号以项目根目录 `VERSION` 文件为唯一权威**；`SKILL.md` frontmatter / `package.json` / `MANIFEST.json` 中的版本字段均为其同步副本，发版时一并更新。
 
 ---
 
@@ -68,14 +68,23 @@ git pull origin main
 ### 手动升级步骤
 
 1. 增量覆盖 `SKILL.md`、`modes/`、`extended/`、`references/` 中的变更文件
-2. 更新 `SKILL.md` YAML 头中 `version` 字段为目标版本号（如仓库已更新则无需手动改）
+2. 确认根目录 `VERSION` 文件为最新目标版本号（如仓库已更新则无需手动改；`SKILL.md` frontmatter / `package.json` / `MANIFEST.json` 版本字段随发布同步更新，不单独手改）
 3. 重新加载 skill 生效
 
 > ⚠️ 运行数据（小说存档、角色卡等）存放在独立存储目录，升级规则文件不影响已有数据。
 
 ---
 
-## 四、验证
+## 四、变更记录分工
+
+- 根目录 `CHANGELOG.md`：面向 GitHub / Releases 的**全量精简版本史**，**发版时追加**（与 GitHub Release notes 同步维护，供人类读者与 Release 页面使用）
+- `references/changelog.md`：skill **运行时按需加载**的详细变更说明（agent 收到「版本历史 / 这版改了什么」类提问时加载此文件）
+
+> 两处内容同源不同详略：发版时先更新 `references/changelog.md`（详细），再向根 `CHANGELOG.md` 追加精简条目。
+
+---
+
+## 五、验证
 
 - [ ] `SKILL.md` 存在于技能目录且 `name: interactive-fiction` 与目录叶节点一致
 - [ ] `modes/`、`extended/`、`references/` 目录均存在且含文件

@@ -1,69 +1,74 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "novel_runtime",
+  "description": "互动小说运行时状态文件（{存储根}/{小说名}/meta/novel_runtime.json）的格式约束：每轮更新的剧情、状态与后果账本。",
   "type": "object",
   "properties": {
-    "v":          { "type": "string" },
-    "ua":         { "type": "string" },
-    "nm":         { "type": "string" },
-    "rn":         { "type": "string" },
-    "md":         { "type": "string" },
-    "vw":         { "type": "integer", "enum": [1, 2, 3] },
-    "ch":         { "type": "integer" },
-    "sc":         { "type": "string" },
-    "wc":         { "type": "integer" },
-    "mp":         { "type": "string" },
-    "dv":         { "type": ["integer", "null"] },
-    "cc":         { "type": ["string", "null"] },
-    "sb":         { "type": "array", "items": { "type": "string" } },
-    "kp":         { "type": "array", "items": { "type": "string" } },
-    "pf":         { "type": "array", "items": { "type": "object" } },
-    "rs":         { "type": "object" },
-    "cp":         { "type": "object" },
-    "scs":        { "type": "object" },
-    "npcs":       { "type": "object" },
+    "v":          { "type": "string", "description": "运行时版本号（创建时固定）" },
+    "ua":         { "type": "string", "description": "最近更新时间戳（ISO8601，每轮更新）" },
+    "nm":         { "type": "string", "description": "当前小说名" },
+    "rn":         { "type": "string", "description": "当前路线（穿越成原著角色/自创角色/创世模式/随机开局）" },
+    "md":         { "type": "string", "description": "当前模式（爽文/主线/沉浸）" },
+    "vw":         { "type": "integer", "enum": [1, 2, 3], "description": "当前视角（1=第一人称，2=第二人称，3=第三人称）" },
+    "ch":         { "type": "integer", "description": "当前章数" },
+    "sc":         { "type": "string", "description": "当前场景（地点/场景标识）" },
+    "wc":         { "type": "integer", "description": "累计字数（每轮更新）" },
+    "mp":         { "type": "string", "description": "当前地图" },
+    "dv":         { "type": ["integer", "null"], "description": "原著偏离度（仅穿越路线，可空）" },
+    "cc":         { "type": ["string", "null"], "description": "核心冲突（仅自创/创世路线，可空）" },
+    "sb":         { "type": "array", "items": { "type": "string" }, "description": "未探索支线地点列表" },
+    "kp":         { "type": "array", "items": { "type": "string" }, "description": "关键决策记录" },
+    "pf":         { "type": "array", "items": { "type": "object" }, "description": "伏笔账本（每项 {k: 伏笔名, s: active/dropped}）" },
+    "rs":         { "type": "object", "description": "角色好感度快照（角色名 → 数值或 null）" },
+    "cp":         { "type": "object", "description": "攻略进度快照（角色名 → {stage, progress}）" },
+    "scs":        { "type": "object", "description": "配角后台活动（角色名 → {l,a,t}）" },
+    "npcs":       { "type": "object", "description": "配角角色卡（达标配角落卡）" },
     "choices":    {
       "type": "array",
+      "description": "选择后果账本（每轮自检与到期回收的数据源）",
       "items": {
         "type": "object",
         "properties": {
-          "seg":        { "type": "integer" },
-          "picked":     { "type": "string" },
-          "tag":        { "type": "string" },
-          "type":       { "type": "string" },
-          "detail":     { "type": "string" },
-          "tier":       { "type": "string" },
-          "surface_by": { "type": "integer" },
-          "foreclosed": { "type": "array", "items": { "type": "string" } },
-          "flag":       { "type": ["string", "object", "boolean", "null"] }
+          "seg":        { "type": "integer", "description": "产生该后果的段落号" },
+          "picked":     { "type": "string", "description": "用户选择（A/B/C 或 \"自由\"）" },
+          "tag":        { "type": "string", "description": "策略标签（来自 data/tags.json）" },
+          "type":       { "type": "string", "description": "后果类型（consequence/foreshadow/promise 等）" },
+          "detail":     { "type": "string", "description": "后果内容描述" },
+          "tier":       { "type": "string", "description": "后果分级（即时/短期/长期）" },
+          "surface_by": { "type": "integer", "description": "到期正面回收的段落号" },
+          "foreclosed": { "type": "array", "items": { "type": "string" }, "description": "已封禁（不再出现）的选项" },
+          "flag":       { "type": ["string", "object", "boolean", "null"], "description": "附加标记（字符串/对象/布尔/null）" }
         },
         "required": ["seg", "picked", "type", "detail", "tier", "surface_by"],
-        "additionalProperties": true
+        "additionalProperties": false
       }
     },
-    "st":         { "type": "object" },
-    "theme":      { "type": ["string", "null"] },
-    "prv":        { "type": "string", "maxLength": 200 },
-    "ex":         { "type": "integer" },
-    "eb":         { "type": "integer" },
+    "st":         { "type": "object", "description": "主角动态状态（{位置, 目标, 情绪, 携带物品}）" },
+    "theme":      { "type": ["string", "null"], "description": "主题锚点（null=纯爽文）" },
+    "prv":        { "type": "string", "maxLength": 200, "description": "前情提要（≤200 字，每轮更新）" },
+    "ex":         { "type": "integer", "description": "导出游标（主线导出进度）" },
+    "eb":         { "type": "integer", "description": "缓冲区字节数" },
     "distill":    {
       "type": ["object", "null"],
+      "description": "蒸馏来源与可信度（标题检索蒸馏时写入）",
       "properties": {
-        "source": { "type": "string" },
+        "source": { "type": "string", "description": "蒸馏来源（原作/网址/模型知识等）" },
         "credibility": {
           "type": "object",
+          "description": "五维可信度标注（高/中/低）",
           "properties": {
-            "worldview": { "type": "string" },
-            "protagonist": { "type": "string" },
-            "mainPlot": { "type": "string" }
+            "worldview": { "type": "string", "description": "世界观维度可信度（高/中/低）" },
+            "protagonist": { "type": "string", "description": "主角维度可信度（高/中/低）" },
+            "mainPlot": { "type": "string", "description": "主线维度可信度（高/中/低）" }
           }
         },
-        "missing": { "type": "array", "items": { "type": "string" } }
+        "missing": { "type": "array", "items": { "type": "string" }, "description": "信息不足待补充项（[待补]）" }
       }
     },
-    "seg_count":  { "type": "integer" },
-    "ms":         { "type": "integer" },
-    "scs_bak":    { "type": ["object", "null"] }
+    "seg_count":  { "type": "integer", "description": "正文段计数（驱动锚定钩子）" },
+    "ms":         { "type": "integer", "description": "最近持久存档编号" },
+    "scs_bak":    { "type": ["object", "null"], "description": "场景卡模式快照（退出场景卡时恢复）" }
   },
+  "required": ["v", "ua", "nm", "rn", "md", "vw", "ch", "sc", "wc", "choices", "st"],
   "additionalProperties": true
 }

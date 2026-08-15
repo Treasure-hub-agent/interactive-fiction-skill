@@ -1,11 +1,11 @@
 # interactive-fiction
 
-> **Complete interactive-fiction authoring spec v9.4.0** — turns any AI agent into a writer of tense, choice-driven, immersive stories.
+> **Complete interactive-fiction authoring spec v10.0.0** — turns any AI agent into a writer of tense, choice-driven, immersive stories.
 
 🌐 **[中文](README.md) | English**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-9.4.0-orange.svg)](VERSION)
+[![Version](https://img.shields.io/badge/version-10.0.0-orange.svg)](VERSION)
 
 ---
 
@@ -25,21 +25,25 @@
 
 ---
 
-## What's New (v9.4.0 · Experimental)
+## What's New (v10.0.0 · Emotion Narrative Upgrade)
 
-**🎭 Much stronger character distillation**
-- More character types: gods, artificial humans, kemonomimi (animal-eared), furries, historical figures, and more
-- Sparse-source characters: the AI honestly marks "to be filled in" instead of inventing facts; minor characters can start as lightweight cards and be upgraded later
+**💗 Much stronger emotional storytelling (headline)**
+- New three-stage "emotional progression": spark → ambiguity → commitment, each stage with clear beats and resolution signals
+- Built-in sample prose for the spark stage: how to write micro-expressions, eye contact, and verbal teasing
+- Expanded emotion motif library: subtext dialogue, keepsakes, sharing an umbrella in rain, walking side by side, formality-to-intimacy name shifts, whispers
+- Revamped option tag pool: gentle approach / restrained heartbeat / active probe / warm response / step back & leave space / words left unsaid / feelings stirring beneath
 
-**⚡ Lighter and faster (experimental)**
-- Common rules (vocabulary, length, commands, random pools) moved to data files, loaded on demand
+**🧭 Complete command system**
+- New command domains: Scene Card, Recap, Undo/Redo — plus Foreshadowing/Suspense in the Query domain; 16 domains in total
+- "Load save #N" / "Delete save #N" for multi-save management
+- Distillation now offers "dialogue rehearsal": chat freely with the character, get a five-dimension fidelity report, and save the session into the character card
 
-**🔄 Smoother gameplay**
-- Free-form input is smarter: what you say or do becomes part of the story
-- Richer random openings: fewer repeats, more balanced templates
-- 19+ issues found in real playtesting were fixed
+**📦 Experience & engineering**
+- Full-story export with md/txt formats, chapter-separated
+- Transmigration openings: ask the AI for recommendations, auto-detect existing character cards to skip re-distillation
+- New validation gate: version consistency, tag uniqueness, file-reference integrity — automated before release
 
-> Full history: [`references/changelog.md`](references/changelog.md)
+> Full history: [`references/changelog.md`](references/changelog.md). The version number is authoritative in the root `VERSION` file.
 
 ---
 
@@ -62,6 +66,17 @@ Copy the repo into your agent's skills directory:
 | Cursor | `~/.cursor/skills/interactive-fiction/` |
 
 Reload / restart your client, then send the trigger phrase to start (default is "加载小说包" — you can configure your own trigger in the skill file).
+
+### Option 3: Bundled in the dsh-story plugin (in development)
+
+The `dsh-story` plugin will bundle this skill (in development) — installing / upgrading the plugin installs / upgrades the skill automatically, no manual copy needed.
+
+### Upgrading
+
+- npx install: `npx skills update Treasure-hub-agent/interactive-fiction-skill` (or re-add)
+- Manual copy: overwrite with the latest [GitHub Releases](https://github.com/Treasure-hub-agent/interactive-fiction-skill/releases) package, or incrementally overwrite changed files (keep your runtime data directory)
+- dsh-story plugin (in development): updates automatically with the plugin
+- Upgrades never touch your existing runtime data (novel saves and character cards live in a separate storage directory)
 
 ---
 
@@ -119,7 +134,7 @@ Every scene ends this way — choices that shape what happens next.
 
 1. Load the skill in your agent client (Hermes `skill_view`, Claude Code skill mechanism, etc.)
 2. Send the trigger phrase → pick an opening route
-3. Choose route A (reincarnate as an original character) / B (create your own) / C (worldbuilder mode) / 🎲 random opening → the story begins
+3. Choose route A (reincarnate as a character from the original work) / B (create your own) / C (worldbuilder mode) / 🎲 random opening → the story begins
 4. After each scene, pick A/B/C/D/E to advance
 5. Send the help command anytime for the full command reference (default: "帮助")
 

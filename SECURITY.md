@@ -11,4 +11,4 @@
 
 ## 修复周期
 
-安全问题会在下一个版本中优先修复，请关注 [Releases](https://github.com/Treasure-hub-agent/interactive/releases)。
+安全问题会在下一个版本中优先修复，请关注 [Releases](https://github.com/Treasure-hub-agent/interactive-fiction-skill/releases)。
