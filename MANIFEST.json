@@ -1,6 +1,6 @@
 {
   "version": "10.1.0",
-  "generated": "2026-08-30T11:38:59Z",
+  "generated": "2026-08-30T11:49:47Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -236,6 +236,11 @@
     "scripts/gen_manifest.py": {
       "sha256": "6cd43800b8a9307876fcf6325e30d8533b961f8e475acbf29c64772655828e93",
       "bytes": 4591,
+      "role": "runtime"
+    },
+    "scripts/gen_social_preview.py": {
+      "sha256": "b7f03b6526b63a14b4fe0de5585af8b25b498777eee9978d348178ab89a47cfc",
+      "bytes": 2428,
       "role": "runtime"
     },
     "scripts/test_data.py": {
