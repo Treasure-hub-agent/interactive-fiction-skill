@@ -1,6 +1,6 @@
 {
   "version": "10.1.0",
-  "generated": "2026-08-30T11:49:47Z",
+  "generated": "2026-08-30T12:35:31Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -9,8 +9,8 @@
       "role": "meta"
     },
     "CHANGELOG.md": {
-      "sha256": "82a7e2a17efb40c691e5e2acaae74c114c0dace4c554c18156ca9d5a256f8a9a",
-      "bytes": 1398,
+      "sha256": "6c4513409e40cfe6d13c2f7e3db98b97598ce094517a4b7e7af39dad3956ccec",
+      "bytes": 1853,
       "role": "meta"
     },
     "CODE_OF_CONDUCT.md": {
@@ -29,13 +29,13 @@
       "role": "runtime"
     },
     "README.en.md": {
-      "sha256": "264370413b73b3160ec1a896e2d7c838dba2d677a0e374c8a453135d667a8946",
-      "bytes": 8776,
+      "sha256": "4ac788ef2449d3bb83711086283bbd5d947cce1908010b322b5f664fd81704e2",
+      "bytes": 8912,
       "role": "runtime"
     },
     "README.md": {
-      "sha256": "43f4f468fe4e6b9ae5540fd4c1342849406b8b61ce8e6c882c60832590ba2247",
-      "bytes": 9690,
+      "sha256": "06c251d0b86d5b157c2e6941016ee0550d88a10cb85499d68c8d08d332d18a4d",
+      "bytes": 10279,
       "role": "runtime"
     },
     "SECURITY.md": {
@@ -53,9 +53,14 @@
       "bytes": 6,
       "role": "runtime"
     },
+    "assets/banner-dark.svg": {
+      "sha256": "6cc351c97ea3c4fc6ef86772d575a8b1b7ab68c5d2790b4351d0301b61679787",
+      "bytes": 9478,
+      "role": "meta"
+    },
     "assets/banner.svg": {
-      "sha256": "319dccc44ae09bdd8a850d2fabdb42c15a14063feeb6c439063d14da8c0a3601",
-      "bytes": 2055,
+      "sha256": "1a26694f44a713b081c4e69cb384e44b7927c7339da280a4cb48a17fef58d704",
+      "bytes": 9449,
       "role": "meta"
     },
     "data/_README.md": {

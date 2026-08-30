@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="Interactive Fiction Authoring Spec" width="100%"/>
+  <img alt="Interactive Fiction Authoring Spec" src="assets/banner.svg#gh-light-mode-only" width="100%"/>
+  <img alt="Interactive Fiction Authoring Spec (dark)" src="assets/banner-dark.svg#gh-dark-mode-only" width="100%"/>
 </p>
 
 # interactive-fiction

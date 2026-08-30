@@ -1,37 +1,44 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="互动小说创作规范" width="100%"/>
+  <img alt="互动小说创作规范" src="assets/banner.svg#gh-light-mode-only" width="100%"/>
+  <img alt="互动小说创作规范（深色）" src="assets/banner-dark.svg#gh-dark-mode-only" width="100%"/>
 </p>
 
-# interactive-fiction
+<h1 align="center" style="font-family: 'Noto Serif SC', 'Songti SC', serif; font-size: 1.9em; letter-spacing: 0.08em; margin-bottom: 0.1em; margin-top: 0.6em;">
+  interactive-fiction
+</h1>
 
-> **互动小说创作完整规范 v10.1.0**
->
-> 以选项为笔墨，以剧情为山河 —— 让 AI agent 写出「有选项、有张力、有沉浸感」的互动小说。
+<p align="center" style="color:#8a7c6f;">
+  —— 互动小说创作完整规范 v10.1.0 ——
+</p>
 
-🌐 **中文 | [English](README.en.md)**
+<p align="center">
+  🌐 <b>中文</b> ｜ <a href="README.en.md">English</a>
+</p>
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-10.1.0-orange.svg)](VERSION)
+<p align="center">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"/></a>
+  <a href="VERSION"><img alt="Version" src="https://img.shields.io/badge/version-10.1.0-orange.svg"/></a>
+  <a href="https://github.com/Treasure-hub-agent/ai-with-u"><img alt="ai-with-u" src="https://img.shields.io/badge/ecosystem-ai--with--u-9cf.svg"/></a>
+</p>
 
 > 💡 **dsh-story 插件用户**：本 skill 将随 `dsh-story` 插件捆绑发布（开发中），装插件即装 skill，无需手动安装；插件升级时 skill 随之更新。
 
 ---
 
-## ✨ 它是什么
+## ✨ 一书 · 何以开头
 
-给 AI 用的「互动小说创作指南」——装上它，AI 就能写出带选项、带剧情的互动小说，像玩文字冒险游戏一样，体验媲美专业商业软件。
+**interactive-fiction** 是给 AI 用的「互动小说创作指南」——装上它，AI 就能写出一部有选项、有张力、有沉浸感的互动小说，像玩一场文字冒险游戏，却体验着商业软件般的打磨。
 
-它能为你做什么：
+它为你拉开故事的舞台：
 
-- 🎭 **每个选择都有回应**：每段剧情后 AI 都会给出 A/B/C/D/E 选项；你也可以直接输入想说的话、想做的事，AI 会顺着你的思路继续写
-- 📖 **三种口味随时切换**：主线（稳扎稳打）、沉浸（纯剧情、无干扰）、爽文（快速打脸、爽点密集）
-- 🎴 **角色有血有肉**：可以从小说 / 游戏里还原角色卡，也可以自己捏角色；AI 会记住人设，不会越写越跑偏
-- 💾 **进度自动保存**：剧情、好感、支线都会自动记录，断了能接着玩，还能导出成完整小说文本
-- 🔍 **剧情不健忘**：AI 会自动核对设定、回收伏笔，长剧情也不会前后矛盾
+| | | |
+|:---:|:---:|:---:|
+| 🎭 **每个选择都有回应**<br/>A/B/C/D/E 五选项；亦可自由输入言行，故事随你而动 | 📖 **三种叙事调子**<br/>主线·沉浸·爽文，随心切换 | 🎴 **角色有血有肉**<br/>还原 / 自创 / 记忆人设，不走样 |
+| 💾 **进度自动保存**<br/>剧情·好感·支线，断了能续，导出成书 | 🔍 **剧情不健忘**<br/>设定核对·伏笔回收·长线一致 | ✨ **文艺美学的守护**<br/>情感递进·语态基因·定情之后 |
 
 ---
 
-## 📌 当前版本动态（v10.1.0 · 定情之后）
+## 📌 新卷 · v10.1.0 定情之后
 
 > 本栏目介绍最新版本的变化，只保留当前版本；历史版本见 `references/changelog.md`。
 
@@ -45,7 +52,7 @@
 
 - 每章自动生成「章摘要」（≤200 字），每 5 章自动生成「卷总结」（≤1000 字）
 - 「章回顾」「卷回顾」指令随时调出，追 50 章也不迷路
-- 摘要可手动校准（`generated_by` 标记），永远由你掌握最终版本
+- 摘要可手动校准（`generated_by` 标记），永远由主人掌握最终版本
 
 **🧭 指令与工程**
 
@@ -54,7 +61,7 @@
 
 ---
 
-## 安装
+## 🛠 如何入席 · 安装
 
 ### 方式 1：npx skills
 
@@ -91,21 +98,21 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 
 ---
 
-## 为什么需要它
+## 🕮 为何翻开这一页
 
 让 AI 写互动小说，最常见的问题：
 
-- ❌ 每轮正文结束**忘了给选项**，剧情变成单向广播
-- ❌ 主角视角漂移，「你」和「他/她」混着用，读者出戏
-- ❌ 字数忽长忽短，紧迫战斗 300 字、日常水了 2000 字
-- ❌ 角色千人一面，剧情全靠套话
-- ❌ 剧情开了多条线，后文互相矛盾，存档/切换一塌糊涂
+> ❌ 每轮正文结束**忘了给选项**，剧情变成单向广播
+> ❌ 主角视角漂移，「你」和「他/她」混着用，读者出戏
+> ❌ 字数忽长忽短，紧迫战斗 300 字、日常水了 2000 字
+> ❌ 角色千人一面，剧情全靠套话
+> ❌ 剧情开了多条线，后文互相矛盾，存档/切换一塌糊涂
 
-**用了 interactive-fiction 之后**：以上问题全部变成硬性规则，由 AI 每轮输出前强制自检，写出来的正文自带选项、视角、字数、一致性保障。
+**用了 interactive-fiction 之后**：以上问题全部变成硬性规则，由 AI 每轮输出前强制自检，写出来的正文自带选项、视角、字数、一致性保障。**落笔即合律，行文有法度。**
 
 ---
 
-## 核心能力
+## 📖 内页 · 核心能力
 
 | 能力 | 说明 |
 |:-----|:-----|
@@ -120,7 +127,7 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 
 ---
 
-## 快速开始
+## 🚩 开场 · 快速开始
 
 1. 用你的客户端加载本 skill（如 Hermes 的 `skill_view`、Claude Code 的 skill 机制）
 2. 发送「加载小说包」→ 进入开局路线选择
@@ -132,7 +139,7 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 
 ---
 
-## 存储与权限
+## 📚 存放 · 存储与权限
 
 本 skill 会在你的用户目录下创建存储根目录（默认 `~/novels/`，可通过环境变量 `NOVEL_STORAGE_ROOT` 覆盖），用于存放：
 
@@ -144,7 +151,7 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 
 ---
 
-## 架构
+## 🏛 架构 · 书的骨架
 
 ```mermaid
 %%{init: {"theme": "neutral", "themeVariables": {"fontFamily": "monospace"}}}%%
@@ -174,7 +181,7 @@ interactive-fiction/
 
 ---
 
-## 平台适配
+## 🖥 适配 · 平台表现
 
 | 能力 | 必需？ | 不支持时的表现 |
 |------|--------|----------------|
@@ -185,7 +192,7 @@ interactive-fiction/
 
 ---
 
-## 常见问题
+## ❓ 问与答
 
 **Q: 和普通 prompt 写小说有什么区别？**
 A: 普通 prompt 是「建议」，本 skill 是「硬规则 + 自检清单」。铁律 #0（选项必跟）、视角规则、字数区间都有强制自检步骤，AI 每轮输出前逐项核对。
@@ -195,26 +202,23 @@ A: 运行时详细变更说明见 `references/changelog.md`；面向 GitHub / Re
 
 ---
 
-## 延伸阅读
+## 📖 同卷 · 延伸阅读
 
 - [ai-with-u](https://github.com/Treasure-hub-agent/ai-with-u) —— 聊天搭子 / 角色陪伴，零系统痕迹
 - [dsh-story](https://github.com/Treasure-hub-agent/dsh-story) —— 即将捆绑本 skill 的插件
 
 ---
 
-## 内容说明
+## 🕮 说明与版权
 
 - 本 skill 提供互动小说创作规范，支持多种题材与情感张力描写
 - 涉及相关场景时按描写规范与情感递进执行
 - 创作内容责任由使用者自负；本 skill 提供创作规范，不预设具体故事内容
-
----
-
-## 版权
-
 - MIT License，可自由使用、修改、分发
 - 版本变更记录见 `references/changelog.md`
 
 ---
 
-> — Treasure-hub-agent · 2026 · 第十一次修订
+<p align="right" style="color:#8a7c6f;">
+  —— Treasure-hub-agent · 2026 · 第十一次修订
+</p>
