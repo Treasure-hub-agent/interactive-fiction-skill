@@ -1,21 +1,27 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="互动小说创作规范" width="100%"/>
+</p>
+
 # interactive-fiction
 
-> **互动小说创作完整规范 v10.0.0** —— 让 AI agent 写出「有选项、有张力、有沉浸感」的互动小说。
+> **互动小说创作完整规范 v10.1.0**
+>
+> 以选项为笔墨，以剧情为山河 —— 让 AI agent 写出「有选项、有张力、有沉浸感」的互动小说。
 
 🌐 **中文 | [English](README.en.md)**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-10.0.0-orange.svg)](VERSION)
+[![Version](https://img.shields.io/badge/version-10.1.0-orange.svg)](VERSION)
 
-> 💡 **dsh-story 插件用户**：本 skill 将随 `dsh-story` 插件捆绑发布（开发中），装插件即装 skill，**无需手动安装**；插件升级时 skill 随之更新。
+> 💡 **dsh-story 插件用户**：本 skill 将随 `dsh-story` 插件捆绑发布（开发中），装插件即装 skill，无需手动安装；插件升级时 skill 随之更新。
 
 ---
 
-## ✨ SKILL 功能快速简介
+## ✨ 它是什么
 
-**interactive-fiction** 是给 AI 用的「互动小说创作指南」——装上它，AI 就能写出带选项、带剧情的互动小说，像玩文字冒险游戏一样，体验媲美专业商业软件。
+给 AI 用的「互动小说创作指南」——装上它，AI 就能写出带选项、带剧情的互动小说，像玩文字冒险游戏一样，体验媲美专业商业软件。
 
-**它能为你做什么？**
+它能为你做什么：
 
 - 🎭 **每个选择都有回应**：每段剧情后 AI 都会给出 A/B/C/D/E 选项；你也可以直接输入想说的话、想做的事，AI 会顺着你的思路继续写
 - 📖 **三种口味随时切换**：主线（稳扎稳打）、沉浸（纯剧情、无干扰）、爽文（快速打脸、爽点密集）
@@ -25,25 +31,26 @@
 
 ---
 
-## 📌 当前版本动态（v10.0.0 · 情感叙事升级）
+## 📌 当前版本动态（v10.1.0 · 定情之后）
 
 > 本栏目介绍最新版本的变化，只保留当前版本；历史版本见 `references/changelog.md`。
 
-**💗 情感描写大幅强化（本次重点）**
-- 新增「情感递进」三阶段：心动 → 暧昧 → 定情，每阶段有明确的推进要点与收尾信号，情感张力成为叙事核心
-- 内置心动场景示范写法：微表情、视线交汇、言语试探如何落笔，一学就会
-- 扩充情感意象库：潜台词对话、信物、雨天共伞、并肩而行、称谓递进、耳语低音等通用言情手法
-- 选项标签池全面升级：温柔靠近 / 克制心动 / 主动试探 / 热烈回应 / 退让留白 / 欲言又止 / 心意暗涌
+**💗 定情之后，故事仍在继续（本次重点）**
 
-**🧭 指令系统全面完善**
-- 新增「场景卡」「回顾」「回退/重做」指令域，查询域新增「伏笔/悬念」，全部指令达 16 类
-- 「加载存档 #N」「删除存档 #N」批量管理存档，长篇不再只能读最新档
-- 蒸馏流程新增「对话试演」：直接和角色自由对话，AI 按五维汇报吻合度，试演可一键存入角色卡
+- 情感叙事从「心动 → 暧昧 → 定情」三阶段，延伸到 **「定情之后」**：日常亲密 / 共同决策 / 冲突 / 和解 四档场景
+- 双锚定触发：关系进入「定情」且你提到日常、明天、未来、一起…… AI 自动切换到定情后语态
+- 角色语态不再停格在告白那一刻——**沉淀型 / 释放型 / 震荡型 / 恒定型**四类演变范式，让 TA 在关系中继续生长
 
-**📦 体验与工程双升级**
-- 导出支持「全量导出」与 md/txt 双格式，按章节自动分隔
-- 穿越开局可让 AI 推荐作品、自动识别已有角色卡免重复蒸馏
-- 新增工程门禁：版本一致性、标签去重、文件引用完整性自动校验，发布更稳
+**📖 长篇不再健忘**
+
+- 每章自动生成「章摘要」（≤200 字），每 5 章自动生成「卷总结」（≤1000 字）
+- 「章回顾」「卷回顾」指令随时调出，追 50 章也不迷路
+- 摘要可手动校准（`generated_by` 标记），永远由你掌握最终版本
+
+**🧭 指令与工程**
+
+- 标签池切换有了明确决策树（emotion / emotion_daily / general 三池互斥），AI 不再猜
+- `validate.py` 工程门禁升级：自动校验 emotion_daily 结构 + 决策树引用完整性
 
 ---
 
@@ -101,7 +108,7 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 ## 核心能力
 
 | 能力 | 说明 |
-|------|------|
+|:-----|:-----|
 | 🔴 铁律 #0 选项机制 | 每轮正文输出后强制跟 A/B/C/D/E 五选项（参考指引+兜底），自由输入等权/优先推进；正文结束不结束对话 |
 | 🎭 视角一致性 | 主角「我/你」、对象「他/她」切换有硬规则，多角色切换有格式约束 |
 | 📏 字数区间 | 500-1200 字主区间，紧迫战斗 250-400 字，情感/氛围 800-1200 字 |
@@ -139,15 +146,30 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 
 ## 架构
 
+```mermaid
+%%{init: {"theme": "neutral", "themeVariables": {"fontFamily": "monospace"}}}%%
+graph LR
+  SKILL[SKILL.md<br/>P0 常驻] --> Data[data/*.json]
+  SKILL --> Extended[extended/]
+  SKILL --> Modes[modes/]
+  SKILL --> References[references/]
+  SKILL --> Schema[schema/]
+  SKILL --> Scripts[scripts/]
+```
+
 ```
 interactive-fiction/
 ├── SKILL.md              # P0 常驻核心规则（铁律、视角、字数、选项）
 ├── MANIFEST.json         # 文件清单 + SHA256 校验
 ├── VERSION               # 当前版本号
+├── assets/               # 视觉资源（banner.svg 等）
+├── data/                 # 标签词库 / 字数区间 / 指令路由 / 随机池
 ├── docs/                 # 设计文档与版本规划（不参与运行时加载）
 ├── extended/             # P1/P2 按需加载：角色卡、蒸馏、事件、存储
 ├── modes/                # 主线/沉浸/爽文三种模式
-└── references/           # 指令导航、写作指南、使用指南、切换规则等
+├── references/           # 指令导航、写作指南、使用指南、切换规则等
+├── schema/               # 运行时 JSON Schema
+└── scripts/              # 工程门禁 validate.py / MANIFEST 生成
 ```
 
 ---
@@ -173,6 +195,13 @@ A: 运行时详细变更说明见 `references/changelog.md`；面向 GitHub / Re
 
 ---
 
+## 延伸阅读
+
+- [ai-with-u](https://github.com/Treasure-hub-agent/ai-with-u) —— 聊天搭子 / 角色陪伴，零系统痕迹
+- [dsh-story](https://github.com/Treasure-hub-agent/dsh-story) —— 即将捆绑本 skill 的插件
+
+---
+
 ## 内容说明
 
 - 本 skill 提供互动小说创作规范，支持多种题材与情感张力描写
@@ -185,3 +214,7 @@ A: 运行时详细变更说明见 `references/changelog.md`；面向 GitHub / Re
 
 - MIT License，可自由使用、修改、分发
 - 版本变更记录见 `references/changelog.md`
+
+---
+
+> — Treasure-hub-agent · 2026 · 第十一次修订

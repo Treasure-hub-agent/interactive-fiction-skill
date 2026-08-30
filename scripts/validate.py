@@ -94,6 +94,28 @@ def check_data() -> None:
             if "情感场景" not in wc["scenes"]:
                 fail("wordcount.json scenes 缺「情感场景」键")
 
+    ed = load_json("data/emotion_daily.json")
+    if ed is not None:
+        scenes = ed.get("scenes") or {}
+        # v10.1.0: emotion_daily 池须为 4 档（日常亲密/共同决策/冲突/和解）
+        expect = {"日常亲密", "共同决策", "冲突", "和解"}
+        if set(scenes.keys()) != expect:
+            fail(f"emotion_daily.json scenes 须为 4 档 {sorted(expect)}，实际 {sorted(scenes.keys())}")
+        all_words = []
+        for name, sc in scenes.items():
+            if sc.get("pace") not in PACE:
+                fail(f"emotion_daily.json scenes[{name}] pace 非法: {sc.get('pace')}")
+            all_words.extend(sc.get("tags") or [])
+        if len(all_words) != 20:
+            fail(f"emotion_daily.json 词数须为 20（4 档 × 5），实际 {len(all_words)}")
+        elif len(set(all_words)) != len(all_words):
+            fail(f"emotion_daily.json 20 词去重失败（重复 {len(all_words) - len(set(all_words))} 个）")
+        if {sc.get("pace") for sc in scenes.values()} != PACE:
+            fail(f"emotion_daily.json 4 档须覆盖全部节奏 {sorted(PACE)}")
+        kw = ed.get("trigger", {}).get("keywords") or []
+        if len(kw) < 5:
+            fail(f"emotion_daily.json trigger.keywords 至少 5 个，实际 {len(kw)}")
+
     cmds = load_json("data/commands.json")
     if cmds is not None:
         domains = [c.get("domain") for c in cmds]
@@ -249,6 +271,14 @@ def check_routing() -> None:
                 continue
             if p not in known:
                 fail(f"commands.json 域「{c.get('domain')}」load 文件 {p} 不在 SKILL.md 路由表/权威链可达范围")
+
+    # v10.1.0: 标签池切换决策树引用断言——SKILL.md 须引用全部 3 个标签池数据源
+    for pool_kw in ("general", "emotion", "emotion_daily"):
+        if pool_kw not in skill:
+            fail(f"SKILL.md 标签池决策树未引用「{pool_kw}」（应在 §选项策略标签 决策树段出现）")
+    # emotion_daily.json 数据源引用断言
+    if "data/emotion_daily.json" not in skill:
+        fail("SKILL.md 决策树未引用 data/emotion_daily.json（v10.1.0 定情后池）")
 
 
 # ---------- 入口 ----------

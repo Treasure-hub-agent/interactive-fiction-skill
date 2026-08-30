@@ -1,7 +1,7 @@
 ---
 name: interactive-fiction
 description: "可选项驱动的互动小说创作完整规范：支持穿越/自创/创世/随机开局，内置视角一致性、字数区间、选项机制、存档系统与角色卡体系。"
-version: 10.0.0
+version: 10.1.0
 author: Treasure-hub-agent
 license: MIT
 platforms: [linux, macos, windows]
@@ -148,7 +148,13 @@ metadata:
 
 **降级规则**：非剧情阶段 / 纯指令轮的状态条降级见 `references/command_nav.md` §状态条降级。
 
-**导出过滤**：状态条不计入小说导出文件。
+**自动触发 · 章节摘要与卷总结（v10.1.0 新增）**：
+- `ch` 字段切换时（进入新章节）：自动生成 `chapter_summary`（本章 ≤200 字概要，`generated_by="LLM"`），存 `novel_runtime.json`。
+- `ch % 5 == 0` 时（每 5 章末）：自动生成 `volumes[]` 卷总结（取最近 5 章 chapter_summary 浓缩 ≤1000 字，`generated_by="LLM"`）。
+- 主人手动校准：编辑 `novel_runtime.json` 的 `generated_by` 为 `"human"` 或 `"verified"` 即可。
+- **回顾指令**：「章回顾」→ 输出最近 chapter_summary；「卷回顾」→ 输出最新 volumes[] 条目。
+
+**导出过滤**：`chapter_summary` / `volumes[]` 不计入小说导出文件（仅运行时元数据）。
 
 **路线标签精简**（输出层动态替换）：
 | 原文 | 状态条显示 |
@@ -223,6 +229,24 @@ E = `[跳过]` + 预告 ≤15 字。关键抉择点禁 E（倾向多禁少放）
 
 > 情感场景专用选项标签池（温柔靠近·慢 / 克制心动·慢 / 主动试探·快 / 热烈回应·快 / 退让留白·慢 / 欲言又止·迂回 / 心意暗涌·迂回）在情感场景中生效；A/B/C 选自该池时仍须在互斥前提下覆盖快/慢/迂回三种节奏。D 按角色卡推断（不变），E 固定「情感场景收束」。**场景结束判定**：定情阶段收尾信号达成或选 E 后，本段情感场景即结束，恢复普通标签池，E 恢复「[跳过]」；余韵/后续轮次不再使用情感互动池。
 
+#### 标签池切换决策树（v10.1.0）
+
+每轮生成 A/B/C 前必走下列决策（互斥约束：同轮只能选 1 个池）：
+
+```
+1. 场景卡模式 OR 情感三阶段中段（心动/暧昧/定情）→ 进入 step 2
+2. 角色专属语态基因触发（intimate-character-voice.md 命中）→ emotion 池
+3. cp{}.stage='定情' AND 用户输入命中 emotion_daily.keywords（≥1 个）→ emotion_daily 池
+4. 否则 → general 池
+```
+
+- **emotion 池**：v10.0.0 既有，专覆盖「心动/暧昧/定情」三阶段，标签见 `data/tags.json` emotion 段
+- **emotion_daily 池**：v10.1.0 新增，专覆盖「定情后日常亲密/共同决策/冲突/和解」四档，标签见 `data/emotion_daily.json`
+- **general 池**：v10.0.0 既有，标签见 `data/tags.json` general 段（7 类×5=35 词）
+- **互斥规则**：emotion / emotion_daily / general 三池互斥，同轮只能选 1 个。一旦选 emotion_daily，A/B/C 全走 emotion_daily 池（同一轮不能混用 general）
+- **覆盖优先级**：emotion_daily > emotion > general（定情后覆盖未攻略阶段）
+- **场景结束判定**：用户主动切换其他场景 OR 输入「切回主线」类指令 → 退出 emotion_daily 池，恢复 general 池
+
 ### 紧凑选项格式（默认）
 
 #### A/B/C 选项生成约束
@@ -275,6 +299,24 @@ A/B/C 选项生成后必须自检以下三条，不满足则重新生成对应�
 ### 情感递进（情感场景）
 
 > 情感场景情感递进三阶段表（心动→暧昧→定情）已迁至 `extended/features.md`。触发情感场景时加载该文件。
+
+#### 情感三阶段后·定情后场景（v10.1.0 新增）
+
+> 定位：v10.0.0 的「三阶段」覆盖「关系从无到有」的弧线；v10.1.0 新增「定情后」覆盖「关系从有到稳」的延伸。三阶段结束后（`cp{}.stage = "定情"`）自动进入本节。
+
+**触发条件（双锚定）**：
+- 锚点 1：`cp{}.stage == "定情"`（v10.0.0 三阶段已完成）
+- 锚点 2：用户输入命中 `data/emotion_daily.json` 的 keywords（≥1 个：日常/明天/未来/之后/习惯/我们/结婚/以后/永远/一起/将来/两个人/成家/过日子/余生）
+- 双锚定命中 → 激活 emotion_daily 池（4 档：日常亲密/共同决策/冲突/和解）
+
+**执行规范**：
+- 详见 `references/intimate-character-voice.md` §定情后语态演变
+- 标签池切换决策树见 §选项策略标签（v10.1.0 新增段）
+- 节奏约束：A/B/C 三选项覆盖快/慢/迂回三节奏（与 emotion 池规则一致）
+
+**场景结束判定**：
+- 用户主动切换其他场景 OR 输入「切回主线」类指令 → 退出 emotion_daily 池，恢复 general 池
+- 退出后不再回退到 emotion 池（除非重新触发情感三阶段的新弧线）
 
 ### 叙事生成模型规则
 

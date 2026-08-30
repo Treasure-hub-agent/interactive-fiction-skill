@@ -44,6 +44,30 @@
       }
     },
     "st":         { "type": "object", "description": "主角动态状态（{位置, 目标, 情绪, 携带物品}）" },
+    "chapter_summary": {
+      "type": ["object", "null"],
+      "description": "当前章节摘要（v10.1.0 新增；ch 字段切换时自动生成）",
+      "properties": {
+        "ch":        { "type": "integer", "description": "对应章节号" },
+        "summary":   { "type": "string", "maxLength": 200, "description": "本章 200 字概要" },
+        "generated_by": { "type": "string", "enum": ["LLM", "human"], "description": "生成来源（LLM=自动，human=主人手动校准）" },
+        "created_at": { "type": "string", "description": "生成时间戳（ISO8601）" }
+      }
+    },
+    "volumes": {
+      "type": "array",
+      "description": "卷总结数组（v10.1.0 新增；每 5 章自动 rollup 一次）",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ch_end":      { "type": "integer", "description": "本卷末章号" },
+          "summary":     { "type": "string", "maxLength": 1000, "description": "本卷 1000 字长摘要" },
+          "generated_by": { "type": "string", "enum": ["LLM", "human", "verified"], "description": "生成来源（LLM=自动，human=主人手动写入，verified=主人校准过）" },
+          "created_at":  { "type": "string", "description": "生成时间戳（ISO8601）" }
+        },
+        "required": ["ch_end", "summary", "generated_by"]
+      }
+    },
     "theme":      { "type": ["string", "null"], "description": "主题锚点（null=纯爽文）" },
     "prv":        { "type": "string", "maxLength": 200, "description": "前情提要（≤200 字，每轮更新）" },
     "ex":         { "type": "integer", "description": "导出游标（主线导出进度）" },

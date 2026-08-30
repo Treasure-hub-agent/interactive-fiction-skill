@@ -1,11 +1,15 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="Interactive Fiction Authoring Spec" width="100%"/>
+</p>
+
 # interactive-fiction
 
-> **Complete interactive-fiction authoring spec v10.0.0** — turns any AI agent into a writer of tense, choice-driven, immersive stories.
+> **Complete interactive-fiction authoring spec v10.1.0** — turns any AI agent into a writer of tense, choice-driven, immersive stories.
 
 🌐 **[中文](README.md) | English**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-10.0.0-orange.svg)](VERSION)
+[![Version](https://img.shields.io/badge/version-10.1.0-orange.svg)](VERSION)
 
 ---
 
@@ -25,108 +29,90 @@
 
 ---
 
-## What's New (v10.0.0 · Emotion Narrative Upgrade)
+## What's New (v10.1.0 · After the Confession)
 
-**💗 Much stronger emotional storytelling (headline)**
-- New three-stage "emotional progression": spark → ambiguity → commitment, each stage with clear beats and resolution signals
-- Built-in sample prose for the spark stage: how to write micro-expressions, eye contact, and verbal teasing
-- Expanded emotion motif library: subtext dialogue, keepsakes, sharing an umbrella in rain, walking side by side, formality-to-intimacy name shifts, whispers
-- Revamped option tag pool: gentle approach / restrained heartbeat / active probe / warm response / step back & leave space / words left unsaid / feelings stirring beneath
+**💗 The story continues after "I love you"**
 
-**🧭 Complete command system**
-- New command domains: Scene Card, Recap, Undo/Redo — plus Foreshadowing/Suspense in the Query domain; 16 domains in total
-- "Load save #N" / "Delete save #N" for multi-save management
-- Distillation now offers "dialogue rehearsal": chat freely with the character, get a five-dimension fidelity report, and save the session into the character card
+- Emotional arcs extend beyond the three-stage climb (Spark → Haze → Vow) into **"after the vow"**: daily intimacy / joint decisions / conflict / reconciliation
+- Dual-anchor trigger: when the relationship is committed and you mention tomorrow, the future, together… the AI shifts into post-commitment voice
+- Character voice keeps evolving — four arcs (**settling / releasing / oscillating / constant**) instead of freezing at the confession
 
-**📦 Experience & engineering**
-- Full-story export with md/txt formats, chapter-separated
-- Transmigration openings: ask the AI for recommendations, auto-detect existing character cards to skip re-distillation
-- New validation gate: version consistency, tag uniqueness, file-reference integrity — automated before release
+**📖 Long stories stay readable**
 
-> Full history: [`references/changelog.md`](references/changelog.md). The version number is authoritative in the root `VERSION` file.
+- Auto chapter summaries (≤200 chars) every chapter; auto volume recaps (≤1000 chars) every 5 chapters
+- Ask "chapter recap" or "volume recap" anytime — 50 chapters in, you never lose your place
+- Summaries are manually correctable (`generated_by` flag) — you always hold the final edit
+
+**🧭 Commands & engineering**
+
+- Explicit decision tree for label pools (emotion / emotion_daily / general, mutually exclusive) — no more guessing
+- `validate.py` gate extended: auto-checks emotion_daily structure + decision-tree references
 
 ---
 
 ## Install
 
-### Option 1: npx skills (recommended)
+### Option 1: npx skills
 
 ```bash
 npx skills add Treasure-hub-agent/interactive-fiction-skill
 ```
 
+> `npx skills` is a general agent-skill installer; if you don't have it, use Option 2.
+
 ### Option 2: Manual copy
 
-Copy the repo into your agent's skills directory:
+Put the repo into your agent's skills directory:
 
 | Client | Skills directory |
-|--------|------------------|
+|--------|----------|
 | Hermes | `~/.hermes/skills/creative/interactive-fiction/` |
 | Claude Code | `~/.claude/skills/interactive-fiction/` |
 | Cursor | `~/.cursor/skills/interactive-fiction/` |
 
-Reload / restart your client, then send the trigger phrase to start (default is "加载小说包" — you can configure your own trigger in the skill file).
+Reload / restart your client, then send the trigger phrase to start a story.
 
-### Option 3: Bundled in the dsh-story plugin (in development)
+### Option 3: Bundled inside the dsh-story plugin (in development)
 
-The `dsh-story` plugin will bundle this skill (in development) — installing / upgrading the plugin installs / upgrades the skill automatically, no manual copy needed.
+The `dsh-story` plugin will bundle this skill (in development): installing / upgrading the plugin installs or upgrades the skill automatically.
 
-### Upgrading
+### Upgrade path
 
-- npx install: `npx skills update Treasure-hub-agent/interactive-fiction-skill` (or re-add)
-- Manual copy: overwrite with the latest [GitHub Releases](https://github.com/Treasure-hub-agent/interactive-fiction-skill/releases) package, or incrementally overwrite changed files (keep your runtime data directory)
-- dsh-story plugin (in development): updates automatically with the plugin
-- Upgrades never touch your existing runtime data (novel saves and character cards live in a separate storage directory)
+- npx: `npx skills update Treasure-hub-agent/interactive-fiction-skill` (or re-add)
+- Manual: overwrite from the latest [GitHub Releases](https://github.com/Treasure-hub-agent/interactive-fiction-skill/releases), or overlay changed files (keep your runtime data directory)
+- dsh-story plugin (in development): auto-updates with the plugin
+- Upgrades never touch existing runtime data (saves and character cards live in a separate storage root)
 
----
-
-## Why You Need It
-
-The most common failures when asking an AI to write interactive fiction:
-
-- ❌ Forgets to offer choices at the end of each scene → the story becomes a monologue
-- ❌ POV drift: "you" and "he/she" get mixed up, breaking immersion
-- ❌ Wildly inconsistent length: 300 words for a fight scene, 2000 for filler
-- ❌ Every character sounds the same
-- ❌ Multiple plot threads contradict each other; saves and switches break
-
-**With interactive-fiction**, all of the above become enforced rules with a per-turn self-check — choices, POV, length, and consistency are guaranteed before output.
+> Deployment, upgrade and verification details: `references/deployment.md`.
 
 ---
 
-## A Taste of It
+## Why It's Needed
 
-```
-You stand at the gates of the city, torchlight flickering across the walls.
-The guard eyes you up and down.
+Naive AI fiction has a familiar litany of failure:
 
-A. "I'm here to see the Duke. Official business."
-B. Slip through the shadowed side gate.
-C. Ask what's happened here tonight.
-D. Turn around and leave — this city feels wrong.
+- ❌ Scene ends with **no choices** — the story becomes a one-way broadcast
+- ❌ POV drifts; "you" and "he/she" blur together — readers fall out of the story
+- ❌ Length wildly inconsistent; a tense fight gets 300 words, a dull day gets 2,000
+- ❌ Characters are interchangeable; dialogue is generic filler
+- ❌ Multiple threads contradict each other; saves and switches collapse
 
-> B
-
-You press yourself into the shadows. Two guards pass within arm's reach,
-laughing about something you can't quite catch...
-```
-
-Every scene ends this way — choices that shape what happens next.
+**With interactive-fiction**, all of the above become hard rules enforced by a pre-output self-check. The prose carries choices, POV discipline, length targets, and continuity out of the box.
 
 ---
 
 ## Core Capabilities
 
 | Capability | Description |
-|------------|-------------|
-| 🔴 Rule #0 (non-negotiable): Choice mechanism | A/B/C/D/E options after every scene (with guidance + fallback); free input carries equal/higher weight; the scene never ends the conversation |
-| 🎭 POV consistency | Hard rules for "I/you" protagonist and "he/she" others; formatting constraints for multi-character switches |
-| 📏 Length windows | 500–1200 words main range; 250–400 for urgent fights; 800–1200 for emotional/atmosphere beats |
-| 💾 Save system | Lightweight / persistent / milestone tiers; session recovery after interruption, story switching, export |
-| 🎴 Character card system | Quick-add / edit / deep-create / short-form cards; background characters auto-saved |
+|:-----|:-----|
+| 🔴 Iron Rule #0 — choices | A/B/C/D/E after every scene (reference + fallback); free-form input is an equally valid (priority) driver; a scene never ends the conversation |
+| 🎭 POV consistency | Hard rules for "I/you" vs "he/she"; formatting constraints for multi-character switches |
+| 📏 Length windows | 500–1200 words main; 250–400 for tense fights; 800–1200 for emotional/atmospheric |
+| 💾 Saves | Lightweight / persistent / milestone tiers; resume, switch stories, export |
+| 🎴 Character cards | Pop, edit, deep-create, one-shots; minor characters get cards silently |
 | 📖 Three modes | Mainline / Immersion / Power Fantasy |
-| 🧩 P0/P1/P2 layering | Always-on rules stay lean; everything else loads on demand — no persistent context overhead |
-| 🤖 Sub-agent mode | Optional: delegate scene generation to a sub-agent (automatically falls back to main agent if unsupported) |
+| 🧩 P0/P1/P2 layering | Constant rules lean; on-demand loading; zero standing context cost |
+| 🤖 Sub-agent mode | Optional: delegate prose generation (auto-falls back to main agent if unsupported) |
 
 ---
 
@@ -136,7 +122,7 @@ Every scene ends this way — choices that shape what happens next.
 2. Send the trigger phrase → pick an opening route
 3. Choose route A (reincarnate as a character from the original work) / B (create your own) / C (worldbuilder mode) / 🎲 random opening → the story begins
 4. After each scene, pick A/B/C/D/E to advance
-5. Send the help command anytime for the full command reference (default: "帮助")
+5. Send the help command anytime for the full command reference
 
 > Works out of the box with the main agent producing scenes directly — no extra setup. Sub-agent mode and online distillation are optional enhancements.
 
@@ -154,10 +140,61 @@ The skill creates a storage root in your user directory (default `~/novels/`, ov
 
 ---
 
-## Contributing
+## Architecture
 
-Issues, ideas, and pull requests are welcome — [open an issue](https://github.com/Treasure-hub-agent/interactive-fiction-skill/issues) or fork the repo.
+```mermaid
+%%{init: {"theme": "neutral", "themeVariables": {"fontFamily": "monospace"}}}%%
+graph LR
+  SKILL[SKILL.md<br/>P0 resident] --> Data[data/*.json]
+  SKILL --> Extended[extended/]
+  SKILL --> Modes[modes/]
+  SKILL --> References[references/]
+  SKILL --> Schema[schema/]
+  SKILL --> Scripts[scripts/]
+```
+
+---
+
+## Platform Fit
+
+| Capability | Required? | If unsupported |
+|------|--------|----------------|
+| File read/write | ✅ Required | Saves silently degrade |
+| Web search | ⚠️ Optional | Distillation falls back to model knowledge |
+| Sub-task dispatch (sub-agent) | ⚠️ Optional | Auto-falls back to main agent |
+| thinking mode | ⚠️ Optional | Works without; option reasoning slightly weaker |
+
+---
+
+## FAQ
+
+**Q: How is this different from a plain prompt?**
+A: A plain prompt suggests; this skill enforces. Iron Rule #0, POV discipline, and length windows all have mandatory pre-output checks the AI runs every scene.
+
+**Q: Version history?**
+A: Runtime detail lives in `references/changelog.md`; a concise release history lives in `CHANGELOG.md` (appended at release time). The `VERSION` file is the single source of truth.
+
+---
+
+## Reading List
+
+- [ai-with-u](https://github.com/Treasure-hub-agent/ai-with-u) — chat companion / character presence, zero system traces
+- [dsh-story](https://github.com/Treasure-hub-agent/dsh-story) — the plugin that will bundle this skill
+
+---
+
+## Content Notes
+
+- This skill provides authoring specs for interactive fiction, supporting many genres and emotional arcs
+- Relevant scenes are written per its description specs and emotional escalation rules
+- The user is responsible for the content they create; this skill provides craft, not prescribed stories
+
+---
 
 ## License
 
-MIT © 2026 Treasure-hub-agent. See [LICENSE](LICENSE).
+MIT License — free to use, modify, distribute. See [LICENSE](LICENSE). Version history in `references/changelog.md`.
+
+---
+
+> — Treasure-hub-agent · 2026 · Eleventh revision

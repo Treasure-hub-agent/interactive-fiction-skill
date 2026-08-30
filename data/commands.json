@@ -96,9 +96,12 @@
   {
     "domain": "回顾",
     "aliases": [
-      "回顾"
+      "回顾",
+      "章回顾",
+      "卷回顾",
+      "第N章讲了什么"
     ],
-    "effect": "基于 prv + 最近 3-5 段正文输出 3-5 句剧情回顾（复用断连恢复逻辑）",
+    "effect": "基于 prv + 最近 3-5 段正文输出 3-5 句剧情回顾（复用断连恢复逻辑）；章回顾=输出 chapter_summary，卷回顾=输出 volumes[]",
     "load": "extended/event_behaviors.md"
   },
   {

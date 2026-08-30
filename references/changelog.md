@@ -1,5 +1,44 @@
 # 更新日志
 
+## v10.1.0（2026-08-30）· 定情之后 + 文艺感
+
+**💗 定情之后，故事仍在继续（核心）**
+
+情感叙事从「心动 → 暧昧 → 定情」三阶段，延伸到「定情之后」——关系从「有」走向「稳」：
+
+- 新增 `data/emotion_daily.json`（4 档 × 5 词 = 20 词标签池 + 15 个触发关键词）
+  - 日常亲密（慢）：陪伴 / 默契 / 依赖 / 琐碎 / 日常
+  - 共同决策（迂回）：商量 / 权衡 / 妥协 / 共识 / 分歧
+  - 冲突（快）：争执 / 冷战 / 失望 / 质疑 / 沉默
+  - 和解（慢）：道歉 / 拥抱 / 释然 / 心疼 / 重新开始
+- **双锚定触发**：`cp{}.stage = "定情"` + 用户输入命中关键词（日常/明天/未来/之后/习惯/我们/结婚/以后/永远/一起/将来/两个人/成家/过日子/余生）→ 自动切换到定情后语态
+- 角色语态四类演变范式（`references/intimate-character-voice.md` §定情后语态演变）：
+  - 沉淀型（热烈→沉稳）、释放型（克制→自然）、震荡型（平稳→起落）、恒定型（保持一致）
+- 三池互斥：emotion / emotion_daily / general 同轮只能选 1 个；emotion_daily > emotion > general（覆盖优先级）
+
+**📖 长篇不再健忘**
+
+- 每章自动生成「章摘要」（≤200 字），写入 `novel_runtime.json` 的 `chapter_summary` 字段
+- 每 5 章自动生成「卷总结」（≤1000 字），写入 `volumes[]` 数组
+- 新指令：「章回顾」「卷回顾」「第N章讲了什么」（回顾域，见 `data/commands.json`）
+- 摘要可手动校准：`generated_by` 字段（LLM / human / verified），主人永远掌握最终版本
+
+**🧭 指令与工程**
+
+- 标签池切换决策树（SKILL.md §选项策略标签）：场景卡/情感三阶段 → 语态基因 → emotion_daily / emotion / general 判定
+- `validate.py` 升级：emotion_daily.json 结构断言（4 档 × 5 词去重 + 节奏覆盖 + 触发词）+ 决策树引用断言
+- 单元测试 4 件套：test_data（14）/ test_schema（5）/ test_validate（5）/ test_manifest（3），`python3 -m unittest scripts.test_data ...` 全过
+- 新增 `scripts/test_*.py` 系列（`package.json` scripts.test = unittest 聚合入口）
+
+**🎨 README 文艺感重写**
+
+- 水墨/书法/留白 Banner（`assets/banner.svg`）：远山淡墨 + 诗化引文「以选项为笔墨，以剧情为山河」+ 朱砂印章落款
+- 1280x640 意境 Social Preview 图（`social-preview.png`）：米白底 + 三层远山 + 飞鸟 + 金句
+- README 顶部诗化引文 + 文末落款（古籍题跋风）「—— Treasure-hub-agent · 2026 · 第十一次修订」
+- 视觉资源统一放 `assets/`（不混入 docs/ 设计文档目录）
+
+---
+
 ## v10.0.0（2026-08-14）· 情感叙事升级 + 玩法完善
 
 **💗 情感递进三阶段（核心）**

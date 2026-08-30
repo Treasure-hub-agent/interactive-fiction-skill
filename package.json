@@ -1,6 +1,6 @@
 {
   "name": "@treasure-hub-agent/interactive-fiction-skill",
-  "version": "10.0.0",
+  "version": "10.1.0",
   "description": "可选项驱动的互动小说创作完整规范：支持穿越/自创/创世/随机开局，内置视角一致性、字数区间、选项机制、存档系统与角色卡体系。",
   "license": "MIT",
   "author": "Treasure-hub-agent",
@@ -15,18 +15,22 @@
   "files": [
     "SKILL.md",
     "README.md",
+    "README.en.md",
     "LICENSE",
     "VERSION",
     "MANIFEST.json",
     ".gitignore",
+    "assets",
     "data",
     "extended",
     "modes",
     "references",
-    "schema"
+    "schema",
+    "scripts"
   ],
   "scripts": {
     "validate": "python3 scripts/validate.py",
+    "test": "python3 -m unittest scripts.test_data scripts.test_schema scripts.test_validate scripts.test_manifest -v",
     "gen-manifest": "python3 scripts/gen_manifest.py"
   },
   "repository": {

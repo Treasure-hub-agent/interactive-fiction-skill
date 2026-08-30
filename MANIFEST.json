@@ -1,6 +1,6 @@
 {
-  "version": "10.0.0",
-  "generated": "2026-08-15T13:15:10Z",
+  "version": "10.1.0",
+  "generated": "2026-08-30T11:38:59Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -9,8 +9,8 @@
       "role": "meta"
     },
     "CHANGELOG.md": {
-      "sha256": "8874f7473abd8f02834beedd117f959e655248e37e806d0c245df1e12bc49a89",
-      "bytes": 1452,
+      "sha256": "82a7e2a17efb40c691e5e2acaae74c114c0dace4c554c18156ca9d5a256f8a9a",
+      "bytes": 1398,
       "role": "meta"
     },
     "CODE_OF_CONDUCT.md": {
@@ -29,13 +29,13 @@
       "role": "runtime"
     },
     "README.en.md": {
-      "sha256": "d11d5a2fcac7584433e02cf2903ffec0fb20229c7342eeb5f7d34d1e2eb44fa1",
-      "bytes": 8050,
+      "sha256": "264370413b73b3160ec1a896e2d7c838dba2d677a0e374c8a453135d667a8946",
+      "bytes": 8776,
       "role": "runtime"
     },
     "README.md": {
-      "sha256": "16f46c6af4c955231aaff12be2521e5578ddd5d9c46f093ec3bca823abda34de",
-      "bytes": 8926,
+      "sha256": "43f4f468fe4e6b9ae5540fd4c1342849406b8b61ce8e6c882c60832590ba2247",
+      "bytes": 9690,
       "role": "runtime"
     },
     "SECURITY.md": {
@@ -44,14 +44,19 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "f2ab2a4643418e358078c04a3fd7cad113cc3c871bc9301cdf020d98212f78e8",
-      "bytes": 23110,
+      "sha256": "ccaa28cf641b241993aa8356564c14f1e4078f40dddc1879680021c4f0d2a6b7",
+      "bytes": 26212,
       "role": "runtime"
     },
     "VERSION": {
-      "sha256": "21653d2744fdd071f9ef138c805393901bb9547cf3e777ebf50215a191f986ea",
-      "bytes": 7,
+      "sha256": "fc31d030a041baf9eb730eb7e366f99f5f1e46c022fd8c483b7b9d321f30de5a",
+      "bytes": 6,
       "role": "runtime"
+    },
+    "assets/banner.svg": {
+      "sha256": "319dccc44ae09bdd8a850d2fabdb42c15a14063feeb6c439063d14da8c0a3601",
+      "bytes": 2055,
+      "role": "meta"
     },
     "data/_README.md": {
       "sha256": "e902703d7f758afb6753e0693b3074ad92b15b2d1cfd64f36ce7d20dd5768c9c",
@@ -59,8 +64,13 @@
       "role": "runtime"
     },
     "data/commands.json": {
-      "sha256": "d8300d523f93157922531e7040075c2cdf90d6904cfc93c63a03f0939bb3bec3",
-      "bytes": 4047,
+      "sha256": "c65e48d41699ac3fe27037c3cac4441c6d8ed98f866a11ba968c7e312640dd6c",
+      "bytes": 4178,
+      "role": "runtime"
+    },
+    "data/emotion_daily.json": {
+      "sha256": "a02b232f41bc4cc8342ace6c1eadf1fea6f11b114f3562ed1c66b43d0d6ab73d",
+      "bytes": 2577,
       "role": "runtime"
     },
     "data/random_pool.json": {
@@ -149,8 +159,8 @@
       "role": "runtime"
     },
     "package.json": {
-      "sha256": "7993040ea5043c2af508c0bcb8efeb52fd0cc812106e38c5f51d7ba7c7ee7e47",
-      "bytes": 1086,
+      "sha256": "5c74397fd25bba88469e59399b91bcc3f30fe144a5ab025a6224bc5b83380105",
+      "bytes": 1255,
       "role": "runtime"
     },
     "references/appearance.md": {
@@ -159,8 +169,8 @@
       "role": "runtime"
     },
     "references/changelog.md": {
-      "sha256": "c530bece11f77770c6d86eb87ee0768dfeec33cf0b49e3302e36daa2b68d0a2d",
-      "bytes": 12358,
+      "sha256": "692c1b538816af1afb6c97855fd9cebe60799eb133fb9a5c24da395bbcac6fff",
+      "bytes": 15083,
       "role": "runtime"
     },
     "references/character-card-usage.md": {
@@ -169,8 +179,8 @@
       "role": "runtime"
     },
     "references/command_nav.md": {
-      "sha256": "143513da2322965d01d5ba166dfd20b9b3c4cdb464d997fe01b73b144f196f5f",
-      "bytes": 10388,
+      "sha256": "5341c92530f7b860d548b48e82f37d30ceb0296bf98a2eac551a6b11d109f664",
+      "bytes": 10675,
       "role": "runtime"
     },
     "references/delegation-context.md": {
@@ -189,13 +199,13 @@
       "role": "runtime"
     },
     "references/intimate-character-voice.md": {
-      "sha256": "db133128c150f2066ce159fade10b60c9e52eafb722df4b7a19f45dc1bcfb433",
-      "bytes": 2621,
+      "sha256": "3f53936ef8043e271728435c35e3af75260b139ac2190e2d847ddbe6b6dba153",
+      "bytes": 4826,
       "role": "runtime"
     },
     "references/options-quickref.md": {
-      "sha256": "4a9cbb5143a131456e04bf01b711e7a9da8628445f85cc8007aff9df2a63dd57",
-      "bytes": 3123,
+      "sha256": "10d69e49ce3fff8bb4ed647739942f6bdfe7995654a0faded7bfc8e6e6db77b9",
+      "bytes": 5294,
       "role": "runtime"
     },
     "references/original-role-data.md": {
@@ -219,8 +229,8 @@
       "role": "runtime"
     },
     "schema/novel_runtime.schema.json": {
-      "sha256": "7c0738959dccaf36248a63aca056056f6aad3ddcee166b076292c93fd3770732",
-      "bytes": 5462,
+      "sha256": "1463ffe33353ef3ae9384ac27d32c165342fc2f59aeba349d81f29899a96c777",
+      "bytes": 6822,
       "role": "runtime"
     },
     "scripts/gen_manifest.py": {
@@ -228,10 +238,35 @@
       "bytes": 4591,
       "role": "runtime"
     },
-    "scripts/validate.py": {
-      "sha256": "4949b861ab9942d520804d81ceb1d442d044794e334d254cadad178333dfcf57",
-      "bytes": 11590,
+    "scripts/test_data.py": {
+      "sha256": "7f843d4f5cf91da7787ecf45212731db81b707d0b67f481783240a213b11802e",
+      "bytes": 3788,
       "role": "runtime"
+    },
+    "scripts/test_manifest.py": {
+      "sha256": "f8b7ed2221cefddad44dc827266433a95620c22124ad56843ce65fd358e713d3",
+      "bytes": 2175,
+      "role": "runtime"
+    },
+    "scripts/test_schema.py": {
+      "sha256": "96e230c1e2a61b5ac9d5a19696e8f435281ff3c87446eaddd7683c437f5435d8",
+      "bytes": 3151,
+      "role": "runtime"
+    },
+    "scripts/test_validate.py": {
+      "sha256": "14fbe046df67c967ae1f0b31105a93fe9700500c01343616088c59baf6660340",
+      "bytes": 3224,
+      "role": "runtime"
+    },
+    "scripts/validate.py": {
+      "sha256": "35c1243b8b6eb9df78ddffcdd96d9ebe986563838a09db7c2c659786c678b65d",
+      "bytes": 13386,
+      "role": "runtime"
+    },
+    "social-preview.png": {
+      "sha256": "6da88e7c3482e7b14e1294821290de032681bdd73c6063e0f56b31c16873dd40",
+      "bytes": 41993,
+      "role": "meta"
     }
   }
 }

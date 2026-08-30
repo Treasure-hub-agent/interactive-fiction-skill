@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#faf7f2"/>
+      <stop offset="55%" stop-color="#f3ede3"/>
+      <stop offset="100%" stop-color="#e8e0d2"/>
+    </linearGradient>
+    <linearGradient id="ink" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2b2420"/>
+      <stop offset="100%" stop-color="#4a3f38"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 留白底 -->
+  <rect width="1280" height="320" fill="url(#bg)"/>
+
+  <!-- 远山（淡墨） -->
+  <path d="M0,300 Q200,240 420,275 T820,265 T1280,285 L1280,320 L0,320 Z"
+        fill="#d8cfc0" opacity="0.55"/>
+  <path d="M0,315 Q320,270 640,300 T1280,298 L1280,320 L0,320 Z"
+        fill="#c9bfae" opacity="0.4"/>
+
+  <!-- 标题（书法体感：中文粗体 + 字距） -->
+  <text x="120" y="150" font-family="'Noto Serif SC','Songti SC','STSong',serif"
+        font-size="72" font-weight="700" fill="url(#ink)" letter-spacing="16">
+    互动小说创作规范
+  </text>
+
+  <!-- 副标题（小字 + 留白） -->
+  <text x="124" y="210" font-family="'Noto Serif SC','Songti SC','STSong',serif"
+        font-size="26" fill="#6b5f55" letter-spacing="6">
+    Interactive Fiction · 选项驱动的沉浸式创作
+  </text>
+
+  <!-- 诗化引文（右下落款感） -->
+  <text x="890" y="255" font-family="'Noto Serif SC','Songti SC','STSong',serif"
+        font-size="20" fill="#8a7c6f" font-style="italic" text-anchor="middle">
+    以选项为笔墨，以剧情为山河
+  </text>
+
+  <!-- 落款印章（朱砂小方块 + 白字） -->
+  <rect x="1035" y="225" width="52" height="52" rx="6" fill="#a34b3a" opacity="0.85"/>
+  <text x="1061" y="259" font-family="'Noto Serif SC','Songti SC',serif"
+        font-size="20" fill="#fdf8f2" text-anchor="middle" letter-spacing="2">
+    拾
+  </text>
+
+  <!-- 底部细线（章节感） -->
+  <line x1="120" y1="295" x2="1160" y2="295" stroke="#b5a896" stroke-width="1" opacity="0.6"/>
+</svg>
