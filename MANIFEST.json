@@ -1,6 +1,6 @@
 {
   "version": "10.2.0",
-  "generated": "2026-09-28T11:31:05Z",
+  "generated": "2026-09-28T11:34:10Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -44,8 +44,8 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "6592dcb2f52ad54840ee12c49d9724bc2c1d4baa55cbdfec8070fcf79a2e0fc7",
-      "bytes": 28926,
+      "sha256": "9220590b7054f2dbf3c73cb66f57d6d400d81416fc64fa598d105efe111bd4f4",
+      "bytes": 29425,
       "role": "runtime"
     },
     "VERSION": {
@@ -124,8 +124,8 @@
       "role": "runtime"
     },
     "extended/route_system.md": {
-      "sha256": "0bfed52566595a833f7fd07c23e8dcfbc96f9af2998802365ac160895504f5a5",
-      "bytes": 32500,
+      "sha256": "5c8f9595af3fbaf564265a54d28a0c61804b5325046e79234fd87ab69d6533e3",
+      "bytes": 32601,
       "role": "runtime"
     },
     "extended/side_chars.md": {
