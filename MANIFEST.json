@@ -1,6 +1,6 @@
 {
   "version": "10.2.0",
-  "generated": "2026-09-28T11:15:45Z",
+  "generated": "2026-09-28T11:24:27Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -44,8 +44,8 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "43ec5c23672137a3c7194894129659eb1b9dc6eb2c2ce59656c6baf57f797581",
-      "bytes": 28696,
+      "sha256": "bd8633f2c1dfe49701d023d8c555c2936c1b6c932cbfe0f44468d58199b2f085",
+      "bytes": 28876,
       "role": "runtime"
     },
     "VERSION": {
@@ -124,18 +124,18 @@
       "role": "runtime"
     },
     "extended/route_system.md": {
-      "sha256": "fff71a26a254158b717fa3057686d249fe69117c14a270fa76cfcbbda225b0b8",
-      "bytes": 32311,
+      "sha256": "0bfed52566595a833f7fd07c23e8dcfbc96f9af2998802365ac160895504f5a5",
+      "bytes": 32500,
       "role": "runtime"
     },
     "extended/side_chars.md": {
-      "sha256": "2d4382d162e09f66b642f915c63711300e9327dc8db7a2e4d549ffbf3ffec847",
-      "bytes": 9420,
+      "sha256": "89430332dc6f15f308f63b362b1af2f8fd420db24aa82e53fe4548e226ed53f1",
+      "bytes": 9524,
       "role": "runtime"
     },
     "extended/storage_runtime.md": {
-      "sha256": "6a27a369a03701ea506448a9f5025c8287d2009adb607c7b397451ebf35cb82e",
-      "bytes": 22283,
+      "sha256": "6dbd856e4003c2a552730183c7f29a45fb2002be9795ad29927ddbc2658a56b6",
+      "bytes": 22697,
       "role": "runtime"
     },
     "extended/subagent_mode.md": {
@@ -159,13 +159,13 @@
       "role": "runtime"
     },
     "modes/shuangwen.md": {
-      "sha256": "7a61bbc823e2dd133ad8426e9187505ca3f7c504e980a232a4e8117592a1f3b5",
-      "bytes": 3139,
+      "sha256": "c51aa34ce9ad9f0f2f4e053b096e7c078415a3a625fcffc2f847711b4cc6f13f",
+      "bytes": 3231,
       "role": "runtime"
     },
     "package.json": {
-      "sha256": "684866bb54669fba4b709b5a5e0cdeaad834c9b92853435cecc09150dd7d9dfb",
-      "bytes": 1255,
+      "sha256": "4cf3876b2d90027aade139c8876c243f3ba3b5131edbfaadf6b24b41f86fa1c0",
+      "bytes": 1210,
       "role": "runtime"
     },
     "references/appearance.md": {
@@ -184,8 +184,8 @@
       "role": "runtime"
     },
     "references/command_nav.md": {
-      "sha256": "5341c92530f7b860d548b48e82f37d30ceb0296bf98a2eac551a6b11d109f664",
-      "bytes": 10675,
+      "sha256": "c96a289a908128fefca0ee496e312294dd4ba74136d5d91b0d98c708928358fd",
+      "bytes": 10701,
       "role": "runtime"
     },
     "references/delegation-context.md": {
@@ -209,7 +209,7 @@
       "role": "runtime"
     },
     "references/options-quickref.md": {
-      "sha256": "10d69e49ce3fff8bb4ed647739942f6bdfe7995654a0faded7bfc8e6e6db77b9",
+      "sha256": "6526f7b0767a7ff83095173ec94737bcd0da8ab232ee395a1f3c53086edacf8b",
       "bytes": 5294,
       "role": "runtime"
     },
@@ -234,8 +234,8 @@
       "role": "runtime"
     },
     "schema/novel_runtime.schema.json": {
-      "sha256": "713cd7de79d43a47570748946b05ec4dc9132ed4c07aae2c33b3803201f8ba9e",
-      "bytes": 6945,
+      "sha256": "43a420c7392c8dcd3db7caa6024ebb90f2ec9a66ab405dcbcce693ad115ee1bb",
+      "bytes": 6976,
       "role": "runtime"
     },
     "scripts/gen_manifest.py": {
@@ -249,8 +249,8 @@
       "role": "runtime"
     },
     "scripts/novel.py": {
-      "sha256": "81767127c9e440213e0b549d74a63e6a152a3a740cc61767d9d8e0eea3507cd4",
-      "bytes": 17936,
+      "sha256": "886b1d95941042cf29cde7b23985fbaa09fa0c58222eb2b7312c9d02ad2cec1d",
+      "bytes": 21202,
       "role": "runtime"
     },
     "scripts/test_data.py": {
@@ -264,8 +264,8 @@
       "role": "runtime"
     },
     "scripts/test_novel.py": {
-      "sha256": "9b3ae192a9466489743b52e61d7ad106df7cbb00b21f6c1f215240d76f96df85",
-      "bytes": 13069,
+      "sha256": "d286c146aa2ba878452f8574b8812187ebe1bff3a196b08644aa4882e0183efd",
+      "bytes": 18547,
       "role": "runtime"
     },
     "scripts/test_schema.py": {

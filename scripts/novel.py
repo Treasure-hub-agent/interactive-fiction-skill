@@ -47,23 +47,36 @@ def die(msg: str):
     sys.exit(1)
 
 
-def load_json(path, default=None):
+def load_json(path, default=None, soft=False):
+    """读取 JSON。soft=True 时损坏不中断（用于可再生的辅助数据，如侧车）。"""
     try:
         with open(path, encoding="utf-8") as f:
             return json.load(f)
     except FileNotFoundError:
         return default
     except json.JSONDecodeError as e:
+        if soft:
+            print(f"⚠️ {path} 内容损坏，已按空数据继续（账本不受影响）：{e}",
+                  file=sys.stderr)
+            return default
         die(f"{path} JSON 损坏：{e}")
 
 
-def dump_json(path, data) -> None:
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    tmp = path + ".tmp"
-    with open(tmp, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-        f.write("\n")
-    os.replace(tmp, path)
+def dump_json(path, data, soft=False) -> bool:
+    """原子写入（tmp + os.replace）。soft=True 时写入失败只警告、不中断。"""
+    try:
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        tmp = path + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+            f.write("\n")
+        os.replace(tmp, path)
+        return True
+    except OSError as e:
+        if soft:
+            print(f"⚠️ 写入失败（已跳过，可稍后重试）：{path} — {e}", file=sys.stderr)
+            return False
+        raise
 
 
 def truncate_prv(text: str) -> str:
@@ -86,6 +99,20 @@ def set_path(obj: dict, dotted: str, value) -> None:
     if not isinstance(cur, dict):
         die(f"set 路径非法：{dotted}")
     cur[keys[-1]] = value
+
+
+def ledger_seg(rt: dict, n: "Novel", warn: bool = False) -> int:
+    """取账本段计数。v9.x 旧档可能没有 seg_count —— 以账本最大 seg 回退，
+    否则 [行动] 的到期判定会整体失效（既不算到期也不算即将到期，后果静默消失）。"""
+    v = rt.get("seg_count")
+    if isinstance(v, int):
+        return v
+    segs = [c.get("seg") for c in n.open_choices() if isinstance(c.get("seg"), int)]
+    seg = max(segs) if segs else 0
+    if warn:
+        print(f"⚠️ 账本无 seg_count，暂以账本最大 seg={seg} 为基准"
+              f"（下次 record 自动回填）", file=sys.stderr)
+    return seg
 
 
 def brief_value(v, limit: int = 16) -> str:
@@ -111,7 +138,8 @@ class Novel:
         self.runtime = load_json(self.runtime_path)
         if self.runtime is None:
             die(f"novel_runtime.json 不存在或损坏：{self.runtime_path}")
-        self.assist = load_json(self.assist_path, {}) or {}
+        # 侧车是再生数据（背景项/衰减计数/已回收标记），账本不受影响：损坏时重置而非中断
+        self.assist = load_json(self.assist_path, {}, soft=True) or {}
         self.assist.setdefault("turn", 0)
         self.assist.setdefault("notes", [])
         self.assist.setdefault("changes", [])
@@ -120,15 +148,24 @@ class Novel:
     # ---------- 持久化 ----------
     def save_all(self) -> None:
         if os.path.isfile(self.runtime_path):
-            with open(self.runtime_path, "rb") as f, \
-                    open(self.runtime_path + ".bak", "wb") as g:
-                g.write(f.read())
+            try:
+                with open(self.runtime_path, "rb") as f:
+                    bak = f.read()
+                with open(self.runtime_path + ".bak", "wb") as g:
+                    g.write(bak)
+            except OSError as e:
+                print(f"⚠️ 备份失败（不影响记账）：{e}", file=sys.stderr)
         self.runtime["ua"] = now_iso()
-        dump_json(self.runtime_path, self.runtime)
-        dump_json(self.assist_path, self.assist)
-        self.sync_index()
+        # 主账本：失败即报错退出。原子替换保证「要么全成、要么原样」，重试安全
+        try:
+            dump_json(self.runtime_path, self.runtime)
+        except OSError as e:
+            die(f"账本写入失败（数据未改动，可直接重试）：{e}")
+        # 侧车与索引是可再生的派生数据：写入失败只警告，不让本轮记账整体失败
+        dump_json(self.assist_path, self.assist, soft=True)
+        self.sync_index(soft=True)
 
-    def sync_index(self) -> None:
+    def sync_index(self, soft=False) -> None:
         rt = self.runtime
         entry = next((e for e in self.index.setdefault("nvs", [])
                       if e.get("n") == self.name), None)
@@ -139,7 +176,7 @@ class Novel:
         entry["u"] = rt.get("ua")
         entry["c"] = rt.get("wc")
         self.index["act"] = self.name
-        dump_json(os.path.join(self.root, "_index.json"), self.index)
+        dump_json(os.path.join(self.root, "_index.json"), self.index, soft=soft)
 
     # ---------- 账本视图 ----------
     def open_choices(self):
@@ -153,7 +190,7 @@ def cmd_brief(args):
     n = Novel(args.root, args.novel)
     rt, ast = n.runtime, n.assist
     turn = ast["turn"]
-    seg = int(rt.get("seg_count", 0))
+    seg = ledger_seg(rt, n, warn=True)
 
     nm = rt.get("nm", n.name)
     title = nm if str(nm).startswith("《") else f"《{nm}》"
@@ -175,7 +212,7 @@ def cmd_brief(args):
     print("[行动]（到期后果须本轮或下轮正面回收，禁旁白带过）")
     if not due and not soon:
         print("  · 本轮无到期事项")
-    for lag, c in sorted(due):
+    for lag, c in sorted(due, key=lambda x: x[0]):
         head = f"  ⏰ 逾期 {lag} 段" if lag > 0 else "  ⏰ 本轮到期"
         print(f"{head}：{c.get('detail', '（无描述）')}"
               f"（seg{c.get('seg')} · {c.get('type', '-')} · {c.get('tier', '-')}）")
@@ -287,14 +324,35 @@ def cmd_record(args):
         if added:
             changes.append(f"{k} 追加×{added}")
 
+    # 账本回收：seg 归一为 int（容忍 "17" 这类字符串写法），并核对账本确有该条目
     for s in entry.get("close_choices") or []:
-        if s not in ast["closed_choices"]:
-            ast["closed_choices"].append(s)
-            changes.append(f"账本 seg{s} 已回收")
+        raw = s.get("seg") if isinstance(s, dict) else s
+        try:
+            sseg = int(raw)
+        except (TypeError, ValueError):
+            changes.append(f"⚠️ 账本回收忽略非法 seg：{raw!r}")
+            continue
+        if sseg in ast["closed_choices"]:
+            continue
+        ast["closed_choices"].append(sseg)
+        if any(c.get("seg") == sseg for c in rt.get("choices") or []):
+            changes.append(f"账本 seg{sseg} 已回收")
+        else:
+            changes.append(f"⚠️ 账本 seg{sseg} 已标记回收，但账本中无此条目（请核对）")
 
-    for t in entry.get("notes") or []:
-        ast["notes"].append({"text": str(t), "turn": turn})
-        changes.append(f"新增背景：{t}")
+    # 背景登记：容忍字符串（单条）与对象写法，避免逐字拆成单字背景项
+    raw_notes = entry.get("notes") or []
+    if isinstance(raw_notes, str):
+        raw_notes = [raw_notes]
+    for t in raw_notes:
+        if isinstance(t, dict):
+            text = str(t.get("text") or t.get("t") or "").strip()
+        else:
+            text = str(t).strip()
+        if not text:
+            continue
+        ast["notes"].append({"text": text, "turn": turn})
+        changes.append(f"新增背景：{text}")
     for pat in entry.get("resolve_notes") or []:
         keep = [x for x in ast["notes"] if pat not in x["text"]]
         if len(keep) != len(ast["notes"]):
@@ -318,7 +376,8 @@ def cmd_record(args):
 
     w = int(entry.get("w", 0))
     rt["wc"] = int(rt.get("wc", 0)) + w
-    rt["seg_count"] = seg = int(rt.get("seg_count", 0)) + int(entry.get("seg", 1))
+    # 旧档无 seg_count 时，先以账本最大 seg 回填基准，再累加本轮增量
+    rt["seg_count"] = seg = ledger_seg(rt, n) + int(entry.get("seg", 1))
     if entry.get("prv"):
         rt["prv"] = truncate_prv(str(entry["prv"]))
 
@@ -344,10 +403,12 @@ def save_dir(n: Novel) -> str:
 
 
 def save_files(d: str):
+    """扫描存档文件。文件名容忍可选非数字前缀（如随机开局的 🎲001.md）——
+    否则按 route_system 命名写入的存档会被读档链路整段跳过。"""
     out = {}
     if os.path.isdir(d):
         for fn in os.listdir(d):
-            m = re.fullmatch(r"(\d+)\.md", fn)
+            m = re.fullmatch(r"\D*(\d+)\.md", fn)
             if m:
                 out[int(m.group(1))] = os.path.join(d, fn)
     return out

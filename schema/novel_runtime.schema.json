@@ -56,7 +56,7 @@
     },
     "volumes": {
       "type": "array",
-      "description": "卷总结数组（v10.1.0 新增；每 5 章自动 rollup 一次）",
+      "description": "卷总结数组（v10.1.0 新增；每次章摘要更新时上一条自动滚入，按章累积）",
       "items": {
         "type": "object",
         "properties": {

@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "validate": "python3 scripts/validate.py",
-    "test": "python3 -m unittest scripts.test_data scripts.test_schema scripts.test_validate scripts.test_manifest -v",
+    "test": "python3 -m unittest discover -s scripts -p \"test_*.py\" -v",
     "gen-manifest": "python3 scripts/gen_manifest.py"
   },
   "repository": {

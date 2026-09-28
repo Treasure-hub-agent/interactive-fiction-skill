@@ -325,5 +325,120 @@ class TestErrorPaths(Base):
             self.load(num=9)
 
 
+class TestRobustness(Base):
+    """修复回归：崩溃路径 / 容错降级 / 类型归一 / 旧档兼容（v10.2.0）。"""
+
+    def test_brief_survives_same_lag_due_choices(self):
+        """两条到期后果 lag 相同时不得崩溃（原 sorted(due) 会 TypeError）。"""
+        self.runtime["seg_count"] = 20
+        self.runtime["choices"] = [
+            {"seg": 17, "type": "consequence", "detail": "后果甲",
+             "tier": "短期", "surface_by": 19},
+            {"seg": 18, "type": "consequence", "detail": "后果乙",
+             "tier": "短期", "surface_by": 19},
+        ]
+        self._flush()
+        act = section(self.brief(), "[行动]")
+        self.assertIn("后果甲", act)
+        self.assertIn("后果乙", act)
+        self.assertEqual(act.count("逾期 1 段"), 2)
+
+    def test_brief_survives_broken_assist(self):
+        """侧车损坏时重置空侧车并继续（原硬 die 会阻断 brief/record/save）。"""
+        with open(os.path.join(self.meta, "novel_assist.json"), "w",
+                  encoding="utf-8") as f:
+            f.write("{ bad json")
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            out = self.brief()
+        self.assertIn("[行动]", out)
+        self.assertIn("内容损坏", err.getvalue())
+
+    def test_record_notes_string_stays_single_entry(self):
+        """notes 传字符串时作为单条背景登记，不逐字拆分。"""
+        self.write_assist(turn=0)
+        self.record({"notes": "客栈落了脚"})
+        notes = self.read_assist()["notes"]
+        self.assertEqual([n["text"] for n in notes], ["客栈落了脚"])
+
+    def test_record_notes_accepts_object_and_empty(self):
+        """notes 支持对象写法；空串/空对象被忽略。"""
+        self.write_assist(turn=0)
+        self.record({"notes": [{"text": "对象写法"}, {"t": "简写"}, "", {}]})
+        notes = [n["text"] for n in self.read_assist()["notes"]]
+        self.assertEqual(notes, ["对象写法", "简写"])
+
+    def test_record_close_choices_string_seg_truly_closes(self):
+        """close_choices 传字符串 seg 须归一为 int 并真正回收（原为假成功）。"""
+        self.runtime["seg_count"] = 20
+        self.runtime["choices"] = [
+            {"seg": 17, "type": "consequence", "detail": "待回收条目",
+             "tier": "短期", "surface_by": 19}]
+        self._flush()
+        self.write_assist(turn=1)
+        out = self.record({"close_choices": ["17"]})
+        self.assertIn("账本 seg17 已回收", out)
+        self.assertEqual(self.read_assist()["closed_choices"], [17])
+        self.assertNotIn("待回收条目", section(self.brief(), "[行动]"))
+
+    def test_record_close_choices_unknown_seg_warns(self):
+        """回收标记的 seg 在账本中不存在时须明确提示，不得静默假成功。"""
+        self.write_assist(turn=1)
+        out = self.record({"close_choices": [99]})
+        self.assertIn("无此条目", out)
+
+    def test_legacy_ledger_without_seg_count_still_due(self):
+        """v9.x 旧档无 seg_count 时 [行动] 仍须判定到期（原整段静默消失）。"""
+        self.runtime.pop("seg_count")
+        self.runtime["choices"] = [
+            {"seg": 9, "type": "consequence", "detail": "旧档后果",
+             "tier": "短期", "surface_by": 9}]
+        self._flush()
+        self.write_assist(turn=1)
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            act = section(self.brief(), "[行动]")
+        self.assertIn("旧档后果", act)
+        self.assertIn("无 seg_count", err.getvalue())
+
+    def test_legacy_ledger_seg_count_backfilled_on_record(self):
+        """旧档首次 record 以账本最大 seg 回填基准，再累加本轮增量。"""
+        self.runtime.pop("seg_count")
+        self.runtime["choices"] = [{"seg": 30, "type": "consequence",
+                                    "detail": "x", "tier": "短期",
+                                    "surface_by": 40}]
+        self._flush()
+        self.write_assist(turn=1)
+        self.record({"seg": 1})
+        self.assertEqual(self.read_runtime()["seg_count"], 31)
+
+    @unittest.skipIf(hasattr(os, "geteuid") and os.geteuid() == 0,
+                     "root 下目录权限不生效")
+    def test_index_write_failure_does_not_fail_record(self):
+        """索引写失败（派生数据）不得让记账失败 —— 否则调用方重试会字数双计。"""
+        self.write_assist(turn=0)
+        os.chmod(self.tmp, 0o555)
+        self.addCleanup(os.chmod, self.tmp, 0o755)
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            out = self.record({"w": 100})
+        os.chmod(self.tmp, 0o755)
+        self.assertIn("已记账", out)
+        self.assertIn("写入失败", err.getvalue())
+        self.assertEqual(self.read_runtime()["wc"], 1100)
+
+    def test_save_files_accepts_prefixed_name(self):
+        """存档文件名容忍非数字前缀（随机开局 🎲001.md），不得被读档链路跳过。"""
+        d = os.path.join(self.tmp, self.NAME, "saves", "自创")
+        os.makedirs(d)
+        with open(os.path.join(d, "🎲001.md"), "w", encoding="utf-8") as f:
+            f.write("#存档 1\n>骰子开局\n")
+        out = self.save()
+        self.assertIn("#1", out)
+        self.assertIn("骰子开局", out)
+        self.save("后续存档")
+        self.assertTrue(os.path.isfile(os.path.join(d, "002.md")))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
