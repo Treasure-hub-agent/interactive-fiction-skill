@@ -1,6 +1,6 @@
 {
   "version": "10.2.0",
-  "generated": "2026-09-28T11:45:59Z",
+  "generated": "2026-09-28T11:58:29Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -9,8 +9,8 @@
       "role": "meta"
     },
     "CHANGELOG.md": {
-      "sha256": "54f40e80ba5eebaad6274ffedb7088a0762b75327bb75d0e025b26a6b609458d",
-      "bytes": 3812,
+      "sha256": "a864bc66cc7a69d9403b67736664199b026ebc88d80795b2b1bb32fabd67b06a",
+      "bytes": 4267,
       "role": "meta"
     },
     "CODE_OF_CONDUCT.md": {
@@ -44,8 +44,8 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "7db152a2b2c85c11d6ba42ff03a0ff1ad5143fc9ec31b0fa49703a612a2368de",
-      "bytes": 29554,
+      "sha256": "0d675c542a36d67228eedd21c7f3ecbfb387a84a6942e7305ac72fa718a2095d",
+      "bytes": 29551,
       "role": "runtime"
     },
     "VERSION": {
@@ -94,8 +94,8 @@
       "role": "runtime"
     },
     "extended/character_card.md": {
-      "sha256": "65d0891137d2b2d11b50f613dbc926b0ad69fa14366e6bcc6aca4b01f2b5925f",
-      "bytes": 10822,
+      "sha256": "5d7f91969c55361c566d804a1559ef4cd214c30c2c90b79f1cf731c23041413e",
+      "bytes": 10915,
       "role": "runtime"
     },
     "extended/creation_world.md": {
@@ -104,8 +104,8 @@
       "role": "runtime"
     },
     "extended/deep_character_creation.md": {
-      "sha256": "2f3b4e9e59a28acea552b96c39a8ac3cfd40dc6e362b76eb1016fdb415afde04",
-      "bytes": 9724,
+      "sha256": "afe27afc696638c43107a377a83a0d0092af72222ab8904e5cad608c22e19279",
+      "bytes": 9875,
       "role": "runtime"
     },
     "extended/distillation.md": {
@@ -114,7 +114,7 @@
       "role": "runtime"
     },
     "extended/event_behaviors.md": {
-      "sha256": "293952373acc6e2a235da2f835496e911ce936a0f7d78a185a08022e61c80a9e",
+      "sha256": "806333c0e6bd2001d6d9c84adff248a2dc7271589408a1750f72b9af870e1b5e",
       "bytes": 6477,
       "role": "runtime"
     },
@@ -124,18 +124,18 @@
       "role": "runtime"
     },
     "extended/route_system.md": {
-      "sha256": "5c8f9595af3fbaf564265a54d28a0c61804b5325046e79234fd87ab69d6533e3",
-      "bytes": 32601,
+      "sha256": "b4788df91c1a872b724ac6e5f7c3fc0296ed2016008334f14f5d370aaed8dcec",
+      "bytes": 33121,
       "role": "runtime"
     },
     "extended/side_chars.md": {
-      "sha256": "db85d9fcb9d58c2adc006c9be58343ece7d989f05fc3c849fe4d7f378e251e41",
+      "sha256": "cedef07f937f080829c0f034e8c9ce1d294933b89b3f8e80618f7e246c663d68",
       "bytes": 9883,
       "role": "runtime"
     },
     "extended/storage_runtime.md": {
-      "sha256": "0c11dec499ad455e7bfeae424fa79870e02967b8ca5a8ea05d8a14350f7e9621",
-      "bytes": 23208,
+      "sha256": "ad43f9927ee3ca50bc6eb651fe5125db7c9dd828903325890c1f245887819e19",
+      "bytes": 23177,
       "role": "runtime"
     },
     "extended/subagent_mode.md": {
@@ -144,8 +144,8 @@
       "role": "runtime"
     },
     "extended/title_distillation.md": {
-      "sha256": "fdc8c29995b1f3ddf81b0e404336927de771dbfce83fc5488f0b15b88bb0350e",
-      "bytes": 5609,
+      "sha256": "0c14dfffc25e5bf5897dafe91d182ce6ce0902a853575aebcb5ca0838bcbb324",
+      "bytes": 6003,
       "role": "runtime"
     },
     "modes/immersion.md": {
@@ -174,8 +174,8 @@
       "role": "runtime"
     },
     "references/changelog.md": {
-      "sha256": "463760672fe16a4a905287e8f5a572dfd88f9ca1553c6380186fe15d3107222e",
-      "bytes": 19393,
+      "sha256": "72aea51bcb446654eeaecba70cd02f1b28fe881ffdfa531c0b9c03c93a5afe70",
+      "bytes": 20744,
       "role": "runtime"
     },
     "references/character-card-usage.md": {
@@ -209,8 +209,8 @@
       "role": "runtime"
     },
     "references/options-quickref.md": {
-      "sha256": "dbb9309a674c945483f96e9035bfe7518ec18a4977e5cede9c7edd40ef8b12aa",
-      "bytes": 5468,
+      "sha256": "1be442b640383c748abf4012f11b39f0277a6e2c4256cb1039287256de59b884",
+      "bytes": 5250,
       "role": "runtime"
     },
     "references/original-role-data.md": {
@@ -229,13 +229,13 @@
       "role": "runtime"
     },
     "references/writing_guide.md": {
-      "sha256": "14636925037de7038b63937cf75f09744ee95141d1a3febd69e25eacd3d53734",
-      "bytes": 19467,
+      "sha256": "384e98a07be9f5edaa376cae404969a740b4720b070797d230a0a82b539e985a",
+      "bytes": 16559,
       "role": "runtime"
     },
     "schema/novel_runtime.schema.json": {
-      "sha256": "43a420c7392c8dcd3db7caa6024ebb90f2ec9a66ab405dcbcce693ad115ee1bb",
-      "bytes": 6976,
+      "sha256": "d1db82a9554e56ee1110466cc40bc5f39b085422dec4d7935abb05850768fc7d",
+      "bytes": 6875,
       "role": "runtime"
     },
     "scripts/gen_manifest.py": {
@@ -249,8 +249,8 @@
       "role": "runtime"
     },
     "scripts/novel.py": {
-      "sha256": "0e2a59cedd767e434ea5b3d2d9aedc5b6f22cb9c611350b3df1c695bf8cf5019",
-      "bytes": 25580,
+      "sha256": "a1058942525141ce2b031dd38f6701da7092cf5e77d7b125e6bec32004d0ba95",
+      "bytes": 25502,
       "role": "runtime"
     },
     "scripts/test_data.py": {
@@ -264,8 +264,8 @@
       "role": "runtime"
     },
     "scripts/test_novel.py": {
-      "sha256": "ce2c596a0e7dac7bb49d8929b79484909c2a0a07f79645e756bc384716439049",
-      "bytes": 21973,
+      "sha256": "d5da9507f5f05af22868bf87aa93327cb62f1d1981dd7ecc672e4ad50f558738",
+      "bytes": 21958,
       "role": "runtime"
     },
     "scripts/test_schema.py": {

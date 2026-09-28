@@ -331,8 +331,6 @@ def cmd_brief(args):
     facts = []
     if rt.get("cc"):
         facts.append(f"核心冲突：{rt['cc']}")
-    if rt.get("theme"):
-        facts.append(f"主题锚点：{rt['theme']}")
     if rt.get("dv") is not None:
         facts.append(f"原著偏离度：{rt['dv']}")
     kp = rt.get("kp", [])

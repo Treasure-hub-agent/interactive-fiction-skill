@@ -236,7 +236,7 @@ E = `[跳过]` + 预告 ≤15 字。关键抉择点禁 E（倾向多禁少放）
 
 #### 选项后果标注 / 声音回流
 
-> 后果记账（A/B/C 生成时标注 `type/detail/tier/surface_by`，选定后写入 `choices[]`，按 `surface_by` 到期正面回收（禁旁白带过）；选 D 记 `persona_confirm`，选 E 不写；schema 见 `extended/storage_runtime.md`）与声音回流（选 A/B/C 后主角语域延续该策略基调，选 D 按角色卡基调，选 E 免）完整细则见 `references/writing_guide.md` §10-11 / §声音回流。
+> 后果记账（A/B/C 生成时标注 `type/detail/tier/surface_by`，选定后写入 `choices[]`，按 `surface_by` 到期正面回收（禁旁白带过）；选 D 记 `persona_confirm`，选 E 不写；schema 见 `extended/storage_runtime.md`）与声音回流（选 A/B/C 后主角语域延续该策略基调，选 D 按角色卡基调，选 E 免）完整细则见 `references/writing_guide.md` §10 / §声音回流。
 
 #### 集中场景标记 `[集]`
 

@@ -61,7 +61,7 @@ class Base(unittest.TestCase):
             "rn": "自创角色", "md": "爽文模式", "vw": 3, "ch": 1,
             "sc": "场景·起点", "wc": 1000, "mp": "区域·起点", "dv": None,
             "cc": "核心冲突", "sb": [], "kp": [], "pf": [], "rs": {}, "cp": {},
-            "scs": {}, "npcs": {}, "choices": [], "st": {}, "theme": None,
+            "scs": {}, "npcs": {}, "choices": [], "st": {},
             "prv": "起点前情。", "ex": 0, "eb": 0, "seg_count": 0, "ms": 0,
             "scs_bak": None,
         }

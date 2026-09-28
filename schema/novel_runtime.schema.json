@@ -68,7 +68,6 @@
         "required": ["ch_end", "summary", "generated_by"]
       }
     },
-    "theme":      { "type": ["string", "null"], "description": "主题锚点（null=纯爽文）" },
     "prv":        { "type": "string", "maxLength": 200, "description": "前情提要（≤200 字，每轮更新）" },
     "ex":         { "type": "integer", "description": "导出游标（主线导出进度）" },
     "eb":         { "type": "integer", "description": "缓冲区字节数" },
