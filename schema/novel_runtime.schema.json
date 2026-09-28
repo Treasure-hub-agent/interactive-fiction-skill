@@ -4,7 +4,7 @@
   "description": "互动小说运行时状态文件（{存储根}/{小说名}/meta/novel_runtime.json）的格式约束：每轮更新的剧情、状态与后果账本。",
   "type": "object",
   "properties": {
-    "v":          { "type": "string", "description": "运行时版本号（创建时固定）" },
+    "v":          { "type": "string", "description": "创建时写入的 skill 版本号标记（创建时固定，仅作标记、不参与校验）" },
     "ua":         { "type": "string", "description": "最近更新时间戳（ISO8601，每轮更新）" },
     "nm":         { "type": "string", "description": "当前小说名" },
     "rn":         { "type": "string", "description": "当前路线（穿越成原著角色/自创角色/创世模式/随机开局）" },
