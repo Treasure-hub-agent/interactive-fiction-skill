@@ -37,11 +37,12 @@ metadata:
 
 ### 🔥 强制自检清单（输出前执行）
 
-**必查 4 项（每轮不可跳过）**：
+**必查 5 项（每轮不可跳过）**：
 □ 迷你状态条 │ 选项完整性（五选项或合规降级变体）
 □ 转折≤1次│字数500-1200│尾句对话→复核选项
 □ 选项行：无推荐语/无标点/D仅主角/E禁关键抉择│间距合规
 □ 正文：无旁白总结/收尾未闭环 ▶ 后果回收
+□ 记忆外置：开工 brief 已取 ／ 收尾 record 已记（无脚本环境跳过）
 
 **触发 3 项（命中触发条件才查，未命中明确跳过）**：
 □ 设定核对（触发：场景切换 / 新角色登场 / 时间跳跃；核对角色名/关系/生死/地点/能力，数据源 st{} + cp{}/npcs[] + 关系 + 上下文设定；深查见 extended/event_behaviors.md §一致性自检）
@@ -69,6 +70,7 @@ metadata:
 | 情感场景参考资料 | `references/emotion-escalation-motifs.md` / `references/intimate-character-voice.md` |
 | 查表数据（标签词库 / 字数区间 / 指令快速路由） | `data/tags.json` / `data/wordcount.json` / `data/commands.json` |
 | 运行时 JSON 格式（novel_runtime.json 字段） | `schema/novel_runtime.schema.json` |
+| 记忆外置助手（简报 / 记账 / 存读档） | `extended/storage_runtime.md` §记忆外置助手（脚本 `scripts/novel.py`） |
 
 ---
 
@@ -162,6 +164,14 @@ metadata:
 | 穿越成原著角色 | 原著 |
 | 自创角色 | 自创 |
 | 创世模式 | 创世 |
+
+### 记忆外置助手（v10.2.0 · 脚本记账，模型创作）
+
+> 算数/记账/到期提醒交给 `scripts/novel.py`，脚本只记账、不审判，叙事判断仍归模型；命令表见 `extended/storage_runtime.md` §记忆外置助手。
+
+**每轮两端**（无 Python 环境时跳过，走原「AI 直接读写 novel_runtime.json」路径）：
+- **开工**：`python3 scripts/novel.py brief` → 取 `[行动]`（到期须正面回收）与 `[事实]`（须遵守）；`[变化]`/`[背景]` 仅作事实参考，无自然契机不得提及、不得当情节推动器。
+- **收尾**：`python3 scripts/novel.py record`（小票 JSON）→ 自动累加字数、`seg_count`、`prv` 截断、同步 `_index.json`。
 
 ### 用户输入响应
 

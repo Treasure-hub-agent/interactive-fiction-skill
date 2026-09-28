@@ -1,6 +1,6 @@
 {
   "version": "10.1.0",
-  "generated": "2026-08-30T12:35:31Z",
+  "generated": "2026-09-28T08:35:06Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -44,8 +44,8 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "ccaa28cf641b241993aa8356564c14f1e4078f40dddc1879680021c4f0d2a6b7",
-      "bytes": 26212,
+      "sha256": "2163388f066970408cb8a987cb5ecc0fd1fa73eb64bd1c6b0b509c9bb83a79a5",
+      "bytes": 27169,
       "role": "runtime"
     },
     "VERSION": {
@@ -234,8 +234,8 @@
       "role": "runtime"
     },
     "schema/novel_runtime.schema.json": {
-      "sha256": "1463ffe33353ef3ae9384ac27d32c165342fc2f59aeba349d81f29899a96c777",
-      "bytes": 6822,
+      "sha256": "bc4442d078bba411f925fccab252001c179f0242ff658e9168d99a8390a8ae22",
+      "bytes": 6877,
       "role": "runtime"
     },
     "scripts/gen_manifest.py": {
@@ -246,6 +246,11 @@
     "scripts/gen_social_preview.py": {
       "sha256": "b7f03b6526b63a14b4fe0de5585af8b25b498777eee9978d348178ab89a47cfc",
       "bytes": 2428,
+      "role": "runtime"
+    },
+    "scripts/novel.py": {
+      "sha256": "efe77bfe816574f18a8ce57ae1592220bdff97a6b0e9328fe92cc42243e74b8b",
+      "bytes": 17886,
       "role": "runtime"
     },
     "scripts/test_data.py": {
