@@ -1,6 +1,6 @@
 {
   "version": "10.2.0",
-  "generated": "2026-09-28T11:24:27Z",
+  "generated": "2026-09-28T11:31:05Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -44,8 +44,8 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "bd8633f2c1dfe49701d023d8c555c2936c1b6c932cbfe0f44468d58199b2f085",
-      "bytes": 28876,
+      "sha256": "6592dcb2f52ad54840ee12c49d9724bc2c1d4baa55cbdfec8070fcf79a2e0fc7",
+      "bytes": 28926,
       "role": "runtime"
     },
     "VERSION": {
@@ -119,8 +119,8 @@
       "role": "runtime"
     },
     "extended/features.md": {
-      "sha256": "b94a92a098880dacc997e5b7a7eefc001b6947c748b531435274802011effb0f",
-      "bytes": 15532,
+      "sha256": "c02f55356b9907a46f79267dadbb47238aada6dbf8cd393fdcf7d284abd88116",
+      "bytes": 15449,
       "role": "runtime"
     },
     "extended/route_system.md": {
@@ -129,8 +129,8 @@
       "role": "runtime"
     },
     "extended/side_chars.md": {
-      "sha256": "89430332dc6f15f308f63b362b1af2f8fd420db24aa82e53fe4548e226ed53f1",
-      "bytes": 9524,
+      "sha256": "db85d9fcb9d58c2adc006c9be58343ece7d989f05fc3c849fe4d7f378e251e41",
+      "bytes": 9883,
       "role": "runtime"
     },
     "extended/storage_runtime.md": {
@@ -149,8 +149,8 @@
       "role": "runtime"
     },
     "modes/immersion.md": {
-      "sha256": "3df8a9e4b449fa4609910b604fddbff25ffbd993483f5b9084d674142a274e5e",
-      "bytes": 2953,
+      "sha256": "6e3c4148af9b9193de41552b145e5f8ad5b8c55987b9221c7cc9a4a1d705d9f0",
+      "bytes": 2944,
       "role": "runtime"
     },
     "modes/mainline.md": {
@@ -209,8 +209,8 @@
       "role": "runtime"
     },
     "references/options-quickref.md": {
-      "sha256": "6526f7b0767a7ff83095173ec94737bcd0da8ab232ee395a1f3c53086edacf8b",
-      "bytes": 5294,
+      "sha256": "dbb9309a674c945483f96e9035bfe7518ec18a4977e5cede9c7edd40ef8b12aa",
+      "bytes": 5468,
       "role": "runtime"
     },
     "references/original-role-data.md": {
