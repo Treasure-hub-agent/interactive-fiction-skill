@@ -1,6 +1,6 @@
 {
   "version": "10.2.0",
-  "generated": "2026-09-28T08:40:25Z",
+  "generated": "2026-09-28T08:42:54Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -44,8 +44,8 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "cd5521ce9a2bae29274dd123977412394c6c161dc20c99f46f453e1747df847b",
-      "bytes": 27169,
+      "sha256": "f0b300b158dec3d2a6c02239f992aa20e09e7a8bf3f76aded6ec0d7c7618b300",
+      "bytes": 27270,
       "role": "runtime"
     },
     "VERSION": {
@@ -134,8 +134,8 @@
       "role": "runtime"
     },
     "extended/storage_runtime.md": {
-      "sha256": "699da465a4259017e85e0658bc9ee5a985ce14c40987a43d915ee8724f0187f2",
-      "bytes": 22030,
+      "sha256": "6a27a369a03701ea506448a9f5025c8287d2009adb607c7b397451ebf35cb82e",
+      "bytes": 22283,
       "role": "runtime"
     },
     "extended/subagent_mode.md": {
@@ -194,8 +194,8 @@
       "role": "runtime"
     },
     "references/deployment.md": {
-      "sha256": "c105bb97905efbc721fb9a222a0c39afe17e6a993c26bd220d11dd5dfbe0fd70",
-      "bytes": 3525,
+      "sha256": "123ad0a33e9f22f256662cf1e83d479c02219eccd67313c38311d418f26a6620",
+      "bytes": 4357,
       "role": "runtime"
     },
     "references/emotion-escalation-motifs.md": {

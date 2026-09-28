@@ -14,16 +14,22 @@ interactive-fiction/
 ├── MANIFEST.json                   # 文件清单与哈希
 ├── VERSION                         # 版本号（单点溯源）
 ├── .gitignore                      # Git 忽略规则
+├── assets/                         # 视觉资源（Banner / Social Preview）
+├── data/                           # 查表数据（标签词库/字数区间/指令快速路由）
 ├── docs/                            # 设计文档与版本规划（不参与运行时加载）
 ├── modes/                          # 模式文件（爽文/主线/沉浸）
 ├── extended/                       # 扩展模块（按需加载）
-└── references/                     # 参考文档与写作规范
+├── references/                     # 参考文档与写作规范
+├── schema/                         # 运行时 JSON 格式约束（novel_runtime.schema.json）
+└── scripts/                        # 记忆外置助手 novel.py（纯标准库，可选增强）
 ```
 
 **不变式**：
 - `SKILL.md` 的 `name: interactive-fiction` 与目录叶节点名一致
 - 规范采用 P0/P1/P2 三层物理拆分：SKILL.md 常驻（P0），其余按需加载
 - 仅规则文件，不携带任何运行时数据（运行数据存储于用户存储根目录，见 SKILL.md 相关章节）
+
+> **可选运行环境**：`scripts/novel.py`（记忆外置助手）需 Python 3.8+，纯标准库、无第三方依赖；无 Python 环境时技能自动降级为原有流程（AI 直接读写 `novel_runtime.json`），功能不受影响。调用须用完整路径（agent 的 cwd 通常不是技能目录）。
 
 ---
 
@@ -90,3 +96,4 @@ git pull origin main
 - [ ] `modes/`、`extended/`、`references/` 目录均存在且含文件
 - [ ] 技能列表中出现 `interactive-fiction`
 - [ ] 发送「加载小说包」能正常弹出路线选择
+- [ ] （可选增强）`python3 <技能目录>/scripts/novel.py --help` 正常输出，即记忆外置助手可用

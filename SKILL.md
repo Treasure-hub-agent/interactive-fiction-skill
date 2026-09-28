@@ -169,9 +169,9 @@ metadata:
 
 > 算数/记账/到期提醒交给 `scripts/novel.py`，脚本只记账、不审判，叙事判断仍归模型；命令表见 `extended/storage_runtime.md` §记忆外置助手。
 
-**每轮两端**（无 Python 环境时跳过，走原「AI 直接读写 novel_runtime.json」路径）：
-- **开工**：`python3 scripts/novel.py brief` → 取 `[行动]`（到期须正面回收）与 `[事实]`（须遵守）；`[变化]`/`[背景]` 仅作事实参考，无自然契机不得提及、不得当情节推动器。
-- **收尾**：`python3 scripts/novel.py record`（小票 JSON）→ 自动累加字数、`seg_count`、`prv` 截断、同步 `_index.json`。
+**每轮两端**（`{技能目录}` = 本技能安装目录，即 SKILL.md 所在目录；无 Python 环境时跳过，走原「AI 直接读写 novel_runtime.json」路径）：
+- **开工**：`python3 {技能目录}/scripts/novel.py brief` → 取 `[行动]`（到期须正面回收）与 `[事实]`（须遵守）；`[变化]`/`[背景]` 仅作事实参考，无自然契机不得提及、不得当情节推动器。
+- **收尾**：`python3 {技能目录}/scripts/novel.py record`（小票 JSON）→ 自动累加字数、`seg_count`、`prv` 截断、同步 `_index.json`。
 
 ### 用户输入响应
 
