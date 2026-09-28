@@ -1,6 +1,6 @@
 {
   "version": "10.2.0",
-  "generated": "2026-09-28T11:34:10Z",
+  "generated": "2026-09-28T11:43:52Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -44,8 +44,8 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "9220590b7054f2dbf3c73cb66f57d6d400d81416fc64fa598d105efe111bd4f4",
-      "bytes": 29425,
+      "sha256": "7db152a2b2c85c11d6ba42ff03a0ff1ad5143fc9ec31b0fa49703a612a2368de",
+      "bytes": 29554,
       "role": "runtime"
     },
     "VERSION": {
@@ -134,8 +134,8 @@
       "role": "runtime"
     },
     "extended/storage_runtime.md": {
-      "sha256": "6dbd856e4003c2a552730183c7f29a45fb2002be9795ad29927ddbc2658a56b6",
-      "bytes": 22697,
+      "sha256": "0c11dec499ad455e7bfeae424fa79870e02967b8ca5a8ea05d8a14350f7e9621",
+      "bytes": 23208,
       "role": "runtime"
     },
     "extended/subagent_mode.md": {
@@ -249,8 +249,8 @@
       "role": "runtime"
     },
     "scripts/novel.py": {
-      "sha256": "886b1d95941042cf29cde7b23985fbaa09fa0c58222eb2b7312c9d02ad2cec1d",
-      "bytes": 21202,
+      "sha256": "0e2a59cedd767e434ea5b3d2d9aedc5b6f22cb9c611350b3df1c695bf8cf5019",
+      "bytes": 25580,
       "role": "runtime"
     },
     "scripts/test_data.py": {
@@ -264,8 +264,8 @@
       "role": "runtime"
     },
     "scripts/test_novel.py": {
-      "sha256": "d286c146aa2ba878452f8574b8812187ebe1bff3a196b08644aa4882e0183efd",
-      "bytes": 18547,
+      "sha256": "ce2c596a0e7dac7bb49d8929b79484909c2a0a07f79645e756bc384716439049",
+      "bytes": 21973,
       "role": "runtime"
     },
     "scripts/test_schema.py": {

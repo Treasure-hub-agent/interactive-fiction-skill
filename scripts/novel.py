@@ -29,6 +29,8 @@ import re
 import sys
 from datetime import datetime, timezone
 
+LORE_MAX = 4       # [设定] 段单轮条目上限（--full 不限）
+LORE_FILE_MAX = 8  # 单个设定文件最多抽取的词条数
 PRV_MAX = 200      # 前情提要字数上限
 DELTA_TURNS = 2    # [变化] 显示窗口（轮）
 BG_TURNS = 6       # [背景] 显示窗口（轮），之后完全静默
@@ -113,6 +115,111 @@ def ledger_seg(rt: dict, n: "Novel", warn: bool = False) -> int:
         print(f"⚠️ 账本无 seg_count，暂以账本最大 seg={seg} 为基准"
               f"（下次 record 自动回填）", file=sys.stderr)
     return seg
+
+
+def _read_text(path: str) -> str:
+    """只读文本；失败返回空串 —— 设定检索全程不得中断简报。"""
+    try:
+        with open(path, encoding="utf-8", errors="replace") as f:
+            return f.read()
+    except (OSError, UnicodeDecodeError):
+        return ""
+
+
+def _first_sentence(text: str, limit: int = 60) -> str:
+    text = text.strip()
+    if not text:
+        return ""
+    m = re.search(r"[。！？；]", text)
+    if m:
+        text = text[:m.start() + 1]
+    return text if len(text) <= limit else text[:limit] + "…"
+
+
+def _md_terms(path: str, src: str, limit: int = LORE_FILE_MAX) -> list:
+    """从 Markdown 设定文件抽「词条表」：(词条, 摘要, 来源)。
+    词条 = 标题 / 加粗短语；摘要 = 该词条下第一句非空正文。"""
+    text = _read_text(path)
+    if not text:
+        return []
+    lines = text.split("\n")
+    out = []
+    for i, ln in enumerate(lines):
+        s = ln.strip()
+        if s.startswith("#"):
+            term = s.lstrip("#").strip()
+        elif s.startswith("**") and s.rstrip().endswith("**"):
+            term = s.strip("*").strip()
+        else:
+            continue
+        term = term.rstrip("：:").strip()
+        if not (2 <= len(term) <= 24):
+            continue
+        summary = ""
+        for nxt in lines[i + 1:i + 4]:
+            if nxt.strip().startswith("#"):   # 跳过下一级标题，取正文首句作摘要
+                continue
+            cand = re.sub(r"^[>\-*\s]+", "", nxt.strip())
+            cand = re.sub(r"\*\*|`|#", "", cand)
+            if cand:
+                summary = cand
+                break
+        out.append((term, _first_sentence(summary), src))
+        if len(out) >= limit:
+            break
+    return out
+
+
+def lore_entries(n: "Novel") -> list:
+    """扫描 worldbuilding/ 与 characters/ 构建词条表（只读；缺失/损坏静默跳过）。"""
+    out = []
+    wb = os.path.join(n.dir, "worldbuilding")
+    if os.path.isdir(wb):
+        for fn in sorted(os.listdir(wb)):
+            if fn.endswith(".md"):
+                out.extend(_md_terms(os.path.join(wb, fn), os.path.splitext(fn)[0]))
+    ch = os.path.join(n.dir, "characters")
+    if os.path.isdir(ch):
+        for slug in sorted(os.listdir(ch)):
+            prof = os.path.join(ch, slug, "profile.md")
+            if os.path.isfile(prof):
+                out.extend(_md_terms(prof, "角色卡", limit=4))
+    return out
+
+
+def lore_hits(n: "Novel", rt: dict, args, budget=None) -> list:
+    """按本轮相关度挑设定词条。命中源权重：用户输入 > 当前场景/地点/主角状态 > 角色名。"""
+    entries = lore_entries(n)
+    if not entries:
+        return []
+    sources = []
+    inp = (getattr(args, "input", None) or "").strip()
+    if inp:
+        sources.append((inp, 3))
+    for key in ("sc", "mp"):
+        v = rt.get(key)
+        if isinstance(v, str) and v:
+            sources.append((v, 2))
+    for v in (rt.get("st") or {}).values():
+        if isinstance(v, str) and v:
+            sources.append((v, 2))
+    names = [str(k) for k in list(rt.get("cp") or {}) + list(rt.get("npcs") or {})]
+    if names:
+        sources.append((" ".join(names), 1))
+    scored, seen = [], set()
+    for term, summary, src in entries:
+        if term in seen:
+            continue
+        score = 0
+        for text, w in sources:
+            if term in text:
+                score = max(score, w)
+        if score:
+            seen.add(term)
+            scored.append((score, term, summary, src))
+    scored.sort(key=lambda x: (-x[0], x[1]))
+    out = [(t, s, src) for _, t, s, src in scored]
+    return out[:budget] if budget else out
 
 
 def brief_value(v, limit: int = 16) -> str:
@@ -238,6 +345,13 @@ def cmd_brief(args):
     print("[事实]（须遵守的长期事实）")
     print("  · " + ("\n  · ".join(facts) if facts else "（无）"))
 
+    # [设定] 世界书式按需注入：仅命中本轮相关词条时输出（无命中不占行）
+    hits = lore_hits(n, rt, args, budget=None if args.full else LORE_MAX)
+    if hits:
+        print("[设定]（本轮相关，仅作事实参考）")
+        for term, summary, src in hits:
+            print(f"  · {term} — {summary or '（详见设定文件）'}（{src}）")
+
     # [变化] 近 2 轮增量（d ≤ DELTA_TURNS；与 [背景] 的 d > DELTA_TURNS 无缝衔接）
     changes = [c for c in ast["changes"] if c["turn"] >= turn - DELTA_TURNS]
     print(f"[变化]（近 {DELTA_TURNS} 轮增量，过期即沉降）")
@@ -279,7 +393,7 @@ def cmd_brief(args):
     hook = f"，命中锚定钩子：回响核对 + 语域/关系重锚" if nxt % 8 == 0 else ""
     print(f"[提示] 下轮 seg_count={nxt}{hook} ｜ open 账本 {len(n.open_choices())} 条")
 
-    print("⚖️ 简报守则：[行动] 须正面回收；[事实] 须遵守；"
+    print("⚖️ 简报守则：[行动] 须正面回收；[事实] 须遵守；[设定] 仅作事实参考；"
           "[变化][背景] 仅作事实参考，无自然契机不得提及、不得当情节推动器。")
 
 
@@ -491,7 +605,9 @@ def main() -> int:
     sub = p.add_subparsers(dest="cmd", required=True)
 
     pb = sub.add_parser("brief", parents=[common], help="生成开场/恢复简报")
-    pb.add_argument("--full", action="store_true", help="含已静默背景项与全量账本")
+    pb.add_argument("--full", action="store_true", help="含已静默背景项与全量设定命中")
+    pb.add_argument("--input", default=None,
+                    help="用户本轮输入原文（可选，用于提高设定检索命中精度）")
     pb.set_defaults(func=cmd_brief)
 
     pr = sub.add_parser("record", parents=[common], help="每轮记账（小票 JSON）")

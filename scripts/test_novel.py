@@ -89,9 +89,9 @@ class Base(unittest.TestCase):
             json.dump(data, f, ensure_ascii=False, indent=2)
 
     # ---------- 命令调用 ----------
-    def brief(self, full=False):
+    def brief(self, full=False, user_input=None):
         return capture(novel.cmd_brief, argparse.Namespace(
-            root=self.tmp, novel=self.NAME, full=full))
+            root=self.tmp, novel=self.NAME, full=full, input=user_input))
 
     def record(self, entry):
         return capture(novel.cmd_record, argparse.Namespace(
@@ -438,6 +438,78 @@ class TestRobustness(Base):
         self.assertIn("骰子开局", out)
         self.save("后续存档")
         self.assertTrue(os.path.isfile(os.path.join(d, "002.md")))
+
+
+class TestLore(Base):
+    """设定检索（世界书式按需注入）：命中 / 上限 / 摘要 / 降级 / 只读。"""
+
+    def _write_lore(self):
+        wb = os.path.join(self.tmp, self.NAME, "worldbuilding")
+        os.makedirs(wb, exist_ok=True)
+        with open(os.path.join(wb, "power_system.md"), "w", encoding="utf-8") as f:
+            f.write("# 力量体系\n## 灵纹\n灵纹分九品，三品以上方可御物。\n")
+        with open(os.path.join(wb, "geography.md"), "w", encoding="utf-8") as f:
+            f.write("# 地理\n## 边城\n边城是北境咽喉。\n")
+        ch = os.path.join(self.tmp, self.NAME, "characters", "linxiaoman")
+        os.makedirs(ch, exist_ok=True)
+        with open(os.path.join(ch, "profile.md"), "w", encoding="utf-8") as f:
+            f.write("# 林小满\n## 身份\n边城驿站的掌事，表面冷淡实则护短。\n")
+
+    def test_lore_section_absent_when_no_hit(self):
+        """无设定目录时不得出现 [设定] 段（零回归）。"""
+        self._write_lore()
+        out = self.brief(user_input="完全无关的一句话")
+        self.assertNotIn("\n[设定]", out)
+
+    def test_lore_hits_on_user_input(self):
+        """用户输入命中词条时必须带出该词条与其摘要。"""
+        self._write_lore()
+        out = self.brief(user_input="我催动灵纹去御剑")
+        self.assertIn("[设定]", out)
+        self.assertIn("灵纹", out)
+        self.assertIn("三品以上方可御物", out)
+
+    def test_lore_hits_on_scene(self):
+        """未传 --input 时按当前场景命中。"""
+        self._write_lore()
+        self.runtime["sc"] = "边城·渡口"
+        self._flush()
+        out = self.brief()
+        self.assertIn("[设定]", out)
+        self.assertIn("边城是北境咽喉", out)
+
+    def test_lore_limit_and_full(self):
+        """默认每轮最多 4 条，--full 放开上限。"""
+        self._write_lore()
+        q = "灵纹 御物 边城 渡口 北境 林小满 身份"
+        n_def = self.brief(user_input=q).split("[设定]")[1].split("\n[")[0].count("  · ")
+        n_full = self.brief(full=True, user_input=q).split("[设定]")[1].split("\n[")[0].count("  · ")
+        self.assertLessEqual(n_def, 4)
+        self.assertGreaterEqual(n_full, n_def)
+
+    def test_lore_summary_skips_subheading(self):
+        """摘要须取正文首句，不得取下一级标题（如「身份」）。"""
+        self._write_lore()
+        out = self.brief(user_input="林小满")
+        self.assertIn("边城驿站的掌事", out)
+        self.assertNotIn("林小满 — 身份", out)
+
+    def test_lore_survives_broken_non_utf8_file(self):
+        """非 UTF-8 的损坏设定文件必须被跳过，不得让 brief 崩溃。"""
+        self._write_lore()
+        with open(os.path.join(self.tmp, self.NAME, "worldbuilding", "broken.md"),
+                  "wb") as f:
+            f.write(b"\x00\x01 not utf8 \xff\xfe")
+        out = self.brief(user_input="灵纹")
+        self.assertIn("灵纹", out)
+
+    def test_lore_is_readonly(self):
+        """brief 必须纯只读：设定文件内容不得被改写。"""
+        self._write_lore()
+        path = os.path.join(self.tmp, self.NAME, "worldbuilding", "power_system.md")
+        before = open(path, "rb").read()
+        self.brief(user_input="灵纹")
+        self.assertEqual(open(path, "rb").read(), before)
 
 
 if __name__ == "__main__":

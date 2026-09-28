@@ -184,7 +184,7 @@ metadata:
 > 算数/记账/到期提醒交给 `scripts/novel.py`，脚本只记账、不审判，叙事判断仍归模型；命令表见 `extended/storage_runtime.md` §记忆外置助手。
 
 **每轮两端**（`{技能目录}` = 本技能安装目录，即 SKILL.md 所在目录；`{存储根}` = 小说数据目录，脚本按环境变量 `NOVEL_STORAGE_ROOT` 解析，未设置则为 `~/novels`，可用 `--root` 覆盖；无 Python 环境时跳过，走原「AI 直接读写 novel_runtime.json」路径）：
-- **开工**：`python3 {技能目录}/scripts/novel.py brief` → 取 `[行动]`（到期须正面回收）与 `[事实]`（须遵守）；`[变化]`/`[背景]` 仅作事实参考，无自然契机不得提及、不得当情节推动器。
+- **开工**：`python3 {技能目录}/scripts/novel.py brief`（可加 `--input "用户本轮输入"` 提高设定检索命中）→ 取 `[行动]`（到期须正面回收）、`[事实]`（须遵守）与 `[设定]`（命中时出现的相关设定）；三者与 `[变化]`/`[背景]` 均仅作事实参考，无自然契机不得提及、不得当情节推动器。
 - **收尾**：`python3 {技能目录}/scripts/novel.py record`（小票 JSON）→ 自动累加字数、`seg_count`、`prv` 截断、同步 `_index.json`。
 
 ### 用户输入响应

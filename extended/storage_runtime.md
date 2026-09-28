@@ -371,11 +371,13 @@
 
 | 命令 | 作用 | 常用参数 |
 |------|------|----------|
-| `python3 {技能目录}/scripts/novel.py brief` | 开局/恢复简报（四级权重 + 衰减） | `--full` 含已静默背景项 |
+| `python3 {技能目录}/scripts/novel.py brief` | 开局/恢复简报（四级权重 + 衰减 + 条件段 `[设定]`） | `--full` 含已静默背景项与全量设定命中；`--input "用户本轮输入"` 提高设定命中精度 |
 | `python3 {技能目录}/scripts/novel.py record` | 每轮记账（小票 JSON） | `--entry 文件` / `--json '{...}'` / stdin |
 | `python3 {技能目录}/scripts/novel.py save [书签]` | 存档（无参数=列出存档） | 存档落 `saves/{路线}/00N.md` |
 | `python3 {技能目录}/scripts/novel.py load N` | 读档回填运行时状态 | `--latest` 取最新存档 |
 
+> **`[设定]` 段（v10.2.0）**：`brief` 自动扫描 `{存储根}/{小说名}/worldbuilding/*.md` 与 `characters/*/profile.md`，抽出标题/加粗词条，按本轮相关度（用户输入 > 当前场景与地点 > 角色名）命中，**仅命中时输出、无命中不占行**（默认 ≤4 条，`--full` 放开）；全程只读，目录缺失或单文件损坏静默跳过，账本零影响。
+>
 > `{技能目录}` = 本技能安装目录（SKILL.md 所在目录）；**agent 的 cwd 通常不是技能目录**，须用完整路径调用，在技能目录内执行时才可省略前缀。
 > 全局参数：`--root`（默认 `$NOVEL_STORAGE_ROOT` 或 `~/novels`）、`--novel`（默认 `_index.json` 的 `act`）。
 
