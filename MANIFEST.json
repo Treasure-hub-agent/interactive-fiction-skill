@@ -1,6 +1,6 @@
 {
   "version": "10.2.0",
-  "generated": "2026-09-28T10:42:39Z",
+  "generated": "2026-09-28T11:15:45Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -44,8 +44,8 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "f0b300b158dec3d2a6c02239f992aa20e09e7a8bf3f76aded6ec0d7c7618b300",
-      "bytes": 27270,
+      "sha256": "43ec5c23672137a3c7194894129659eb1b9dc6eb2c2ce59656c6baf57f797581",
+      "bytes": 28696,
       "role": "runtime"
     },
     "VERSION": {
