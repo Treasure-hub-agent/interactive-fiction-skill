@@ -1,6 +1,6 @@
 {
   "version": "10.1.0",
-  "generated": "2026-09-28T08:35:06Z",
+  "generated": "2026-09-28T08:37:25Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -134,8 +134,8 @@
       "role": "runtime"
     },
     "extended/storage_runtime.md": {
-      "sha256": "56be801263166231bc9049e417ae8e15ad178ba3a6452c8867d7de022f9397cf",
-      "bytes": 19114,
+      "sha256": "699da465a4259017e85e0658bc9ee5a985ce14c40987a43d915ee8724f0187f2",
+      "bytes": 22030,
       "role": "runtime"
     },
     "extended/subagent_mode.md": {
