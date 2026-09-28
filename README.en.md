@@ -5,12 +5,12 @@
 
 # interactive-fiction
 
-> **Complete interactive-fiction authoring spec v10.1.0** — turns any AI agent into a writer of tense, choice-driven, immersive stories.
+> **Complete interactive-fiction authoring spec v10.2.0** — turns any AI agent into a writer of tense, choice-driven, immersive stories.
 
 🌐 **[中文](README.md) | English**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-10.1.0-orange.svg)](VERSION)
+[![Version](https://img.shields.io/badge/version-10.2.0-orange.svg)](VERSION)
 
 ---
 
@@ -30,24 +30,20 @@
 
 ---
 
-## What's New (v10.1.0 · After the Confession)
+## What's New (v10.2.0 · Memory Offload Assistant)
 
-**💗 The story continues after "I love you"**
+**🧠 Long stories that keep their own notes**
 
-- Emotional arcs extend beyond the three-stage climb (Spark → Haze → Vow) into **"after the vow"**: daily intimacy / joint decisions / conflict / reconciliation
-- Dual-anchor trigger: when the relationship is committed and you mention tomorrow, the future, together… the AI shifts into post-commitment voice
-- Character voice keeps evolving — four arcs (**settling / releasing / oscillating / constant**) instead of freezing at the confession
+- Optional **memory offload assistant**: word counts, segment counts, recaps and payoff bookkeeping are tallied for the AI, leaving it free to focus on the prose
+- **Four-tier brief**: due consequences / long-term facts / recent changes / background state — what matters stays in view, small details don't crowd the page
+- Background items fade on their own: flagged for two scenes, folded into one line, then quietly archived after six — **old business stops resurfacing in the narrative**
+- The brief is reference only; it never makes narrative decisions for the author. Bookkeeping format is unchanged, so **existing saves keep working**
+- Clients without a Python runtime fall back to the original flow — the story never stops
 
-**📖 Long stories stay readable**
+**📐 Engineering**
 
-- Auto chapter summaries (≤200 chars) every chapter; auto volume recaps (≤1000 chars) every 5 chapters
-- Ask "chapter recap" or "volume recap" anytime — 50 chapters in, you never lose your place
-- Summaries are manually correctable (`generated_by` flag) — you always hold the final edit
-
-**🧭 Commands & engineering**
-
-- Explicit decision tree for label pools (emotion / emotion_daily / general, mutually exclusive) — no more guessing
-- `validate.py` gate extended: auto-checks emotion_daily structure + decision-tree references
+- Unit tests now five suites: new coverage for decay boundaries, payoff recovery, auto-bookkeeping and save/restore
+- The ledger stays in `meta/novel_runtime.json`; assistant bookkeeping lives beside it in `meta/novel_assist.json`
 
 ---
 
@@ -113,6 +109,7 @@ Naive AI fiction has a familiar litany of failure:
 | 🎴 Character cards | Pop, edit, deep-create, one-shots; minor characters get cards silently |
 | 📖 Three modes | Mainline / Immersion / Power Fantasy |
 | 🧩 P0/P1/P2 layering | Constant rules lean; on-demand loading; zero standing context cost |
+| 🧠 Memory offload assistant | Optional: four-tier brief + auto-decay; word counts and ledgers tallied automatically |
 | 🤖 Sub-agent mode | Optional: delegate prose generation (auto-falls back to main agent if unsupported) |
 
 ---
@@ -134,6 +131,7 @@ Naive AI fiction has a familiar litany of failure:
 The skill creates a storage root in your user directory (default `~/novels/`, overridable via env var `NOVEL_STORAGE_ROOT`) for:
 
 - Novel saves and runtime state (`{story}/meta/novel_runtime.json`)
+- Assistant bookkeeping (`{story}/meta/novel_assist.json`)
 - Character cards (`{story}/characters/` and `通用角色卡/`)
 - Distillation intermediates (`output/characters/`, gitignored)
 
@@ -164,6 +162,7 @@ graph LR
 | Web search | ⚠️ Optional | Distillation falls back to model knowledge |
 | Sub-task dispatch (sub-agent) | ⚠️ Optional | Auto-falls back to main agent |
 | thinking mode | ⚠️ Optional | Works without; option reasoning slightly weaker |
+| Python runtime | ⚠️ Optional | Memory offload assistant is skipped; original bookkeeping flow continues |
 
 ---
 
@@ -198,4 +197,4 @@ MIT License — free to use, modify, distribute. See [LICENSE](LICENSE). Version
 
 ---
 
-> — Treasure-hub-agent · 2026 · Eleventh revision
+> — Treasure-hub-agent · 2026 · Twelfth revision

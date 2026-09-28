@@ -8,7 +8,7 @@
 </h1>
 
 <p align="center" style="color:#8a7c6f;">
-  —— 互动小说创作完整规范 v10.1.0 ——
+  —— 互动小说创作完整规范 v10.2.0 ——
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
 
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"/></a>
-  <a href="VERSION"><img alt="Version" src="https://img.shields.io/badge/version-10.1.0-orange.svg"/></a>
+  <a href="VERSION"><img alt="Version" src="https://img.shields.io/badge/version-10.2.0-orange.svg"/></a>
   <a href="https://github.com/Treasure-hub-agent/ai-with-u"><img alt="ai-with-u" src="https://img.shields.io/badge/ecosystem-ai--with--u-9cf.svg"/></a>
 </p>
 
@@ -38,26 +38,22 @@
 
 ---
 
-## 📌 新卷 · v10.1.0 定情之后
+## 📌 新卷 · v10.2.0 记忆外置助手
 
 > 本栏目介绍最新版本的变化，只保留当前版本；历史版本见 `references/changelog.md`。
 
-**💗 定情之后，故事仍在继续（本次重点）**
+**🧠 长篇更省心：故事自己记得住（本次重点）**
 
-- 情感叙事从「心动 → 暧昧 → 定情」三阶段，延伸到 **「定情之后」**：日常亲密 / 共同决策 / 冲突 / 和解 四档场景
-- 双锚定触发：关系进入「定情」且你提到日常、明天、未来、一起…… AI 自动切换到定情后语态
-- 角色语态不再停格在告白那一刻——**沉淀型 / 释放型 / 震荡型 / 恒定型**四类演变范式，让 TA 在关系中继续生长
+- 新增可选的「记忆外置助手」：字数、段数、前情提要、后果回收交给它自动记账，AI 把心力留在写作上
+- **四级记忆简报**：到期后果 / 长期事实 / 近期变化 / 背景状态分层呈现——要紧的事摆在眼前，琐碎的细节不占心神
+- 背景事项会自动褪色：近两轮在变化区提示，随后合并为一行，六轮之后静静沉底——**旧事不会反复浮现在叙事里**
+- 简报只作事实参考，不替作者做叙事决策；账本格式零改动，**已有存档无缝可用**
+- 客户端没有 Python 运行环境时自动退回原有流程，**剧情不中断**
 
-**📖 长篇不再健忘**
+**📐 工程与打磨**
 
-- 每章自动生成「章摘要」（≤200 字），每 5 章自动生成「卷总结」（≤1000 字）
-- 「章回顾」「卷回顾」指令随时调出，追 50 章也不迷路
-- 摘要可手动校准（`generated_by` 标记），永远由主人掌握最终版本
-
-**🧭 指令与工程**
-
-- 标签池切换有了明确决策树（emotion / emotion_daily / general 三池互斥），AI 不再猜
-- `validate.py` 工程门禁升级：自动校验 emotion_daily 结构 + 决策树引用完整性
+- 单元测试扩到 5 件套：新增记忆外置助手测试（衰减边界、到期回收、自动记账、存档回填）
+- 账本照旧存在 `meta/novel_runtime.json`，助手簿记单独记在 `meta/novel_assist.json`
 
 ---
 
@@ -123,6 +119,7 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 | 🎴 角色卡系统 | 弹出/修改/深度创建/短篇，配角静默落卡 |
 | 📖 三种模式 | 主线（mainline）/ 沉浸（immersion）/ 爽文（shuangwen） |
 | 🧩 P0/P1/P2 分层 | 常驻规则精简，按需加载，上下文零持续负担 |
+| 🧠 记忆外置助手 | 可选：四级简报 + 自动衰减，字数与账本自动记账，长篇设定不遗忘也不反复干扰 |
 | 🤖 子 Agent 模式 | 可选：子任务派发生成正文（不支持时自动主 Agent 直出） |
 
 ---
@@ -144,6 +141,7 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 本 skill 会在你的用户目录下创建存储根目录（默认 `~/novels/`，可通过环境变量 `NOVEL_STORAGE_ROOT` 覆盖），用于存放：
 
 - 小说存档与运行时状态（`{小说名}/meta/novel_runtime.json`）
+- 助手簿记（`{小说名}/meta/novel_assist.json`）
 - 角色卡（`{小说名}/characters/` 与 `通用角色卡/`）
 - 蒸馏中间产物（`output/characters/`，会被 .gitignore 忽略）
 
@@ -189,6 +187,7 @@ interactive-fiction/
 | 联网搜索 | ⚠️ 可选 | 蒸馏走「模型知识优先」降级路径 |
 | 子任务派发（子 Agent） | ⚠️ 可选 | 自动降级为主 Agent 直出 |
 | thinking 模式 | ⚠️ 可选 | 关闭后仍可用，选项推理质量略降 |
+| Python 运行环境 | ⚠️ 可选 | 记忆外置助手跳过，走原有记账流程，剧情不中断 |
 
 ---
 
@@ -220,5 +219,5 @@ A: 运行时详细变更说明见 `references/changelog.md`；面向 GitHub / Re
 ---
 
 <p align="right" style="color:#8a7c6f;">
-  —— Treasure-hub-agent · 2026 · 第十一次修订
+  —— Treasure-hub-agent · 2026 · 第十二次修订
 </p>
