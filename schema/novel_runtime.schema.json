@@ -50,7 +50,7 @@
       "properties": {
         "ch":        { "type": "integer", "description": "对应章节号" },
         "summary":   { "type": "string", "maxLength": 200, "description": "本章 200 字概要" },
-        "generated_by": { "type": "string", "enum": ["LLM", "human"], "description": "生成来源（LLM=自动，human=主人手动校准）" },
+        "generated_by": { "type": "string", "enum": ["LLM", "human", "verified"], "description": "生成来源（LLM=自动，human=主人手动校准，verified=主人校准过；与 volumes[] 枚举统一）" },
         "created_at": { "type": "string", "description": "生成时间戳（ISO8601）" }
       }
     },

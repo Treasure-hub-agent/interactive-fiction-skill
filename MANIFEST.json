@@ -1,6 +1,6 @@
 {
-  "version": "10.1.0",
-  "generated": "2026-09-28T08:37:25Z",
+  "version": "10.2.0",
+  "generated": "2026-09-28T08:40:25Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -9,8 +9,8 @@
       "role": "meta"
     },
     "CHANGELOG.md": {
-      "sha256": "6c4513409e40cfe6d13c2f7e3db98b97598ce094517a4b7e7af39dad3956ccec",
-      "bytes": 1853,
+      "sha256": "6714a449df7db1c920d8f35e959c00e58015e5f70ceb9c41b074edfbc66b314f",
+      "bytes": 2573,
       "role": "meta"
     },
     "CODE_OF_CONDUCT.md": {
@@ -44,12 +44,12 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "2163388f066970408cb8a987cb5ecc0fd1fa73eb64bd1c6b0b509c9bb83a79a5",
+      "sha256": "cd5521ce9a2bae29274dd123977412394c6c161dc20c99f46f453e1747df847b",
       "bytes": 27169,
       "role": "runtime"
     },
     "VERSION": {
-      "sha256": "fc31d030a041baf9eb730eb7e366f99f5f1e46c022fd8c483b7b9d321f30de5a",
+      "sha256": "6fbeec84a27d0608a2a8decd72a394b27f723696948231e4b23a851d63293c74",
       "bytes": 6,
       "role": "runtime"
     },
@@ -164,7 +164,7 @@
       "role": "runtime"
     },
     "package.json": {
-      "sha256": "5c74397fd25bba88469e59399b91bcc3f30fe144a5ab025a6224bc5b83380105",
+      "sha256": "684866bb54669fba4b709b5a5e0cdeaad834c9b92853435cecc09150dd7d9dfb",
       "bytes": 1255,
       "role": "runtime"
     },
@@ -174,8 +174,8 @@
       "role": "runtime"
     },
     "references/changelog.md": {
-      "sha256": "692c1b538816af1afb6c97855fd9cebe60799eb133fb9a5c24da395bbcac6fff",
-      "bytes": 15083,
+      "sha256": "5b1443f4f9b0a02e1944d4d8c886904b5e7eff033f1534b35480c38feda25fc3",
+      "bytes": 16422,
       "role": "runtime"
     },
     "references/character-card-usage.md": {
@@ -234,8 +234,8 @@
       "role": "runtime"
     },
     "schema/novel_runtime.schema.json": {
-      "sha256": "bc4442d078bba411f925fccab252001c179f0242ff658e9168d99a8390a8ae22",
-      "bytes": 6877,
+      "sha256": "713cd7de79d43a47570748946b05ec4dc9132ed4c07aae2c33b3803201f8ba9e",
+      "bytes": 6945,
       "role": "runtime"
     },
     "scripts/gen_manifest.py": {
@@ -249,8 +249,8 @@
       "role": "runtime"
     },
     "scripts/novel.py": {
-      "sha256": "efe77bfe816574f18a8ce57ae1592220bdff97a6b0e9328fe92cc42243e74b8b",
-      "bytes": 17886,
+      "sha256": "81767127c9e440213e0b549d74a63e6a152a3a740cc61767d9d8e0eea3507cd4",
+      "bytes": 17936,
       "role": "runtime"
     },
     "scripts/test_data.py": {
@@ -261,6 +261,11 @@
     "scripts/test_manifest.py": {
       "sha256": "f8b7ed2221cefddad44dc827266433a95620c22124ad56843ce65fd358e713d3",
       "bytes": 2175,
+      "role": "runtime"
+    },
+    "scripts/test_novel.py": {
+      "sha256": "9b3ae192a9466489743b52e61d7ad106df7cbb00b21f6c1f215240d76f96df85",
+      "bytes": 13069,
       "role": "runtime"
     },
     "scripts/test_schema.py": {

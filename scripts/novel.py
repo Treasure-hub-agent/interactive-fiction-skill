@@ -362,7 +362,8 @@ def cmd_save(args):
             print("（该路线暂无存档）")
             return
         for k in sorted(files):
-            head = open(files[k], encoding="utf-8").read(300)
+            with open(files[k], encoding="utf-8") as f:
+                head = f.read(300)
             m = re.search(r"^#存档 \d+\s*\n>(.*)$", head, re.M)
             ts = datetime.fromtimestamp(os.path.getmtime(files[k]))
             print(f"  #{k} · {m.group(1).strip() if m else '（无书签）'}"
@@ -394,7 +395,8 @@ def cmd_load(args):
     num = max(files) if args.latest else args.num
     if num not in files:
         die(f"存档 #{num} 不存在（现有：{sorted(files)}）")
-    text = open(files[num], encoding="utf-8").read()
+    with open(files[num], encoding="utf-8") as f:
+        text = f.read()
     m = re.search(r"<!--NOVEL_STATE\s*(\{.*?\})\s*-->", text, re.S)
     if not m:
         die(f"存档 #{num} 无机器快照，无法自动回填（需手工恢复）")
