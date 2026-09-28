@@ -21,8 +21,6 @@
   <a href="https://github.com/Treasure-hub-agent/ai-with-u"><img alt="ai-with-u" src="https://img.shields.io/badge/ecosystem-ai--with--u-9cf.svg"/></a>
 </p>
 
-> 💡 **dsh-story 插件用户**：本 skill 将随 `dsh-story` 插件捆绑发布（开发中），装插件即装 skill，无需手动安装；插件升级时 skill 随之更新。
-
 ---
 
 ## ✨ 一书 · 何以开头
@@ -79,15 +77,10 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 
 复制后重新加载 / 重启客户端即可识别，发送「加载小说包」即可开局。
 
-### 方式 3：DSH 插件内安装（dsh-story 插件捆绑，开发中）
-
-`dsh-story` 插件将捆绑本 skill（开发中）：安装 / 升级该插件即自动安装 / 升级 skill，无需手动复制。
-
 ### 升级路径
 
 - npx 安装：`npx skills update Treasure-hub-agent/interactive-fiction-skill`（或重新 add）
 - 手动复制：以最新 [GitHub Releases](https://github.com/Treasure-hub-agent/interactive-fiction-skill/releases) 发布包整体覆盖，或增量覆盖变更文件（保留你的运行数据目录即可）
-- dsh-story 插件（开发中）：随插件升级自动更新
 - 升级不影响已有运行数据（小说存档、角色卡存放于独立存储目录）
 
 > 部署、升级与验证详见 `references/deployment.md`。
@@ -204,7 +197,6 @@ A: 运行时详细变更说明见 `references/changelog.md`；面向 GitHub / Re
 ## 📖 同卷 · 延伸阅读
 
 - [ai-with-u](https://github.com/Treasure-hub-agent/ai-with-u) —— 聊天搭子 / 角色陪伴，零系统痕迹
-- [dsh-story](https://github.com/Treasure-hub-agent/dsh-story) —— 即将捆绑本 skill 的插件
 
 ---
 

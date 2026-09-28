@@ -69,15 +69,10 @@ Put the repo into your agent's skills directory:
 
 Reload / restart your client, then send the trigger phrase to start a story.
 
-### Option 3: Bundled inside the dsh-story plugin (in development)
-
-The `dsh-story` plugin will bundle this skill (in development): installing / upgrading the plugin installs or upgrades the skill automatically.
-
 ### Upgrade path
 
 - npx: `npx skills update Treasure-hub-agent/interactive-fiction-skill` (or re-add)
 - Manual: overwrite from the latest [GitHub Releases](https://github.com/Treasure-hub-agent/interactive-fiction-skill/releases), or overlay changed files (keep your runtime data directory)
-- dsh-story plugin (in development): auto-updates with the plugin
 - Upgrades never touch existing runtime data (saves and character cards live in a separate storage root)
 
 > Deployment, upgrade and verification details: `references/deployment.md`.
@@ -179,7 +174,6 @@ A: Runtime detail lives in `references/changelog.md`; a concise release history 
 ## Reading List
 
 - [ai-with-u](https://github.com/Treasure-hub-agent/ai-with-u) — chat companion / character presence, zero system traces
-- [dsh-story](https://github.com/Treasure-hub-agent/dsh-story) — the plugin that will bundle this skill
 
 ---
 
