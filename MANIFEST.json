@@ -1,6 +1,6 @@
 {
   "version": "10.2.0",
-  "generated": "2026-09-28T11:58:29Z",
+  "generated": "2026-09-28T12:02:52Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -9,7 +9,7 @@
       "role": "meta"
     },
     "CHANGELOG.md": {
-      "sha256": "a864bc66cc7a69d9403b67736664199b026ebc88d80795b2b1bb32fabd67b06a",
+      "sha256": "49f6d0c136d3c0d24099fe7d8437efe6f86962c0f65562922358930a62123289",
       "bytes": 4267,
       "role": "meta"
     },
