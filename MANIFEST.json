@@ -1,6 +1,6 @@
 {
   "version": "10.2.0",
-  "generated": "2026-09-28T11:43:52Z",
+  "generated": "2026-09-28T11:45:59Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -9,8 +9,8 @@
       "role": "meta"
     },
     "CHANGELOG.md": {
-      "sha256": "6714a449df7db1c920d8f35e959c00e58015e5f70ceb9c41b074edfbc66b314f",
-      "bytes": 2573,
+      "sha256": "54f40e80ba5eebaad6274ffedb7088a0762b75327bb75d0e025b26a6b609458d",
+      "bytes": 3812,
       "role": "meta"
     },
     "CODE_OF_CONDUCT.md": {
@@ -29,13 +29,13 @@
       "role": "runtime"
     },
     "README.en.md": {
-      "sha256": "4fe541d456892c9bcbcdcc8450a1c57b3031271d372824e947d2376905b79561",
-      "bytes": 8784,
+      "sha256": "bc6bccd8cec8e8e7624bde708b2003ad56a6d01f9e2c6506be9998fd0f515cf2",
+      "bytes": 9970,
       "role": "runtime"
     },
     "README.md": {
-      "sha256": "29c8d707ed9ec126b5c3d30cd4d6ff9c0223b245100281e407315b96cf4946ad",
-      "bytes": 9970,
+      "sha256": "a5faf7bf36a1caac8f4d8cb0aee8fb0631a0f53621c621b80cec0ee280200763",
+      "bytes": 10952,
       "role": "runtime"
     },
     "SECURITY.md": {
@@ -174,8 +174,8 @@
       "role": "runtime"
     },
     "references/changelog.md": {
-      "sha256": "5b1443f4f9b0a02e1944d4d8c886904b5e7eff033f1534b35480c38feda25fc3",
-      "bytes": 16422,
+      "sha256": "463760672fe16a4a905287e8f5a572dfd88f9ca1553c6380186fe15d3107222e",
+      "bytes": 19393,
       "role": "runtime"
     },
     "references/character-card-usage.md": {

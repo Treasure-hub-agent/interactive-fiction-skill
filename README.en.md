@@ -32,6 +32,12 @@
 
 ## What's New (v10.2.0 · Memory Offload Assistant)
 
+**📚 World-book style setting lookup (headline #1)**
+
+- Your written world (`worldbuilding/`) and character cards (`characters/`) now **enter the per-turn brief when relevant**: mention a term like 「灵纹」 and its rule comes with it; walk into a town and its history does too
+- Only the **few relevant entries** — nothing unrelated takes a line, so long novels run tens of thousands of words without the setting drifting
+- With nothing relevant, the brief is **byte-for-byte identical** to before
+
 **🧠 Long stories that keep their own notes**
 
 - Optional **memory offload assistant**: word counts, segment counts, recaps and payoff bookkeeping are tallied for the AI, leaving it free to focus on the prose
@@ -40,9 +46,19 @@
 - The brief is reference only; it never makes narrative decisions for the author. Bookkeeping format is unchanged, so **existing saves keep working**
 - Clients without a Python runtime fall back to the original flow — the story never stops
 
+**🚪 Ready from the first message**
+
+- Sending the trigger phrase now **always raises the opening menu** — no longer depends on the model remembering
+- Steadier prose: the writing guide has a definite loading moment (entering a new chapter)
+- Each turn's self-check is split into **pre-write prediction** and **post-write review**, so a bad paragraph is caught on the spot
+
+**🐛 Stability fixes**
+
+- Fixed: brief crash when two due consequences shared the same lag; bookkeeping aborted by a corrupted sidecar; missed due-reminders on legacy ledgers without segment counts; random-start saves unreadable; silent false success on string segment ids; word count double-counted after a failed write; brief crash on non-UTF-8 setting files
+- Unit tests **56 → 73**, covering every fix above
+
 **📐 Engineering**
 
-- Unit tests now five suites: new coverage for decay boundaries, payoff recovery, auto-bookkeeping and save/restore
 - The ledger stays in `meta/novel_runtime.json`; assistant bookkeeping lives beside it in `meta/novel_assist.json`
 
 ---
