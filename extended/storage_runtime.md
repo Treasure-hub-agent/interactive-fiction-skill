@@ -211,7 +211,7 @@
 | `ms` | int | 最近持久存档编号 | 手动存档后 |
 | `scs_bak` | object\|null | 场景卡模式快照 | 进入场景卡时 |
 
-#### `choices[]` 升级字段规范（v9.3.1）
+#### `choices[]` 字段规范
 
 > 不新增 `open_loops` 字段/文件：直接升级现有 `choices[]`，保持 `novel_runtime.json` 结构兼容，旧存档无缝兼容。
 

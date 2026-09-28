@@ -50,7 +50,7 @@
       "properties": {
         "ch":        { "type": "integer", "description": "对应章节号" },
         "summary":   { "type": "string", "maxLength": 200, "description": "本章 200 字概要" },
-        "generated_by": { "type": "string", "enum": ["LLM", "human", "verified"], "description": "生成来源（LLM=自动，human=主人手动校准，verified=主人校准过；与 volumes[] 枚举统一）" },
+        "generated_by": { "type": "string", "enum": ["LLM", "human", "verified"], "description": "生成来源（LLM=自动，human=人工校准，verified=人工校准过；与 volumes[] 枚举统一）" },
         "created_at": { "type": "string", "description": "生成时间戳（ISO8601）" }
       }
     },
@@ -62,7 +62,7 @@
         "properties": {
           "ch_end":      { "type": "integer", "description": "本卷末章号" },
           "summary":     { "type": "string", "maxLength": 1000, "description": "本卷 1000 字长摘要" },
-          "generated_by": { "type": "string", "enum": ["LLM", "human", "verified"], "description": "生成来源（LLM=自动，human=主人手动写入，verified=主人校准过）" },
+          "generated_by": { "type": "string", "enum": ["LLM", "human", "verified"], "description": "生成来源（LLM=自动，human=人工写入，verified=人工校准过）" },
           "created_at":  { "type": "string", "description": "生成时间戳（ISO8601）" }
         },
         "required": ["ch_end", "summary", "generated_by"]

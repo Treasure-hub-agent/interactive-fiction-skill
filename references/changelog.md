@@ -65,7 +65,7 @@
 - 每章自动生成「章摘要」（≤200 字），写入 `novel_runtime.json` 的 `chapter_summary` 字段
 - 每 5 章自动生成「卷总结」（≤1000 字），写入 `volumes[]` 数组
 - 新指令：「章回顾」「卷回顾」「第N章讲了什么」（回顾域，见 `data/commands.json`）
-- 摘要可手动校准：`generated_by` 字段（LLM / human / verified），主人永远掌握最终版本
+- 摘要可手动校准：`generated_by` 字段（LLM / human / verified），最终版本由你掌握
 
 **🧭 指令与工程**
 
