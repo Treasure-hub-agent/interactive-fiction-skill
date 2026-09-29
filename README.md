@@ -21,6 +21,10 @@
   🌐 <b>中文</b> ｜ <a href="README.en.md">English</a>
 </p>
 
+<p align="center"><sub>
+An AI-agent skill for interactive fiction — Chinese-first: choice-driven storytelling with 5 options per turn, long-novel consistency, save/load, and character cards.
+</sub></p>
+
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"/></a>
   <a href="VERSION"><img alt="Version" src="https://img.shields.io/badge/version-10.2.0-orange.svg"/></a>
@@ -94,10 +98,22 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 | 客户端 | 技能目录 |
 |--------|----------|
 | Hermes | `~/.hermes/skills/creative/interactive-fiction/` |
+| DeepSeek Harness（dsh） | `~/.dsh/skills/interactive-fiction/` |
+| 通用约定（多 agent 共用） | `~/.agents/skills/interactive-fiction/` |
 | Claude Code | `~/.claude/skills/interactive-fiction/` |
 | Cursor | `~/.cursor/skills/interactive-fiction/` |
 
+> 只要客户端能读取 `SKILL.md`，本 skill 就能用 —— 把目录放进它的技能目录即可（文件读写权限为必需项，见下方「平台表现」）。
+
 复制后重新加载 / 重启客户端即可识别，发送「加载小说包」即可开局。
+
+### 方式 3：Hermes 用户 · skills tap
+
+```bash
+hermes skills tap add Treasure-hub-agent/interactive-fiction-skill
+```
+
+添加后即可在 `hermes skills browse` / `hermes skills search` 中看到并安装本 skill，后续 `hermes skills check` 可检查更新。
 
 ### 升级路径
 

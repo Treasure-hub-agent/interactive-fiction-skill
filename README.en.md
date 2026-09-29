@@ -84,10 +84,22 @@ Put the repo into your agent's skills directory:
 | Client | Skills directory |
 |--------|----------|
 | Hermes | `~/.hermes/skills/creative/interactive-fiction/` |
+| DeepSeek Harness (dsh) | `~/.dsh/skills/interactive-fiction/` |
+| Generic convention (shared by agents) | `~/.agents/skills/interactive-fiction/` |
 | Claude Code | `~/.claude/skills/interactive-fiction/` |
 | Cursor | `~/.cursor/skills/interactive-fiction/` |
 
+> Any client that can read `SKILL.md` can use this skill — just drop the folder into its skills directory (file read/write access is required; see Platform Support below).
+
 Reload / restart your client, then send the trigger phrase to start a story.
+
+### Option 3: Hermes users · skills tap
+
+```bash
+hermes skills tap add Treasure-hub-agent/interactive-fiction-skill
+```
+
+Once added, the skill shows up in `hermes skills browse` / `hermes skills search`; `hermes skills check` reports updates.
 
 ### Upgrade path
 
