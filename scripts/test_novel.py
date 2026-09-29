@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# © 2026 Treasure-hub-agent · interactive-fiction skill · MIT License
+# https://github.com/Treasure-hub-agent/interactive-fiction-skill
 """test_novel.py — 记忆外置助手 novel.py 单元测试（v10.2.0 新增）。
 
 覆盖：简报四级权重与衰减边界、到期后果提醒与回收、record 自动簿记、

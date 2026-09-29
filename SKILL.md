@@ -4,6 +4,7 @@ description: "可选项驱动的互动小说创作完整规范：支持穿越/�
 version: 10.2.0
 author: Treasure-hub-agent
 license: MIT
+copyright: "© 2026 Treasure-hub-agent"
 platforms: [linux, macos, windows]
 triggers: ["加载小说包", "互动小说", "互动故事", "选项小说", "写个互动小说", "开个互动小说"]
 metadata:
@@ -358,3 +359,7 @@ A/B/C 选项生成后必须自检以下三条，不满足则重新生成对应�
 ## 🔴 数据获取策略（开局/角色卡生成必守）
 
 > 模型知识优先 → 询问用户 → 用户确认后才联网搜索。完整策略表已迁至 `extended/distillation.md`。
+
+---
+
+> © 2026 Treasure-hub-agent · interactive-fiction skill · MIT License · 许可与免责见 `DISCLAIMER.md`

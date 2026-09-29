@@ -224,3 +224,16 @@ MIT License — free to use, modify, distribute. See [LICENSE](LICENSE). Version
 ---
 
 > — Treasure-hub-agent · 2026 · Twelfth revision
+
+---
+
+## 🕮 Notes & License
+
+- This skill provides an interactive-fiction authoring spec; mature themes are handled by the writing guidelines and emotional escalation rules
+- **AI-generated content** — plots and characters are produced live by the model you configure; they do not represent the author's views, and you are responsible for how you use them
+- **Data & privacy** — all runtime data (saves, character cards, ledgers) stays on your own device; nothing is uploaded, collected, or reported
+- **Compliance** — for mature-themed material, ensure compliance with your local laws and platform rules
+- **Models & cost** — bring your own model and runtime; costs and service terms are between you and your provider
+- **No warranty** — provided "as is"; generation quality, continuity, and save safety are not guaranteed — please back up
+- **MIT License** — free to use, modify, and distribute; keep the original copyright notice when redistributing
+- Full terms: [`DISCLAIMER.en.md`](DISCLAIMER.en.md); changelog: `references/changelog.md`

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# © 2026 Treasure-hub-agent · interactive-fiction skill · MIT License
+# https://github.com/Treasure-hub-agent/interactive-fiction-skill
 """test_data.py — 数据文件约束单元测试（v10.1.0 新增）。
 
 用法：

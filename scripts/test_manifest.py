@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# © 2026 Treasure-hub-agent · interactive-fiction skill · MIT License
+# https://github.com/Treasure-hub-agent/interactive-fiction-skill
 """test_manifest.py — MANIFEST.json 哈希与集合一致性测试（v10.1.0 新增）。
 
 用法：

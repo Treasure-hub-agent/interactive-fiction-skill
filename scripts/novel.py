@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# © 2026 Treasure-hub-agent · interactive-fiction skill · MIT License
+# https://github.com/Treasure-hub-agent/interactive-fiction-skill
 """novel.py — 记忆外置助手（纯标准库，无第三方依赖）。
 
 设计原则：脚本只做「记账、算数、提醒」，不做「校验、审判」。

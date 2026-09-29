@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# © 2026 Treasure-hub-agent · interactive-fiction skill · MIT License
+# https://github.com/Treasure-hub-agent/interactive-fiction-skill
 """A.2.2 — 生成 Social Preview 图（1280x640 意境）。
 
 设计语言（v3 文艺感）：

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# © 2026 Treasure-hub-agent · interactive-fiction skill · MIT License
+# https://github.com/Treasure-hub-agent/interactive-fiction-skill
 """validate.py — 互动小说 skill 工程门禁（纯标准库，无第三方依赖）。
 
 用法：

@@ -1,6 +1,6 @@
 {
   "version": "10.2.0",
-  "generated": "2026-09-29T08:16:23Z",
+  "generated": "2026-09-29T08:35:54Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -23,19 +23,29 @@
       "bytes": 1107,
       "role": "meta"
     },
+    "DISCLAIMER.en.md": {
+      "sha256": "ab94d4a2d771197da5baea6883410dc778f67530dc692b3da8837857aacf7fe5",
+      "bytes": 3067,
+      "role": "meta"
+    },
+    "DISCLAIMER.md": {
+      "sha256": "61f24d5fe71534d3a856c64acfeea091a9574e2b5c65885b9208471380e2ae22",
+      "bytes": 2747,
+      "role": "meta"
+    },
     "LICENSE": {
       "sha256": "92bc09632a498cab8a31ae187aec641e413de13e67c6d8e9c8c3c90bd980ef1e",
       "bytes": 1075,
       "role": "runtime"
     },
     "README.en.md": {
-      "sha256": "e527dea7c086f0d518296708bd8923f1cc5c09e9dc2a95697f7faf5aa69afd15",
-      "bytes": 10799,
+      "sha256": "aac69647af017fb54722ea7d1a2c694d61c00c715f7e765bbb15b3759b3c6f54",
+      "bytes": 11860,
       "role": "runtime"
     },
     "README.md": {
-      "sha256": "2c5e6800527b6c51a7fc009fcfc37c265001fc80252b060d1985b6efaab8bf7c",
-      "bytes": 12089,
+      "sha256": "b4048e7c0b1608562fdec948ad2682188e51fe97ccb01a6afb1d8b700ae7edd4",
+      "bytes": 12740,
       "role": "runtime"
     },
     "SECURITY.md": {
@@ -44,8 +54,8 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "edda1a97e0d2720a5c3d8f7bbafadd2db944d9735558d0b90b2b0d6246f0298e",
-      "bytes": 29488,
+      "sha256": "dc2fa2d33358547bda6df97197a64ff4644e74620f7b1d7aad3a09512f348e1d",
+      "bytes": 29646,
       "role": "runtime"
     },
     "VERSION": {
@@ -164,8 +174,8 @@
       "role": "runtime"
     },
     "package.json": {
-      "sha256": "5da80ab18649e0edb197e03b1ab61e8346184830f808cf9bddb29847d4ae8d56",
-      "bytes": 1327,
+      "sha256": "9f4bbe26c9e93e1f4671546bb961ed92a694cadd2cd7b102570d3bc04b7e8c43",
+      "bytes": 1372,
       "role": "runtime"
     },
     "references/appearance.md": {
@@ -239,48 +249,48 @@
       "role": "runtime"
     },
     "scripts/gen_manifest.py": {
-      "sha256": "6cd43800b8a9307876fcf6325e30d8533b961f8e475acbf29c64772655828e93",
-      "bytes": 4591,
+      "sha256": "745e9e11240cd06bf3ab3ebb55a5256a6764702ebd1cc9cad0a6e0cd0f5519cb",
+      "bytes": 4730,
       "role": "runtime"
     },
     "scripts/gen_social_preview.py": {
-      "sha256": "b7f03b6526b63a14b4fe0de5585af8b25b498777eee9978d348178ab89a47cfc",
-      "bytes": 2428,
+      "sha256": "21fe0bb7d0b1d104ffd5599f8793676f35c685293db2f8bd202f54892ec8f699",
+      "bytes": 2567,
       "role": "runtime"
     },
     "scripts/novel.py": {
-      "sha256": "a1058942525141ce2b031dd38f6701da7092cf5e77d7b125e6bec32004d0ba95",
-      "bytes": 25502,
+      "sha256": "c850c0c09a66e1563c627b2f12aadd19936a5e459fd8473a825b15976109732e",
+      "bytes": 25641,
       "role": "runtime"
     },
     "scripts/test_data.py": {
-      "sha256": "7f843d4f5cf91da7787ecf45212731db81b707d0b67f481783240a213b11802e",
-      "bytes": 3788,
+      "sha256": "31ee6d502fbe341932913ce2af620f11cddb347d1161bb7bd5b17928ce610578",
+      "bytes": 3927,
       "role": "runtime"
     },
     "scripts/test_manifest.py": {
-      "sha256": "f8b7ed2221cefddad44dc827266433a95620c22124ad56843ce65fd358e713d3",
-      "bytes": 2175,
+      "sha256": "183bcbf79dc2450ef1619134445090de0f8161e162f78f79f210406d4f5fc566",
+      "bytes": 2314,
       "role": "runtime"
     },
     "scripts/test_novel.py": {
-      "sha256": "d5da9507f5f05af22868bf87aa93327cb62f1d1981dd7ecc672e4ad50f558738",
-      "bytes": 21958,
+      "sha256": "fc30c86e7ebd7f1065c5ebe2c8b0bc8735db234faa7f8d2bea383f36eb702029",
+      "bytes": 22097,
       "role": "runtime"
     },
     "scripts/test_schema.py": {
-      "sha256": "96e230c1e2a61b5ac9d5a19696e8f435281ff3c87446eaddd7683c437f5435d8",
-      "bytes": 3151,
+      "sha256": "30be210cbba81a2c18a3555d2a528681d902b40c3eec86b22bd26c5f69009a3b",
+      "bytes": 3290,
       "role": "runtime"
     },
     "scripts/test_validate.py": {
-      "sha256": "14fbe046df67c967ae1f0b31105a93fe9700500c01343616088c59baf6660340",
-      "bytes": 3224,
+      "sha256": "7a1c8517b05ece369ad71a1319ba2e6bad76c1d74c825793b922f1e9766b9e48",
+      "bytes": 3363,
       "role": "runtime"
     },
     "scripts/validate.py": {
-      "sha256": "35c1243b8b6eb9df78ddffcdd96d9ebe986563838a09db7c2c659786c678b65d",
-      "bytes": 13386,
+      "sha256": "5d99f97152df7abd7c37344c98df75ae572e943aae784e71b377adbda653a948",
+      "bytes": 13525,
       "role": "runtime"
     },
     "social-preview.png": {

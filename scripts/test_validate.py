@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# © 2026 Treasure-hub-agent · interactive-fiction skill · MIT License
+# https://github.com/Treasure-hub-agent/interactive-fiction-skill
 """test_validate.py — validate.py 主流程 + 坏数据拦截测试（v10.1.0 新增）。
 
 用法：
