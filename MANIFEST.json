@@ -1,6 +1,6 @@
 {
   "version": "10.2.0",
-  "generated": "2026-09-28T12:08:22Z",
+  "generated": "2026-09-29T07:50:18Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -29,13 +29,13 @@
       "role": "runtime"
     },
     "README.en.md": {
-      "sha256": "bc6bccd8cec8e8e7624bde708b2003ad56a6d01f9e2c6506be9998fd0f515cf2",
-      "bytes": 9970,
+      "sha256": "f6bbf09015ebb1c56fa7febfddf6fe773ded06a7c4ee56b3751c19a91ad92d4e",
+      "bytes": 10229,
       "role": "runtime"
     },
     "README.md": {
-      "sha256": "a5faf7bf36a1caac8f4d8cb0aee8fb0631a0f53621c621b80cec0ee280200763",
-      "bytes": 10952,
+      "sha256": "34a2549f737097e7a606f35bf524def59dd6ead99639b33f2b5948dcbbf6516f",
+      "bytes": 11287,
       "role": "runtime"
     },
     "SECURITY.md": {
@@ -44,8 +44,8 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "defc40f2c7fdfc6031159c069ae2652ccd73b198f9f6733e209445a0a1dcb4e3",
-      "bytes": 29412,
+      "sha256": "edda1a97e0d2720a5c3d8f7bbafadd2db944d9735558d0b90b2b0d6246f0298e",
+      "bytes": 29488,
       "role": "runtime"
     },
     "VERSION": {
@@ -164,8 +164,8 @@
       "role": "runtime"
     },
     "package.json": {
-      "sha256": "4cf3876b2d90027aade139c8876c243f3ba3b5131edbfaadf6b24b41f86fa1c0",
-      "bytes": 1210,
+      "sha256": "5da80ab18649e0edb197e03b1ab61e8346184830f808cf9bddb29847d4ae8d56",
+      "bytes": 1327,
       "role": "runtime"
     },
     "references/appearance.md": {

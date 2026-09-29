@@ -11,6 +11,12 @@
   —— 互动小说创作完整规范 v10.2.0 ——
 </p>
 
+<p align="center" style="color:#4a3f35;line-height:1.95;">
+  <b>不是「AI 替你写小说」，是「你选，它写」。</b><br/>
+  你说开头 → 它写一段 + 摆出 5 个选项 → 你选 → 接着演<br/>
+  <span style="color:#8a7c6f;">不部署、不配 API、不写代码 —— 装进 AI 助手就能开演</span>
+</p>
+
 <p align="center">
   🌐 <b>中文</b> ｜ <a href="README.en.md">English</a>
 </p>

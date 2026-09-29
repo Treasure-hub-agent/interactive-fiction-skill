@@ -7,6 +7,10 @@
 
 > **Complete interactive-fiction authoring spec v10.2.0** — turns any AI agent into a writer of tense, choice-driven, immersive stories.
 
+> **Not "AI writes a novel for you" — it's "you choose, it writes."**
+> You set the opening → the AI writes a segment and offers 5 choices → you pick → the story goes on.
+> No deployment, no API keys, no code — drop it into your AI agent and play.
+
 🌐 **[中文](README.md) | English**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)

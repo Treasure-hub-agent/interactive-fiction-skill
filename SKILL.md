@@ -5,7 +5,7 @@ version: 10.2.0
 author: Treasure-hub-agent
 license: MIT
 platforms: [linux, macos, windows]
-triggers: ["加载小说包", "互动小说"]
+triggers: ["加载小说包", "互动小说", "互动故事", "选项小说", "写个互动小说", "开个互动小说"]
 metadata:
   hermes:
     tags: [interactive-fiction, novel, roleplay, creative-writing, webnovel]
