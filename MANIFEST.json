@@ -1,6 +1,6 @@
 {
   "version": "10.2.0",
-  "generated": "2026-09-29T08:35:54Z",
+  "generated": "2026-10-05T03:41:55Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -39,13 +39,13 @@
       "role": "runtime"
     },
     "README.en.md": {
-      "sha256": "aac69647af017fb54722ea7d1a2c694d61c00c715f7e765bbb15b3759b3c6f54",
-      "bytes": 11860,
+      "sha256": "c8526045a0a4b6c6edef9cb3886f8879b40013ed2dfea671987273b0a89bddab",
+      "bytes": 12703,
       "role": "runtime"
     },
     "README.md": {
-      "sha256": "b4048e7c0b1608562fdec948ad2682188e51fe97ccb01a6afb1d8b700ae7edd4",
-      "bytes": 12740,
+      "sha256": "71260d52a7d0d11413aaf534f2354d5c96d9df4c0c689cb0d821dbb7a1fed745",
+      "bytes": 13524,
       "role": "runtime"
     },
     "SECURITY.md": {
@@ -54,8 +54,8 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "dc2fa2d33358547bda6df97197a64ff4644e74620f7b1d7aad3a09512f348e1d",
-      "bytes": 29646,
+      "sha256": "bdf4f7065c94a13da76ca3c14e21820ddb8746cf93d77bbd6db8a95dfaa10791",
+      "bytes": 29718,
       "role": "runtime"
     },
     "VERSION": {
@@ -144,8 +144,8 @@
       "role": "runtime"
     },
     "extended/storage_runtime.md": {
-      "sha256": "c051509db075c954601efc6fc24b791e8bfb0cfdd7f0e661c77a5c42718c104b",
-      "bytes": 23159,
+      "sha256": "ad2219309736602e5a58baf200e7c6d26163bc1cce3a5ce52bbce0cebe072e35",
+      "bytes": 23660,
       "role": "runtime"
     },
     "extended/subagent_mode.md": {
@@ -204,8 +204,8 @@
       "role": "runtime"
     },
     "references/deployment.md": {
-      "sha256": "123ad0a33e9f22f256662cf1e83d479c02219eccd67313c38311d418f26a6620",
-      "bytes": 4357,
+      "sha256": "3b5a49d3b88d6add53521ae552f0ae4f1a27714c4b2a6796e79a7f5ad741b2d3",
+      "bytes": 4437,
       "role": "runtime"
     },
     "references/emotion-escalation-motifs.md": {
@@ -259,8 +259,8 @@
       "role": "runtime"
     },
     "scripts/novel.py": {
-      "sha256": "c850c0c09a66e1563c627b2f12aadd19936a5e459fd8473a825b15976109732e",
-      "bytes": 25641,
+      "sha256": "a40dfe57b66984c4a1b34a52b632ca92b617f39a1699393ee2a5aec1273c5064",
+      "bytes": 26332,
       "role": "runtime"
     },
     "scripts/test_data.py": {

@@ -102,6 +102,7 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 | 通用约定（多 agent 共用） | `~/.agents/skills/interactive-fiction/` |
 | Claude Code | `~/.claude/skills/interactive-fiction/` |
 | Cursor | `~/.cursor/skills/interactive-fiction/` |
+| Operit（Android） | `/sdcard/Download/Operit/skills/interactive-fiction/` |
 
 > 只要客户端能读取 `SKILL.md`，本 skill 就能用 —— 把目录放进它的技能目录即可（文件读写权限为必需项，见下方「平台表现」）。
 
@@ -114,6 +115,16 @@ hermes skills tap add Treasure-hub-agent/interactive-fiction-skill
 ```
 
 添加后即可在 `hermes skills browse` / `hermes skills search` 中看到并安装本 skill，后续 `hermes skills check` 可检查更新。
+
+### 方式 4：Operit（Android）用户
+
+Operit 自带 Skill 管理，全程不用命令行：
+
+1. 打开 `包管理 → Skills`（或点右下角商店图标进市场直接搜本 skill）
+2. 点 `+` → 选「仓库」，填 `https://github.com/Treasure-hub-agent/interactive-fiction-skill`（也可选「ZIP」导入发布包）
+3. 确认该条目右侧开关处于**开启**状态，发「加载小说包」开局
+
+> 小说数据落在 `/sdcard/Download/Operit/novels/`（与技能目录分开），升级或重装技能不影响存档。记忆外置助手需要 Python 环境；没有也能玩，会自动走 AI 直接读写运行时文件的原路径。
 
 ### 升级路径
 
@@ -169,7 +180,7 @@ hermes skills tap add Treasure-hub-agent/interactive-fiction-skill
 
 ## 📚 存放 · 存储与权限
 
-本 skill 会在你的用户目录下创建存储根目录（默认 `~/novels/`，可通过环境变量 `NOVEL_STORAGE_ROOT` 覆盖），用于存放：
+本 skill 会在存储根目录下创建数据（桌面宿主默认 `~/novels/`，手机端 `/sdcard/Download/Operit/novels/`；可用环境变量 `NOVEL_STORAGE_ROOT` 覆盖），用于存放：
 
 - 小说存档与运行时状态（`{小说名}/meta/novel_runtime.json`）
 - 助手簿记（`{小说名}/meta/novel_assist.json`）

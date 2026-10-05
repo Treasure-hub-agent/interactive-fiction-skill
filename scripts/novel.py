@@ -21,7 +21,7 @@
     python3 scripts/novel.py save [书签摘要]
     python3 scripts/novel.py load (N | --latest)
 
-全局参数：--root 存储根（默认 $NOVEL_STORAGE_ROOT 或 ~/novels）；
+全局参数：--root 存储根（默认 $NOVEL_STORAGE_ROOT；未设置时手机端 /sdcard/Download/Operit/novels、桌面端 ~/novels）；
           --novel 小说名（默认 _index.json 的 act）。
 """
 import argparse
@@ -589,17 +589,31 @@ def cmd_load(args):
           f" · seg_count={state.get('seg_count', 0)} · 累计 {state.get('wc', 0)} 字")
 
 
+def default_storage_root() -> str:
+    """存储根默认值：环境变量 → 手机端宿主（Android / Operit）→ 桌面默认。
+
+    手机端宿主（如 Operit）的技能目录是 /sdcard/Download/Operit/skills/，
+    小说数据放在同级的 novels/；/sdcard 在 Android 侧与 Linux 侧都可读写。
+    """
+    env = os.environ.get("NOVEL_STORAGE_ROOT")
+    if env:
+        return env
+    if os.path.isdir("/sdcard/Download/Operit"):
+        return "/sdcard/Download/Operit/novels"
+    return "~/novels"
+
+
 # ---------- CLI ----------
 def main() -> int:
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--root", default=argparse.SUPPRESS,
-                        help="存储根（默认 $NOVEL_STORAGE_ROOT 或 ~/novels）")
+                        help="存储根（默认 $NOVEL_STORAGE_ROOT；未设置时手机端 /sdcard/Download/Operit/novels、桌面端 ~/novels）")
     common.add_argument("--novel", default=argparse.SUPPRESS,
                         help="小说名（默认 _index.json 的 act）")
 
     p = argparse.ArgumentParser(description="记忆外置助手：记账、算数、提醒")
-    p.add_argument("--root", default=os.environ.get("NOVEL_STORAGE_ROOT", "~/novels"),
-                   help="存储根（默认 $NOVEL_STORAGE_ROOT 或 ~/novels）")
+    p.add_argument("--root", default=default_storage_root(),
+                   help="存储根（默认 $NOVEL_STORAGE_ROOT；未设置时手机端 /sdcard/Download/Operit/novels、桌面端 ~/novels）")
     p.add_argument("--novel", default=None,
                    help="小说名（默认 _index.json 的 act）")
     sub = p.add_subparsers(dest="cmd", required=True)

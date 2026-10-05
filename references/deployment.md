@@ -50,6 +50,7 @@ npx skills add Treasure-hub-agent/interactive-fiction-skill
 | Hermes | `~/.hermes/skills/creative/interactive-fiction/` |
 | Claude Code | `~/.claude/skills/interactive-fiction/` |
 | Cursor | `~/.cursor/skills/interactive-fiction/` |
+| Operit（Android） | `/sdcard/Download/Operit/skills/interactive-fiction/` |
 
 ```bash
 mkdir -p ~/.hermes/skills/creative/interactive-fiction

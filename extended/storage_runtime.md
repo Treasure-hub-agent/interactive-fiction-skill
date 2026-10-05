@@ -6,7 +6,7 @@
 
 ## 一、本地文件储存系统
 
-> 存储根目录默认 `~/novels/`（可通过环境变量 `NOVEL_STORAGE_ROOT` 覆盖），下文以 `{存储根}` 指代，每部小说一个独立文件夹。
+> 存储根目录按宿主环境取值（优先级自上而下）：① 用户或宿主指定目录 → ② 环境变量 `NOVEL_STORAGE_ROOT`（桌面宿主）→ ③ **手机端宿主（Android，如 Operit）→ `/sdcard/Download/Operit/novels/`**（`/sdcard` 在 Android 侧与 Linux 侧都可读写；技能目录是 `/sdcard/Download/Operit/skills/`，小说数据放在同级 `novels/`，升级或重装技能不影响数据）→ ④ **桌面宿主（Windows / macOS / Linux）→ `~/novels/`**。下文以 `{存储根}` 指代，每部小说一个独立文件夹。
 
 ### 目录结构
 
@@ -377,7 +377,7 @@
 > **`[设定]` 段（v10.2.0）**：`brief` 自动扫描 `{存储根}/{小说名}/worldbuilding/*.md` 与 `characters/*/profile.md`，抽出标题/加粗词条，按本轮相关度（用户输入 > 当前场景与地点 > 角色名）命中，**仅命中时输出、无命中不占行**（默认 ≤4 条，`--full` 放开）；全程只读，目录缺失或单文件损坏静默跳过，账本零影响。
 >
 > `{技能目录}` = 本技能安装目录（SKILL.md 所在目录）；**agent 的 cwd 通常不是技能目录**，须用完整路径调用，在技能目录内执行时才可省略前缀。
-> 全局参数：`--root`（默认 `$NOVEL_STORAGE_ROOT` 或 `~/novels`）、`--novel`（默认 `_index.json` 的 `act`）。
+> 全局参数：`--root`（默认按宿主取值：手机端 `/sdcard/Download/Operit/novels`、桌面端 `~/novels`；环境变量 `$NOVEL_STORAGE_ROOT` 优先）、`--novel`（默认 `_index.json` 的 `act`）。
 
 ### 小票字段（record 入参）
 

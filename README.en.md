@@ -88,6 +88,7 @@ Put the repo into your agent's skills directory:
 | Generic convention (shared by agents) | `~/.agents/skills/interactive-fiction/` |
 | Claude Code | `~/.claude/skills/interactive-fiction/` |
 | Cursor | `~/.cursor/skills/interactive-fiction/` |
+| Operit (Android) | `/sdcard/Download/Operit/skills/interactive-fiction/` |
 
 > Any client that can read `SKILL.md` can use this skill — just drop the folder into its skills directory (file read/write access is required; see Platform Support below).
 
@@ -100,6 +101,16 @@ hermes skills tap add Treasure-hub-agent/interactive-fiction-skill
 ```
 
 Once added, the skill shows up in `hermes skills browse` / `hermes skills search`; `hermes skills check` reports updates.
+
+### Option 4: Operit (Android) users
+
+Operit manages skills itself — no command line needed:
+
+1. Open `Packages → Skills` (or tap the store icon and search for this skill in the market)
+2. Tap `+` → choose "Repository" and enter `https://github.com/Treasure-hub-agent/interactive-fiction-skill` (or use "ZIP" with a release package)
+3. Make sure the toggle on the right of the entry is **on**, then send the trigger phrase to start a story
+
+> Story data lives in `/sdcard/Download/Operit/novels/`, separate from the skill folder — upgrading or reinstalling the skill keeps your saves. The bookkeeping helper needs Python; without it the skill still works, falling back to the AI reading/writing runtime files directly.
 
 ### Upgrade path
 
@@ -155,7 +166,7 @@ Naive AI fiction has a familiar litany of failure:
 
 ## Storage & Permissions
 
-The skill creates a storage root in your user directory (default `~/novels/`, overridable via env var `NOVEL_STORAGE_ROOT`) for:
+The skill creates a storage root (desktop default `~/novels/`; on Android/Operit `/sdcard/Download/Operit/novels/`; overridable via env var `NOVEL_STORAGE_ROOT`) for:
 
 - Novel saves and runtime state (`{story}/meta/novel_runtime.json`)
 - Assistant bookkeeping (`{story}/meta/novel_assist.json`)
