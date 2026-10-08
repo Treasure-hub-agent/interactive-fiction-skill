@@ -5,7 +5,7 @@
 
 # interactive-fiction
 
-> **Complete interactive-fiction authoring spec v10.2.0** — turns any AI agent into a writer of tense, choice-driven, immersive stories.
+> **Complete interactive-fiction authoring spec v10.2.1** — turns any AI agent into a writer of tense, choice-driven, immersive stories.
 
 > **Not "AI writes a novel for you" — it's "you choose, it writes."**
 > You set the opening → the AI writes a segment and offers 5 choices → you pick → the story goes on.
@@ -14,7 +14,7 @@
 🌐 **[中文](README.md) | English**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-10.2.0-orange.svg)](VERSION)
+[![Version](https://img.shields.io/badge/version-10.2.1-orange.svg)](VERSION)
 
 ---
 

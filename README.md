@@ -8,7 +8,7 @@
 </h1>
 
 <p align="center" style="color:#8a7c6f;">
-  —— 互动小说创作完整规范 v10.2.0 ——
+  —— 互动小说创作完整规范 v10.2.1 ——
 </p>
 
 <p align="center" style="color:#4a3f35;line-height:1.95;">
@@ -27,7 +27,7 @@ An AI-agent skill for interactive fiction — Chinese-first: choice-driven story
 
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"/></a>
-  <a href="VERSION"><img alt="Version" src="https://img.shields.io/badge/version-10.2.0-orange.svg"/></a>
+  <a href="VERSION"><img alt="Version" src="https://img.shields.io/badge/version-10.2.1-orange.svg"/></a>
   <a href="https://github.com/Treasure-hub-agent/ai-with-u"><img alt="ai-with-u" src="https://img.shields.io/badge/ecosystem-ai--with--u-9cf.svg"/></a>
 </p>
 

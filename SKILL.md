@@ -1,7 +1,7 @@
 ---
 name: interactive-fiction
-description: "可选项驱动的互动小说创作完整规范：支持穿越/自创/创世/随机开局，内置视角一致性、字数区间、选项机制、存档系统与角色卡体系。"
-version: 10.2.0
+description: "可选项驱动的互动小说创作完整规范：支持穿越/自创/创世/随机开局，内置视角一致性、字数区间、选项机制、存档系统与角色卡体系。当用户想玩、想写互动小说，或说「加载小说包」「开个互动小说」「选项小说」「互动故事」时使用。"
+version: 10.2.1
 author: Treasure-hub-agent
 license: MIT
 copyright: "© 2026 Treasure-hub-agent"

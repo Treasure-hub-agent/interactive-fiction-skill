@@ -1,5 +1,10 @@
 # 更新日志
 
+## v10.2.1（2026-10-09）· 简介补触发场景
+
+- `SKILL.md` 的 `description` 在能力描述之后补一句使用场景与唤起说法（「加载小说包」「开个互动小说」「选项小说」「互动故事」），使**只读 `description` 做匹配的客户端**（Operit / Claude Code / Cursor 等）也能判断何时启用；`triggers` 字段保留不动
+- 版本同步：VERSION / SKILL.md / package.json / README 中英 / CHANGELOG / MANIFEST → **10.2.1**；无运行时行为变更
+
 ## v10.2.0（2026-09-28）· 记忆外置助手（脚本记账，模型创作）
 
 **🧠 长篇更省心（核心）**

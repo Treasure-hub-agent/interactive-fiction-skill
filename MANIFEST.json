@@ -1,6 +1,6 @@
 {
-  "version": "10.2.0",
-  "generated": "2026-10-05T03:41:55Z",
+  "version": "10.2.1",
+  "generated": "2026-10-08T16:27:26Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -9,8 +9,8 @@
       "role": "meta"
     },
     "CHANGELOG.md": {
-      "sha256": "49f6d0c136d3c0d24099fe7d8437efe6f86962c0f65562922358930a62123289",
-      "bytes": 4267,
+      "sha256": "8283ed09ee659cdb01cd27e05a7d26913ce11520fe0bd7ebe0aaa7ba414e887a",
+      "bytes": 4611,
       "role": "meta"
     },
     "CODE_OF_CONDUCT.md": {
@@ -39,12 +39,12 @@
       "role": "runtime"
     },
     "README.en.md": {
-      "sha256": "c8526045a0a4b6c6edef9cb3886f8879b40013ed2dfea671987273b0a89bddab",
+      "sha256": "e3306d6c967c499725bdb38654012fa1c4cdbaf6903294130fbdf49aee85e7eb",
       "bytes": 12703,
       "role": "runtime"
     },
     "README.md": {
-      "sha256": "71260d52a7d0d11413aaf534f2354d5c96d9df4c0c689cb0d821dbb7a1fed745",
+      "sha256": "c52e502ed65b1938c12c05295d52d1450bed8f08b278eda83fbc3cb075156443",
       "bytes": 13524,
       "role": "runtime"
     },
@@ -54,12 +54,12 @@
       "role": "meta"
     },
     "SKILL.md": {
-      "sha256": "bdf4f7065c94a13da76ca3c14e21820ddb8746cf93d77bbd6db8a95dfaa10791",
-      "bytes": 29718,
+      "sha256": "9c956356d42aa15d38c3fbdc902a76453b44a3bf196e27b0c51f8359fce41bd0",
+      "bytes": 29856,
       "role": "runtime"
     },
     "VERSION": {
-      "sha256": "6fbeec84a27d0608a2a8decd72a394b27f723696948231e4b23a851d63293c74",
+      "sha256": "eb3cd29fb2381f3f88bee1c0fc3ebf59b23a25428a3e9a8be1ee049d0b37e6eb",
       "bytes": 6,
       "role": "runtime"
     },
@@ -174,7 +174,7 @@
       "role": "runtime"
     },
     "package.json": {
-      "sha256": "9f4bbe26c9e93e1f4671546bb961ed92a694cadd2cd7b102570d3bc04b7e8c43",
+      "sha256": "5ecc5f2853069146bda5683a6704322cfb598ec9a3e70fd77f4f4f05c71061db",
       "bytes": 1372,
       "role": "runtime"
     },
@@ -184,8 +184,8 @@
       "role": "runtime"
     },
     "references/changelog.md": {
-      "sha256": "531ddc47b069edab7b378a829cafd0eb6628dfb5e20d1f780a04729522b513f6",
-      "bytes": 20738,
+      "sha256": "c346c4dfbaea15c7f2c08ae718b0dad46916c1f38de51ab0ea101dc9ac40bcee",
+      "bytes": 21246,
       "role": "runtime"
     },
     "references/character-card-usage.md": {
