@@ -171,5 +171,19 @@
     ],
     "effect": "进入角色卡短篇模式（独立短篇）",
     "load": "extended/character_card.md"
+  },
+  {
+    "domain": "原著",
+    "aliases": [
+      "上传原著",
+      "这是原著",
+      "用这本原著开局",
+      "蒸馏这本原著",
+      "深蒸馏",
+      "查第N章",
+      "原著这段是什么"
+    ],
+    "effect": "接入原著 txt 并建索引 / 按深度分层采样蒸馏 / 游戏中回查原著章节",
+    "load": "extended/txt_distillation.md"
   }
 ]

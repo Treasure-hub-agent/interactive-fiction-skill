@@ -82,7 +82,7 @@
 ## 与 txt 深蒸馏衔接
 
 - 标题产物写入同一 `novel_runtime.json` / `output/` 结构。
-- 用户后续补传 txt → 以搜索底稿为基础做「深蒸馏」：补全 `missing`、提升 `credibility`、用全文校正「存疑」项。
+- 用户后续补传 txt → 以搜索底稿为基础做「深蒸馏」：补全 `missing`、提升 `credibility`、用全文校正「存疑」项；深蒸馏执行 `extended/txt_distillation.md`，两路 `distill` 字段同构（`source` 记 `title-search` 或 `txt`）。
 - 锚定机制（route_system.md §二）同样适用。
 
 ## 蒸馏完成后 · 落盘位置

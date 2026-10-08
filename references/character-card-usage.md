@@ -59,7 +59,7 @@
 
 | 来源 | work 判定 | 落盘路径 |
 |------|-----------|----------|
-| 蒸馏（title_distillation / txt distillation） | 蒸馏时确定的作品名 | `characters/《作品名》/{角色名}/` |
+| 蒸馏（`title_distillation.md` / `txt_distillation.md`） | 蒸馏时确定的作品名 | `characters/《作品名》/{角色名}/` |
 | 深度创建·简化模式 | `自创` | `characters/自创/{角色名}/` |
 | 深度创建·九维（用户指定了作品） | 用户指定的作品名 | `characters/《作品名》/{角色名}/` |
 | 深度创建·九维（未指定作品） | `自创` | `characters/自创/{角色名}/` |

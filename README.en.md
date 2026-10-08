@@ -34,36 +34,24 @@
 
 ---
 
-## What's New (v10.2.0 · Memory Offload Assistant)
+## What's New (v10.2.1 · Smart Source-Novel Reading)
 
-**📚 World-book style setting lookup (headline #1)**
+**📖 Hand it a whole novel — long ones included (headline)**
 
-- Your written world (`worldbuilding/`) and character cards (`characters/`) now **enter the per-turn brief when relevant**: mention a term like 「灵纹」 and its rule comes with it; walk into a town and its history does too
-- Only the **few relevant entries** — nothing unrelated takes a line, so long novels run tens of thousands of words without the setting drifting
-- With nothing relevant, the brief is **byte-for-byte identical** to before
+- **Drop it in**: a source novel arrives as a file or pasted text and is stored first — encoding detected (UTF-8 / GBK / UTF-16), chapters and volumes split, plus an intake card: chapters / word count / volumes / a cast-candidate list
+- **Read with a budget**: under 50k characters it is read in full; million-character epics are sampled in layers (opening + each volume's first chapter + lore-dense chapters + an even spread), then the protagonist and key cast are deep-read around their densest appearances — **the raw text never floods the context, only conclusions do**
+- **Evidence from the source**: every trait carries a chapter citation, and speech habits are kept as verbatim samples — closer to the original than second-hand notes
+- **No re-reading**: the raw text, index and canon timeline stay under `source/`; mid-story, "what happens in chapter 137" locates the passage for comparison
 
-**🧠 Long stories that keep their own notes**
+**🧭 Sharper canon anchoring**
 
-- Optional **memory offload assistant**: word counts, segment counts, recaps and payoff bookkeeping are tallied for the AI, leaving it free to focus on the prose
-- **Four-tier brief**: due consequences / long-term facts / recent changes / background state — what matters stays in view, small details don't crowd the page
-- Background items fade on their own: flagged for two scenes, folded into one line, then quietly archived after six — **old business stops resurfacing in the narrative**
-- The brief is reference only; it never makes narrative decisions for the author. Bookkeeping format is unchanged, so **existing saves keep working**
-- Clients without a Python runtime fall back to the original flow — the story never stops
-
-**🚪 Ready from the first message**
-
-- Sending the trigger phrase now **always raises the opening menu** — no longer depends on the model remembering
-- Steadier prose: the writing guide has a definite loading moment (entering a new chapter)
-- Each turn's self-check is split into **pre-write prediction** and **post-write review**, so a bad paragraph is caught on the spot
-
-**🐛 Stability fixes**
-
-- Fixed: brief crash when two due consequences shared the same lag; bookkeeping aborted by a corrupted sidecar; missed due-reminders on legacy ledgers without segment counts; random-start saves unreadable; silent false success on string segment ids; word count double-counted after a failed write; brief crash on non-UTF-8 setting files
-- Unit tests **56 → 73**, covering every fix above
+- Source material now lives together under `source/` (raw text + index + timeline)
+- Comparison triggers on scene changes / new chapters / on request, with a fallback every 10 saves; deviations come back as a short report (aligned / deviation / suggested direction)
 
 **📐 Engineering**
 
-- The ledger stays in `meta/novel_runtime.json`; assistant bookkeeping lives beside it in `meta/novel_assist.json`
+- New `scripts/txt_prep.py` (stdlib only): `scan` builds the index, `slice` returns windows by chapter, line range or keyword; the index can be rebuilt anytime
+- Unit tests **73 → 100** (27 new), `validate.py` green across all six checks
 
 ---
 

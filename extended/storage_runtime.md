@@ -64,7 +64,11 @@
     │   ├── side_characters.json         # （已迁至 novel_runtime.json）
     │   └── plot_flags.json              # （已迁至 novel_runtime.json）
     │
-    └── source/                          # 原著材料（可选）
+    └── source/                          # 原著材料与索引（可选）
+        ├── <作品名>.txt                 # 原著原文（只读，落盘后不改写）
+        ├── book_map.json                # 章节 / 卷 / 角色候选 / 设定密度索引（可重建）
+        ├── 目录.txt                     # 人可读章节目录
+        └── timeline.md                  # 原著时间线（回查与锚定用，不参与每轮简报）
 ```
 
 ### 核心设计原则

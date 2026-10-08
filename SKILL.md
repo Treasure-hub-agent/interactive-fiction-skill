@@ -68,7 +68,7 @@ metadata:
 | 切换子Agent / 沉浸 / 模式 / 视角 | 对应 `extended/subagent_mode.md` / `modes/immersion.md` / `modes/shuangwen.md`、`modes/mainline.md` / `references/switch-rules.md` |
 | 事件触发（地点/seg场景切换/间隔/一致性） | `extended/event_behaviors.md` |
 | 场景卡 / 情感场景展开 | `extended/features.md` |
-| 蒸馏 / 开局原著数据收集 | `extended/distillation.md` |
+| 蒸馏（作品名检索 / 原作 txt）/ 开局原著数据收集 | `extended/distillation.md`、`extended/title_distillation.md`、`extended/txt_distillation.md` |
 | 开局路线 / 路线冲突 / 进度查询 | `extended/route_system.md` |
 | 创世世界观 / 角色创建 | `extended/creation_world.md` |
 | 角色卡（弹出/修改/深度创建/短篇） | `extended/character_card.md` / `extended/deep_character_creation.md` |
