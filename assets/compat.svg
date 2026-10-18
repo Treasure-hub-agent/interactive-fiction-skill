@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" role="img" aria-labelledby="ttl desc">
+  <title id="ttl">平台表现矩阵</title>
+  <desc id="desc">五行能力对照：文件读写为必需，联网搜索、子 Agent、thinking 模式、Python 环境为可选，并标出各自的降级表现。</desc>
+
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF5EA"/><stop offset="1" stop-color="#F1E6D5"/>
+    </linearGradient>
+    <radialGradient id="b1" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#FFC08A" stop-opacity="0.62"/><stop offset="1" stop-color="#FFB183" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b2" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#9FCDF0" stop-opacity="0.58"/><stop offset="1" stop-color="#8BC0E8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="row" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.80"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.52"/>
+    </linearGradient>
+    <filter id="lift" x="-6%" y="-24%" width="112%" height="150%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#4A3A2A" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="340" fill="url(#paper)"/>
+  <circle cx="240" cy="20" r="320" fill="url(#b1)"/>
+  <circle cx="1080" cy="330" r="340" fill="url(#b2)"/>
+
+  <g font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif">
+
+    <!-- 表头 -->
+    <text x="76" y="40" font-size="11.5" letter-spacing="2" fill="#3C2D1E" fill-opacity="0.40">能力</text>
+    <text x="620" y="40" font-size="11.5" letter-spacing="2" fill="#3C2D1E" fill-opacity="0.40">必需？</text>
+    <text x="760" y="40" font-size="11.5" letter-spacing="2" fill="#3C2D1E" fill-opacity="0.40">不支持时的表现</text>
+
+    <!-- 行 1 -->
+    <rect x="40" y="54" width="1200" height="48" rx="16" fill="url(#row)" filter="url(#lift)"/>
+    <rect x="40.6" y="54.6" width="1198.8" height="46.8" rx="15.4" fill="none" stroke="#FFFFFF" stroke-width="1.2"/>
+    <g transform="translate(64,67)" fill="none" stroke="#2F7A5C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h12l4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M9 13h6"/></g>
+    <text x="100" y="84" font-size="14.5" fill="#2B2119">文件读写</text>
+    <rect x="612" y="64" width="66" height="27" rx="13.5" fill="#4FAE8C" fill-opacity="0.14" stroke="#4FAE8C" stroke-opacity="0.30" stroke-width="1"/>
+    <text x="645" y="82" font-size="12" fill="#2F7A5C" text-anchor="middle">必需</text>
+    <text x="760" y="83" font-size="13.5" fill="#5B5045">存档不落盘（静默降级）</text>
+
+    <!-- 行 2 -->
+    <rect x="40" y="110" width="1200" height="48" rx="16" fill="url(#row)" filter="url(#lift)"/>
+    <rect x="40.6" y="110.6" width="1198.8" height="46.8" rx="15.4" fill="none" stroke="#FFFFFF" stroke-width="1.2"/>
+    <g transform="translate(64,123)" fill="none" stroke="#B4813C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r="0.6" fill="#B4813C"/></g>
+    <text x="100" y="140" font-size="14.5" fill="#2B2119">联网搜索</text>
+    <rect x="612" y="120" width="66" height="27" rx="13.5" fill="#E8925C" fill-opacity="0.14" stroke="#E8925C" stroke-opacity="0.32" stroke-width="1"/>
+    <text x="645" y="138" font-size="12" fill="#9A5A2A" text-anchor="middle">可选</text>
+    <text x="760" y="139" font-size="13.5" fill="#5B5045">蒸馏走「模型知识优先」降级路径</text>
+
+    <!-- 行 3 -->
+    <rect x="40" y="166" width="1200" height="48" rx="16" fill="url(#row)" filter="url(#lift)"/>
+    <rect x="40.6" y="166.6" width="1198.8" height="46.8" rx="15.4" fill="none" stroke="#FFFFFF" stroke-width="1.2"/>
+    <g transform="translate(64,179)" fill="none" stroke="#B4813C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r="0.6" fill="#B4813C"/></g>
+    <text x="100" y="196" font-size="14.5" fill="#2B2119">子任务派发（子 Agent）</text>
+    <rect x="612" y="176" width="66" height="27" rx="13.5" fill="#E8925C" fill-opacity="0.14" stroke="#E8925C" stroke-opacity="0.32" stroke-width="1"/>
+    <text x="645" y="194" font-size="12" fill="#9A5A2A" text-anchor="middle">可选</text>
+    <text x="760" y="195" font-size="13.5" fill="#5B5045">自动降级为主 Agent 直出</text>
+
+    <!-- 行 4 -->
+    <rect x="40" y="222" width="1200" height="48" rx="16" fill="url(#row)" filter="url(#lift)"/>
+    <rect x="40.6" y="222.6" width="1198.8" height="46.8" rx="15.4" fill="none" stroke="#FFFFFF" stroke-width="1.2"/>
+    <g transform="translate(64,235)" fill="none" stroke="#B4813C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r="0.6" fill="#B4813C"/></g>
+    <text x="100" y="252" font-size="14.5" fill="#2B2119">thinking 模式</text>
+    <rect x="612" y="232" width="66" height="27" rx="13.5" fill="#E8925C" fill-opacity="0.14" stroke="#E8925C" stroke-opacity="0.32" stroke-width="1"/>
+    <text x="645" y="250" font-size="12" fill="#9A5A2A" text-anchor="middle">可选</text>
+    <text x="760" y="251" font-size="13.5" fill="#5B5045">关闭后仍可用，选项推理质量略降</text>
+
+    <!-- 行 5 -->
+    <rect x="40" y="278" width="1200" height="48" rx="16" fill="url(#row)" filter="url(#lift)"/>
+    <rect x="40.6" y="278.6" width="1198.8" height="46.8" rx="15.4" fill="none" stroke="#FFFFFF" stroke-width="1.2"/>
+    <g transform="translate(64,291)" fill="none" stroke="#B4813C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r="0.6" fill="#B4813C"/></g>
+    <text x="100" y="308" font-size="14.5" fill="#2B2119">Python 运行环境</text>
+    <rect x="612" y="288" width="66" height="27" rx="13.5" fill="#E8925C" fill-opacity="0.14" stroke="#E8925C" stroke-opacity="0.32" stroke-width="1"/>
+    <text x="645" y="306" font-size="12" fill="#9A5A2A" text-anchor="middle">可选</text>
+    <text x="760" y="307" font-size="13.5" fill="#5B5045">跳过记忆外置助手，剧情不中断</text>
+  </g>
+</svg>

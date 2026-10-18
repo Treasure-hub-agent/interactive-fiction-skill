@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-labelledby="ttl desc">
+  <title id="ttl">支持的客户端与技能目录</title>
+  <desc id="desc">六个客户端技能目录：DeepSeek Harness、Claude Code、Cursor、Hermes、Operit（Android）、通用约定。</desc>
+
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF5EA"/><stop offset="1" stop-color="#F1E6D5"/>
+    </linearGradient>
+    <radialGradient id="b1" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#FFC08A" stop-opacity="0.65"/><stop offset="1" stop-color="#FFB183" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b2" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#9FCDF0" stop-opacity="0.62"/><stop offset="1" stop-color="#8BC0E8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b3" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#D3BCF2" stop-opacity="0.55"/><stop offset="1" stop-color="#B49AE0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.84"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.52"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset="0.30" stop-color="#FFFFFF" stop-opacity="0.80"/>
+      <stop offset="0.74" stop-color="#3C2D1E" stop-opacity="0.12"/><stop offset="1" stop-color="#3C2D1E" stop-opacity="0.24"/>
+    </linearGradient>
+    <filter id="lift" x="-14%" y="-24%" width="128%" height="152%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#4A3A2A" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="320" fill="url(#paper)"/>
+  <circle cx="1080" cy="0" r="320" fill="url(#b1)"/>
+  <circle cx="160" cy="320" r="320" fill="url(#b2)"/>
+  <circle cx="660" cy="340" r="260" fill="url(#b3)"/>
+
+  <g font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif">
+
+    <!-- 1 DeepSeek Harness -->
+    <rect x="42" y="36" width="384" height="124" rx="22" fill="url(#card)" filter="url(#lift)"/>
+    <rect x="42.6" y="36.6" width="382.8" height="122.8" rx="21.4" fill="none" stroke="url(#ring)" stroke-width="1.2"/>
+    <rect x="66" y="60" width="34" height="34" rx="11" fill="#FFFFFF" stroke="#3C2D1E" stroke-opacity="0.11" stroke-width="1"/>
+    <g transform="translate(74,68)" fill="none" stroke="#2B2119" stroke-opacity="0.80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="12" rx="3"/><path d="M7 10h6"/>
+    </g>
+    <text x="112" y="82" font-size="15" font-weight="600" fill="#1B1712">DeepSeek Harness</text>
+    <text x="66" y="128" font-family="ui-monospace,Consolas,monospace" font-size="11.5" fill="#6E6154">~/.dsh/skills/interactive-fiction/</text>
+
+    <!-- 2 Claude Code -->
+    <rect x="448" y="36" width="384" height="124" rx="22" fill="url(#card)" filter="url(#lift)"/>
+    <rect x="448.6" y="36.6" width="382.8" height="122.8" rx="21.4" fill="none" stroke="url(#ring)" stroke-width="1.2"/>
+    <rect x="472" y="60" width="34" height="34" rx="11" fill="#FFFFFF" stroke="#3C2D1E" stroke-opacity="0.11" stroke-width="1"/>
+    <g transform="translate(480,68)" fill="none" stroke="#2B2119" stroke-opacity="0.80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="7.5"/><path d="M9 12h6"/>
+    </g>
+    <text x="518" y="82" font-size="15" font-weight="600" fill="#1B1712">Claude Code</text>
+    <text x="472" y="128" font-family="ui-monospace,Consolas,monospace" font-size="11.5" fill="#6E6154">~/.claude/skills/interactive-fiction/</text>
+
+    <!-- 3 Cursor -->
+    <rect x="854" y="36" width="384" height="124" rx="22" fill="url(#card)" filter="url(#lift)"/>
+    <rect x="854.6" y="36.6" width="382.8" height="122.8" rx="21.4" fill="none" stroke="url(#ring)" stroke-width="1.2"/>
+    <rect x="878" y="60" width="34" height="34" rx="11" fill="#FFFFFF" stroke="#3C2D1E" stroke-opacity="0.11" stroke-width="1"/>
+    <g transform="translate(886,68)" fill="none" stroke="#2B2119" stroke-opacity="0.80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 18L18 6M13 6h5v5"/>
+    </g>
+    <text x="924" y="82" font-size="15" font-weight="600" fill="#1B1712">Cursor</text>
+    <text x="878" y="128" font-family="ui-monospace,Consolas,monospace" font-size="11.5" fill="#6E6154">~/.cursor/skills/interactive-fiction/</text>
+
+    <!-- 4 Hermes -->
+    <rect x="42" y="180" width="384" height="124" rx="22" fill="url(#card)" filter="url(#lift)"/>
+    <rect x="42.6" y="180.6" width="382.8" height="122.8" rx="21.4" fill="none" stroke="url(#ring)" stroke-width="1.2"/>
+    <rect x="66" y="204" width="34" height="34" rx="11" fill="#FFFFFF" stroke="#3C2D1E" stroke-opacity="0.11" stroke-width="1"/>
+    <g transform="translate(74,212)" fill="none" stroke="#2B2119" stroke-opacity="0.80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3v18M5 8l7-5 7 5"/>
+    </g>
+    <text x="112" y="226" font-size="15" font-weight="600" fill="#1B1712">Hermes</text>
+    <text x="66" y="272" font-family="ui-monospace,Consolas,monospace" font-size="11.5" fill="#6E6154">~/.hermes/skills/creative/interactive-fiction/</text>
+
+    <!-- 5 Operit -->
+    <rect x="448" y="180" width="384" height="124" rx="22" fill="url(#card)" filter="url(#lift)"/>
+    <rect x="448.6" y="180.6" width="382.8" height="122.8" rx="21.4" fill="none" stroke="url(#ring)" stroke-width="1.2"/>
+    <rect x="472" y="204" width="34" height="34" rx="11" fill="#FFFFFF" stroke="#3C2D1E" stroke-opacity="0.11" stroke-width="1"/>
+    <g transform="translate(480,212)" fill="none" stroke="#2B2119" stroke-opacity="0.80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="6" y="3" width="12" height="18" rx="3"/><path d="M10 18h4"/>
+    </g>
+    <text x="518" y="226" font-size="15" font-weight="600" fill="#1B1712">Operit · Android</text>
+    <text x="472" y="272" font-family="ui-monospace,Consolas,monospace" font-size="11.5" fill="#6E6154">/sdcard/Download/Operit/skills/…</text>
+
+    <!-- 6 通用约定 -->
+    <rect x="854" y="180" width="384" height="124" rx="22" fill="url(#card)" filter="url(#lift)"/>
+    <rect x="854.6" y="180.6" width="382.8" height="122.8" rx="21.4" fill="none" stroke="url(#ring)" stroke-width="1.2"/>
+    <rect x="878" y="204" width="34" height="34" rx="11" fill="#FFFFFF" stroke="#3C2D1E" stroke-opacity="0.11" stroke-width="1"/>
+    <g transform="translate(886,212)" fill="none" stroke="#2B2119" stroke-opacity="0.80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="18" r="2"/>
+      <path d="M6.6 7.4l3 3M14.4 13.6l3 3"/>
+    </g>
+    <text x="924" y="226" font-size="15" font-weight="600" fill="#1B1712">通用约定（多 agent 共用）</text>
+    <text x="878" y="272" font-family="ui-monospace,Consolas,monospace" font-size="11.5" fill="#6E6154">~/.agents/skills/interactive-fiction/</text>
+  </g>
+</svg>

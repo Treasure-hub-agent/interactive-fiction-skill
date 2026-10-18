@@ -52,9 +52,12 @@ class TestReplaceVersionNumber(unittest.TestCase):
 
 class TestAutoTargetsSafety(unittest.TestCase):
     def test_targets_are_text_files_only(self):
-        """自动替换列表里不得出现二进制（如 assets/*.png）。"""
+        """自动替换列表里不得出现二进制（如 assets/*.png）。
+
+        允许的文本格式：.md / .json / .html（网页版 docs/index.html）+ 无后缀的 VERSION。
+        """
         for rel, _desc in B.AUTO_TARGETS:
-            self.assertTrue(rel.endswith((".md", ".json")) or rel == "VERSION",
+            self.assertTrue(rel.endswith((".md", ".json", ".html")) or rel == "VERSION",
                             f"{rel} 不是可安全替换的文本文件")
 
     def test_manual_hints_cover_semantic_locations(self):

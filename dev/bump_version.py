@@ -16,6 +16,8 @@
     ⑥ README.en.md  同上三类
     ⑦ CHANGELOG.md                段标题（**须人工**，含能力描述）
     ⑧ references/changelog.md     段标题（**须人工**）
+    ⑨ docs/index.html             纯版本号（meta 描述 / 顶栏 / 首屏徽标 / 数字条；可自动）
+    ⑨ docs/index.html             首屏「本版主题」文案（含功能名，**须人工**）
   release-please / commitizen 面向「单一版本文件 + GitHub PR 流程」，
   无法安全处理这种自定义多源结构；自写脚本可按「可自动 / 须人工」精确分流。
 
@@ -39,6 +41,7 @@ AUTO_TARGETS = [
     ("package.json", "npm 包版本"),
     ("README.md", "引言行 + badge"),
     ("README.en.md", "引言行 + badge"),
+    ("docs/index.html", "网页版：meta 描述 + 顶栏 + 首屏徽标 + 数字条"),
 ]
 
 # 须人工处理的位置：含功能语义，机械替换会毁文案
@@ -48,6 +51,8 @@ MANUAL_HINTS = [
     ("CHANGELOG.md", re.compile(r"^##\s*当前版本：.*$", re.MULTILINE), "当前版本段标题"),
     # references/changelog.md 只提示**最新一条**（历史段是过往版本，不该动）
     ("references/changelog.md", re.compile(r"^##\s*v[\d.]+\s*（.*$", re.MULTILINE), "历史 changelog 顶部段落（仅最新一条需补本版）"),
+    # 网页版首屏徽标的「本版主题」是文案，机械替换会毁掉表达
+    ("docs/index.html", re.compile(r"^\s*<b>v[\d.]+</b>\s*·\s*.*$", re.MULTILINE), "网页版首屏「本版主题」文案（含功能名，需按本版内容改写）"),
 ]
 
 
@@ -85,7 +90,8 @@ def bump_files(new: str, dry: bool) -> list:
             continue
         changes.append((rel, desc, n))
         if not dry:
-            with open(path, "w", encoding="utf-8") as f:
+            # newline="\n"：避免在 Windows 上把全文改成 CRLF（仓库与 MANIFEST 均以 LF 为准）
+            with open(path, "w", encoding="utf-8", newline="\n") as f:
                 f.write(updated)
         print(f"  {'[预演] ' if dry else ''}{rel}({desc})：替换 {n} 处")
     return changes
@@ -109,6 +115,8 @@ def report_manual(new: str) -> None:
         print(f"      {hits[0].group(0).strip()}")
         if len(hits) > 1:
             print(f"      （另有 {len(hits) - 1} 条同类段落，属历史版本，无需改动）")
+    print("\n  · docs/og.png → 社交预览图内嵌版本号与首屏文案，改完 docs/index.html 后需重新截图生成")
+
     print(f"\n  提示：这些段落应描述 **{new} 本版的实际能力变化**，")
     print("        可直接用 `git-cliff` 生成草稿后按用户视角精修：")
     print("        git-cliff --unreleased --config cliff.toml")
