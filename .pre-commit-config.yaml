@@ -1,0 +1,48 @@
+# pre-commit 配置（dev 侧，不进发布包、不进 MANIFEST）
+#
+# 设计口径：
+#   1. 串起项目**既有**门禁（validate + 单测 + 拦 __pycache__/*.pyc），不新增检查语义；
+#   2. ruff 只跑「真 bug」规则集（见 ruff.toml 说明），不做风格改造；
+#   3. 全部 hook 为 local 或独立环境，**不改动包内「纯标准库、零依赖」约束**——
+#      项目脚本本身仍零依赖，工具只存在于 dev 环境。
+#
+# 用法：pre-commit install（装 git hook）/ pre-commit run --all-files（手动全量）
+
+repos:
+  # ① 仓库卫生：拦 __pycache__ / *.pyc / 其他构建残留
+  - repo: local
+    hooks:
+      - id: no-pycache
+        name: 拦截 __pycache__ 与 *.pyc
+        entry: bash -c 'files=$(git ls-files --cached --others --exclude-standard | grep -E "(^|/)__pycache__/|\.pyc$" || true); if [ -n "$files" ]; then echo "❌ 检测到 Python 缓存产物，请从版本控制移除："; echo "$files"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        always_run: true
+
+  # ② 行为门禁：项目自带的六类 validate（纯标准库）
+  - repo: local
+    hooks:
+      - id: skill-validate
+        name: 工程门禁 validate.py（六类检查）
+        entry: python3 scripts/validate.py
+        language: system
+        pass_filenames: false
+        always_run: true
+
+  # ③ 单测：既有 100 条 + 后续新增
+  - repo: local
+    hooks:
+      - id: unit-tests
+        name: 单元测试（unittest discover scripts）
+        entry: python3 -m unittest discover -s scripts -p "test_*.py"
+        language: system
+        pass_filenames: false
+        always_run: true
+
+  # ④ 真 bug 静态检查（规则集见 ruff.toml）
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.1
+    hooks:
+      - id: ruff
+        name: ruff（仅 F/E9 真缺陷规则）
+        args: ["--config", "ruff.toml"]

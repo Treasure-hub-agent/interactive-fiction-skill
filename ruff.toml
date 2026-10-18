@@ -1,0 +1,20 @@
+# ruff 配置（dev 侧，不进发布包）
+#
+# 取向：**只找真 bug，不做风格改造**。
+# 依据：接入时实测 ruff 默认规则集在既有运行时代码上报 42 处，其中 39 处属风格偏好
+# （EXE001 shebang 未加可执行位 / SIM115 建议 with 管理文件 / FURB167 建议 re.MULTILINE
+# 写法 / UP017 datetime.UTC 别名等）——这些是有效且被 100 条单测覆盖的实现选择，
+# 为过 lint 而重构既有代码超出本次改造边界。
+# 因此仅启用 pyflakes 的 F 类（未使用 import/变量、未定义名、f-string 误用等真缺陷）
+# 与 E9 类（语法级错误）。
+
+target-version = "py39"          # skill 需在较老宿主运行，语法下限保守
+line-length = 120
+
+[lint]
+# F = pyflakes（真缺陷）；E9 = 语法级错误。其余规则集一律不启用。
+select = ["F", "E9"]
+
+[lint.per-file-ignores]
+# 测试文件允许未使用变量（断言辅助、解包占位）
+"tests/**" = ["F841"]

@@ -73,11 +73,16 @@ def die(msg: str, code: int = 1) -> NoReturn:
 
 
 def cn_num(s: str):
-    """中文数字 / 阿拉伯数字 → int；失败返回 None。"""
+    """中文数字 / 阿拉伯数字 → int；失败返回 None。
+
+    注意：`str.isdigit()` 对 Unicode 上标数字（'¹'）、阿拉伯-印度数字（'٣'）等
+    也返回 True，但 `int()` 会拒绝 → 必须同时限定 ASCII，否则章节标题里混入
+    这类字符时整个读取流程会崩。
+    """
     s = (s or "").strip()
     if not s:
         return None
-    if s.isdigit():
+    if s.isascii() and s.isdigit():
         return int(s)
     digits = {"零": 0, "一": 1, "两": 2, "二": 2, "三": 3, "四": 4, "五": 5,
               "六": 6, "七": 7, "八": 8, "九": 9}
@@ -100,7 +105,8 @@ def cn_num(s: str):
 def detect_read(path: str):
     """编码探测：BOM → UTF-8 → GB18030 → UTF-16，全失败用 replace 兜底。"""
     try:
-        raw = open(path, "rb").read()
+        with open(path, "rb") as f:
+            raw = f.read()
     except OSError as e:
         die(f"原文读取失败：{e}")
     if raw[:3] == b"\xef\xbb\xbf":

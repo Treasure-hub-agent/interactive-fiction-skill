@@ -185,5 +185,17 @@
     ],
     "effect": "接入原著 txt 并建索引 / 按深度分层采样蒸馏 / 游戏中回查原著章节",
     "load": "extended/txt_distillation.md"
+  },
+  {
+    "domain": "酒馆卡",
+    "aliases": [
+      "导入酒馆卡",
+      "加载酒馆卡",
+      "读一下这张卡",
+      "导入角色卡文件",
+      "用这张酒馆卡"
+    ],
+    "effect": "解析酒馆卡（PNG/JSON/CHARX）→ 预览接入卡 → 落盘到人物与世界书，按酒馆语义按需注入",
+    "load": "extended/tavern_import.md"
   }
 ]

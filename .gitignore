@@ -11,6 +11,10 @@ output/
 .venv/
 __pycache__/
 *.pyc
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.hypothesis/
 
 # 系统文件
 .DS_Store

@@ -1,0 +1,474 @@
+{
+  "hermes-subagent-v2": [
+    {
+      "case": "日常过渡 · 灰调雨天相遇",
+      "key": "01_日常过渡_·_灰调雨天相遇",
+      "missing": false,
+      "details": {
+        "five_options": {
+          "pass": true,
+          "reason": "五选项齐全且顺序正确"
+        },
+        "wordcount": {
+          "pass": true,
+          "reason": "正文净字数 566 ∈ 400-600"
+        },
+        "symbols": {
+          "pass": true,
+          "reason": "符号分工合规"
+        },
+        "status_bar": {
+          "pass": true,
+          "reason": "状态条合规：🔖 灰调雨天 · 序章 · 0.1万字"
+        },
+        "no_em_dash": {
+          "pass": true,
+          "reason": "无破折号"
+        },
+        "no_ai_tone": {
+          "pass": true,
+          "reason": "无 AI 腔词命中"
+        },
+        "not_closed_loop": {
+          "pass": true,
+          "reason": "收尾未闭环"
+        },
+        "e_option": {
+          "pass": true,
+          "reason": "E 选项无关键抉择"
+        },
+        "d_option": {
+          "pass": true,
+          "reason": "D 选项为主角推断"
+        },
+        "opt_separator": {
+          "pass": true,
+          "reason": "选项分隔符均为规范 `·`"
+        }
+      }
+    },
+    {
+      "case": "对话快速交换 · 短促对峙",
+      "key": "02_对话快速交换_·_短促对峙",
+      "missing": false,
+      "details": {
+        "five_options": {
+          "pass": true,
+          "reason": "五选项齐全且顺序正确"
+        },
+        "wordcount": {
+          "pass": true,
+          "reason": "正文净字数 288 ∈ 250-400"
+        },
+        "symbols": {
+          "pass": true,
+          "reason": "符号分工合规"
+        },
+        "status_bar": {
+          "pass": true,
+          "reason": "状态条合规：🔖 路线 · 序章 · 0.0万字"
+        },
+        "no_em_dash": {
+          "pass": true,
+          "reason": "无破折号"
+        },
+        "no_ai_tone": {
+          "pass": true,
+          "reason": "无 AI 腔词命中"
+        },
+        "not_closed_loop": {
+          "pass": true,
+          "reason": "收尾未闭环"
+        },
+        "e_option": {
+          "pass": true,
+          "reason": "E 选项无关键抉择"
+        },
+        "d_option": {
+          "pass": true,
+          "reason": "D 选项为主角推断"
+        },
+        "opt_separator": {
+          "pass": true,
+          "reason": "选项分隔符均为规范 `·`"
+        }
+      }
+    },
+    {
+      "case": "情感场景 · 关系升温后的沉默",
+      "key": "03_情感场景_·_关系升温后的沉默",
+      "missing": false,
+      "details": {
+        "five_options": {
+          "pass": true,
+          "reason": "五选项齐全且顺序正确"
+        },
+        "wordcount": {
+          "pass": true,
+          "reason": "正文净字数 914 ∈ 800-1200"
+        },
+        "symbols": {
+          "pass": true,
+          "reason": "符号分工合规"
+        },
+        "status_bar": {
+          "pass": true,
+          "reason": "状态条合规：🔖 主线 · 序章 · 0.1万字"
+        },
+        "no_em_dash": {
+          "pass": true,
+          "reason": "无破折号"
+        },
+        "no_ai_tone": {
+          "pass": true,
+          "reason": "无 AI 腔词命中"
+        },
+        "not_closed_loop": {
+          "pass": true,
+          "reason": "收尾未闭环"
+        },
+        "e_option": {
+          "pass": true,
+          "reason": "E 选项无关键抉择"
+        },
+        "d_option": {
+          "pass": true,
+          "reason": "D 选项为主角推断"
+        },
+        "opt_separator": {
+          "pass": true,
+          "reason": "选项分隔符均为规范 `·`"
+        }
+      }
+    },
+    {
+      "case": "紧迫战斗 · 危机一瞬",
+      "key": "04_紧迫战斗_·_危机一瞬",
+      "missing": false,
+      "details": {
+        "five_options": {
+          "pass": true,
+          "reason": "五选项齐全且顺序正确"
+        },
+        "wordcount": {
+          "pass": true,
+          "reason": "正文净字数 348 ∈ 250-400"
+        },
+        "symbols": {
+          "pass": true,
+          "reason": "符号分工合规"
+        },
+        "status_bar": {
+          "pass": true,
+          "reason": "状态条合规：🔖 路线 · 序章 · 0.0万字"
+        },
+        "no_em_dash": {
+          "pass": true,
+          "reason": "无破折号"
+        },
+        "no_ai_tone": {
+          "pass": true,
+          "reason": "无 AI 腔词命中"
+        },
+        "not_closed_loop": {
+          "pass": true,
+          "reason": "收尾未闭环"
+        },
+        "e_option": {
+          "pass": true,
+          "reason": "E 选项无关键抉择"
+        },
+        "d_option": {
+          "pass": true,
+          "reason": "D 选项为主角推断"
+        },
+        "opt_separator": {
+          "pass": true,
+          "reason": "选项分隔符均为规范 `·`"
+        }
+      }
+    },
+    {
+      "case": "氛围展开 · 世界观初次铺陈",
+      "key": "05_氛围展开_·_世界观初次铺陈",
+      "missing": false,
+      "details": {
+        "five_options": {
+          "pass": true,
+          "reason": "五选项齐全且顺序正确"
+        },
+        "wordcount": {
+          "pass": true,
+          "reason": "正文净字数 883 ∈ 800-1200"
+        },
+        "symbols": {
+          "pass": true,
+          "reason": "符号分工合规"
+        },
+        "status_bar": {
+          "pass": true,
+          "reason": "状态条合规：🔖 创世 · 序章 · 0.1万字"
+        },
+        "no_em_dash": {
+          "pass": true,
+          "reason": "无破折号"
+        },
+        "no_ai_tone": {
+          "pass": true,
+          "reason": "无 AI 腔词命中"
+        },
+        "not_closed_loop": {
+          "pass": true,
+          "reason": "收尾未闭环"
+        },
+        "e_option": {
+          "pass": true,
+          "reason": "E 选项无关键抉择"
+        },
+        "d_option": {
+          "pass": true,
+          "reason": "D 选项为主角推断"
+        },
+        "opt_separator": {
+          "pass": true,
+          "reason": "选项分隔符均为规范 `·`"
+        }
+      }
+    },
+    {
+      "case": "主线推进 · 关键信息揭示",
+      "key": "06_主线推进_·_关键信息揭示",
+      "missing": false,
+      "details": {
+        "five_options": {
+          "pass": true,
+          "reason": "五选项齐全且顺序正确"
+        },
+        "wordcount": {
+          "pass": true,
+          "reason": "正文净字数 1068 ∈ 800-1200"
+        },
+        "symbols": {
+          "pass": true,
+          "reason": "符号分工合规"
+        },
+        "status_bar": {
+          "pass": true,
+          "reason": "状态条合规：🔖 主线 · 第3章 · 2.6万字"
+        },
+        "no_em_dash": {
+          "pass": true,
+          "reason": "无破折号"
+        },
+        "no_ai_tone": {
+          "pass": true,
+          "reason": "无 AI 腔词命中"
+        },
+        "not_closed_loop": {
+          "pass": true,
+          "reason": "收尾未闭环"
+        },
+        "e_option": {
+          "pass": true,
+          "reason": "E 选项无关键抉择"
+        },
+        "d_option": {
+          "pass": true,
+          "reason": "D 选项为主角推断"
+        },
+        "opt_separator": {
+          "pass": true,
+          "reason": "选项分隔符均为规范 `·`"
+        }
+      }
+    },
+    {
+      "case": "选项独立性压力测试（三钩子并置）",
+      "key": "07_选项独立性压力测试三钩子并置",
+      "missing": false,
+      "details": {
+        "five_options": {
+          "pass": true,
+          "reason": "五选项齐全且顺序正确"
+        },
+        "wordcount": {
+          "pass": true,
+          "reason": "正文净字数 408 ∈ 400-600"
+        },
+        "symbols": {
+          "pass": true,
+          "reason": "符号分工合规"
+        },
+        "status_bar": {
+          "pass": true,
+          "reason": "状态条合规：🔖 路线 · 序章 · 0.0万字"
+        },
+        "no_em_dash": {
+          "pass": true,
+          "reason": "无破折号"
+        },
+        "no_ai_tone": {
+          "pass": true,
+          "reason": "无 AI 腔词命中"
+        },
+        "not_closed_loop": {
+          "pass": true,
+          "reason": "收尾未闭环"
+        },
+        "e_option": {
+          "pass": true,
+          "reason": "E 选项无关键抉择"
+        },
+        "d_option": {
+          "pass": true,
+          "reason": "D 选项为主角推断"
+        },
+        "opt_separator": {
+          "pass": true,
+          "reason": "选项分隔符均为规范 `·`"
+        }
+      }
+    },
+    {
+      "case": "对话结句陷阱（最易忘选项场景）",
+      "key": "08_对话结句陷阱最易忘选项场景",
+      "missing": false,
+      "details": {
+        "five_options": {
+          "pass": true,
+          "reason": "五选项齐全且顺序正确"
+        },
+        "wordcount": {
+          "pass": true,
+          "reason": "正文净字数 463 ∈ 400-600"
+        },
+        "symbols": {
+          "pass": true,
+          "reason": "符号分工合规"
+        },
+        "status_bar": {
+          "pass": true,
+          "reason": "状态条合规：🔖 自创 · 序章 · 0.1万字"
+        },
+        "no_em_dash": {
+          "pass": true,
+          "reason": "无破折号"
+        },
+        "no_ai_tone": {
+          "pass": true,
+          "reason": "无 AI 腔词命中"
+        },
+        "not_closed_loop": {
+          "pass": true,
+          "reason": "收尾未闭环"
+        },
+        "e_option": {
+          "pass": true,
+          "reason": "E 选项无关键抉择"
+        },
+        "d_option": {
+          "pass": true,
+          "reason": "D 选项为主角推断"
+        },
+        "opt_separator": {
+          "pass": true,
+          "reason": "选项分隔符均为规范 `·`"
+        }
+      }
+    },
+    {
+      "case": "场景切换 · 设定核对触发",
+      "key": "09_场景切换_·_设定核对触发",
+      "missing": false,
+      "details": {
+        "five_options": {
+          "pass": true,
+          "reason": "五选项齐全且顺序正确"
+        },
+        "wordcount": {
+          "pass": true,
+          "reason": "正文净字数 1187 ∈ 800-1200"
+        },
+        "symbols": {
+          "pass": true,
+          "reason": "符号分工合规"
+        },
+        "status_bar": {
+          "pass": true,
+          "reason": "状态条合规：🔖 主线 · 第二章 · 1.2万字"
+        },
+        "no_em_dash": {
+          "pass": true,
+          "reason": "无破折号"
+        },
+        "no_ai_tone": {
+          "pass": true,
+          "reason": "无 AI 腔词命中"
+        },
+        "not_closed_loop": {
+          "pass": true,
+          "reason": "收尾未闭环"
+        },
+        "e_option": {
+          "pass": true,
+          "reason": "E 选项无关键抉择"
+        },
+        "d_option": {
+          "pass": true,
+          "reason": "D 选项为主角推断"
+        },
+        "opt_separator": {
+          "pass": true,
+          "reason": "选项分隔符均为规范 `·`"
+        }
+      }
+    },
+    {
+      "case": "自由输入推进（基础局势重置）",
+      "key": "10_自由输入推进基础局势重置",
+      "missing": false,
+      "details": {
+        "five_options": {
+          "pass": true,
+          "reason": "五选项齐全且顺序正确"
+        },
+        "wordcount": {
+          "pass": true,
+          "reason": "正文净字数 493 ∈ 400-600"
+        },
+        "symbols": {
+          "pass": true,
+          "reason": "符号分工合规"
+        },
+        "status_bar": {
+          "pass": true,
+          "reason": "状态条合规：🔖 主线 · 第二章 · 1.2万字"
+        },
+        "no_em_dash": {
+          "pass": true,
+          "reason": "无破折号"
+        },
+        "no_ai_tone": {
+          "pass": true,
+          "reason": "无 AI 腔词命中"
+        },
+        "not_closed_loop": {
+          "pass": true,
+          "reason": "收尾未闭环"
+        },
+        "e_option": {
+          "pass": true,
+          "reason": "E 选项无关键抉择"
+        },
+        "d_option": {
+          "pass": true,
+          "reason": "D 选项为主角推断"
+        },
+        "opt_separator": {
+          "pass": true,
+          "reason": "选项分隔符均为规范 `·`"
+        }
+      }
+    }
+  ]
+}

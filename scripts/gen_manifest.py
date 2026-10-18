@@ -31,8 +31,19 @@ from datetime import datetime, timezone
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERSION_FILE = os.path.join(ROOT, "VERSION")
 
-EXCLUDE_DIRS = {".git", "node_modules", "__pycache__"}
+EXCLUDE_DIRS = {".git", "node_modules", "__pycache__", ".ruff_cache", ".mypy_cache",
+                ".pytest_cache", ".hypothesis"}
 DIST_DOCS = {"docs", ".github"}
+# dev / CI 侧文件：不进发布包、不进 MANIFEST（工具链改造专用，见 .pre-commit-config.yaml 说明）
+DEV_FILES = {
+    ".pre-commit-config.yaml",
+    "ruff.toml",
+    "cliff.toml",
+    "promptfooconfig.yaml",
+    "tests",
+    "eval",
+    "dev",
+}
 
 RUNTIME_TOPDIRS = {"data", "extended", "modes", "references", "schema", "scripts"}
 META_ROOT_FILES = {"CHANGELOG.md", "SECURITY.md", "CODE_OF_CONDUCT.md", "CONTRIBUTING.md", ".gitignore"}
@@ -61,11 +72,14 @@ def collect_files(include_docs: bool) -> dict:
         dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRS]
         if not include_docs:
             dirnames[:] = [d for d in dirnames if d not in DIST_DOCS]
+        dirnames[:] = [d for d in dirnames if d not in DEV_FILES]
         for fn in filenames:
             p = os.path.join(dirpath, fn)
             rel = os.path.relpath(p, ROOT).replace(os.sep, "/")
             # MANIFEST.json 自身不列入清单（避免自指 hash 死循环）；.git 为 git 元数据（worktree 下为文件），不列入
             if rel == "MANIFEST.json" or rel == ".git" or rel.startswith(".git/"):
+                continue
+            if rel in DEV_FILES:  # dev / CI 侧文件不列入
                 continue
             data = open(p, "rb").read()
             files[rel] = {

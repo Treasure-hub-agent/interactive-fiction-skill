@@ -1,0 +1,51 @@
+# promptfoo 配置（dev 侧，不进发布包、不进 MANIFEST）
+#
+# 目的：补上项目最大的自动化空白——**模型输出**的硬契约验证。
+# 既有 100 条单测只覆盖脚本逻辑（结构/格式/哈希），完全不覆盖模型生成的正文；
+# 铁律#0、字数区间、符号分工、状态条、破折号、AI 腔这些规则此前只能靠人工模拟。
+#
+# 用法：
+#   npx promptfoo@latest eval -c promptfooconfig.yaml
+#   npx promptfoo@latest view          # 打开「模型 × 断言」对照报告
+#
+# 断言实现见 dev/promptfoo/asserts.py（纯标准库，便于离线阅读与单测）
+# 评测用例见 dev/promptfoo/cases.yaml
+
+description: interactive-fiction-skill 硬契约评测（v10.3.0）
+
+# ---- 被测模型：单模型 ----
+# 口径：主人偏好「单模型验证通过即视为全部通过」，**不做横向铺开测多模型**（省额度）。
+# 需要 A/B 对比时，由主人明确指定再临时加列（如 --models a,b）。
+# API key 从环境变量读取，不在仓库中出现凭据
+providers:
+  - id: openai:chat:deepseek-flash
+    label: deepseek-flash
+    config:
+      apiBaseUrl: ${IFS_EVAL_API_BASE}
+      apiKey: ${IFS_EVAL_API_KEY}
+
+# ---- 被测 prompt：P0 规则核心（从 SKILL.md 抽取的硬契约） ----
+prompts:
+  - file://../dev/promptfoo/prompt_p0.txt
+
+defaultTest:
+  assert:
+    - type: javascript
+      value: file://asserts.py:assert_all
+    # 分项断言：任一项失败可单独定位，便于生成矩阵
+    - type: javascript
+      value: file://asserts.py:has_five_options
+    - type: javascript
+      value: file://asserts.py:wordcount_in_range
+    - type: javascript
+      value: file://asserts.py:symbol_discipline
+    - type: javascript
+      value: file://asserts.py:status_bar_format
+    - type: javascript
+      value: file://asserts.py:no_em_dash
+    - type: javascript
+      value: file://asserts.py:no_ai_tone
+    - type: javascript
+      value: file://asserts.py:not_closed_loop
+
+tests: file://cases.yaml

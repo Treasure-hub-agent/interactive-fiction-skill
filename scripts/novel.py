@@ -33,6 +33,9 @@ from datetime import datetime, timezone
 
 LORE_MAX = 4       # [设定] 段单轮条目上限（--full 不限）
 LORE_FILE_MAX = 8  # 单个设定文件最多抽取的词条数
+LORE_ENTRY_INJECT_MAX = 300   # 酒馆卡条目单条注入字符上限（超出截断并指向原文）
+LORE_CONST_RATIO = 2          # 常驻条目占预算的 1/N（其余留给关键词命中，防全量常驻）
+LORE_FULL_HARD_CAP = 40       # --full 硬上限（调试视图不限预算，但仍需防刷屏失控）
 PRV_MAX = 200      # 前情提要字数上限
 DELTA_TURNS = 2    # [变化] 显示窗口（轮）
 BG_TURNS = 6       # [背景] 显示窗口（轮），之后完全静默
@@ -187,6 +190,167 @@ def lore_entries(n: "Novel") -> list:
             if os.path.isfile(prof):
                 out.extend(_md_terms(prof, "角色卡", limit=4))
     return out
+
+
+def _parse_tavern_entry(path: str) -> dict:
+    """解析 tavern_prep.py 落盘的酒馆卡条目文件（HTML 注释头部 + Markdown 正文）。
+
+    头部格式（由 tavern_prep.py 写入）：
+        <!-- 酒馆卡条目（…）
+        keys: 甲,乙
+        constant: true
+        probability: 100
+        order: 100
+        position: after_char
+        source_id: 1
+        -->
+        ## 标题
+        正文…
+
+    返回 dict；非酒馆条目（无头部或无 keys 且非 constant）返回 {}。
+    """
+    text = _read_text(path)
+    if not text or not text.lstrip().startswith("<!--"):
+        return {}
+    end = text.find("-->")
+    if end < 0:
+        return {}
+    head = text[:end]
+    meta = {}
+    for ln in head.split("\n"):
+        if ":" not in ln:
+            continue
+        k, _, v = ln.partition(":")
+        k, v = k.strip(), v.strip()
+        if k in ("keys", "secondary_keys"):
+            meta[k] = [x for x in re.split(r"[,，]", v) if x]
+        elif k == "constant":
+            meta[k] = (v.lower() == "true")
+        elif k in ("probability", "order", "source_id"):
+            try:
+                meta[k] = int(v)
+            except ValueError:
+                meta[k] = None
+        elif k == "position":
+            meta[k] = v
+    # 正文 = 注释之后、跳过标题行
+    body = text[end + 3:].strip()
+    lines = body.split("\n")
+    if lines and lines[0].strip().startswith("#"):
+        lines = lines[1:]
+    content = "\n".join(lines).strip()
+    if not content and not meta.get("keys"):
+        return {}
+    meta["content"] = content
+    meta["file"] = os.path.basename(path)
+    return meta
+
+
+def tavern_entries(n: "Novel") -> list:
+    """扫描 novel/lorebook/<卡名>/ 下的酒馆卡条目（只读；缺失/损坏静默跳过）。
+
+    返回条目 dict 列表，每项含 keys / constant / probability / order / content / src。
+    """
+    out = []
+    base = os.path.join(n.dir, "lorebook")
+    if not os.path.isdir(base):
+        return out
+    for pack in sorted(os.listdir(base)):
+        pdir = os.path.join(base, pack)
+        if not os.path.isdir(pdir):
+            continue
+        for fn in sorted(os.listdir(pdir)):
+            if not fn.endswith(".md"):
+                continue
+            e = _parse_tavern_entry(os.path.join(pdir, fn))
+            if not e:
+                continue
+            e["src"] = f"酒馆卡·{pack}"
+            out.append(e)
+    return out
+
+
+def tavern_hits(n: "Novel", rt: dict, args, budget=None) -> list:
+    """按**酒馆语义**挑选本轮注入条目。
+
+    语义映射（与 extended/tavern_import.md 口径一致）：
+      · constant: true    → 必入（放最前），但仍受 budget 硬约束——不无限常驻
+      · keys 命中         → 命中本轮相关文本（用户输入 > 场景/地点/主角状态 > 角色名）
+      · probability       → 命中后的注入权重（按权重降序取，而非删减）
+      · order             → 同权重时的排序优先级（值小者优先，与酒馆习惯一致）
+      · position / depth  → **降级**：IF 的 P0 前缀顺序固定，一律并入 [设定] 段
+      · recursive_scanning→ **降级**：单轮扫描，不做递归触发
+
+    返回 [(显示词条, 摘要, 来源)]，与既有 lore_hits 同结构，便于简报直接复用。
+    """
+    entries = tavern_entries(n)
+    if not entries:
+        return []
+
+    sources = []
+    inp = (getattr(args, "input", None) or "").strip()
+    if inp:
+        sources.append((inp, 3))
+    for key in ("sc", "mp"):
+        v = rt.get(key)
+        if isinstance(v, str) and v:
+            sources.append((v, 2))
+    for v in (rt.get("st") or {}).values():
+        if isinstance(v, str) and v:
+            sources.append((v, 2))
+    names = [str(k) for k in list(rt.get("cp") or {}) + list(rt.get("npcs") or {})]
+    if names:
+        sources.append((" ".join(names), 2))
+
+    hits = []
+    for e in entries:
+        keys = e.get("keys") or []
+        matched = 0
+        for text, w in sources:
+            for k in keys:
+                if k and k in text:
+                    matched = max(matched, w)
+        constant = bool(e.get("constant"))
+        if not matched and not constant:
+            continue
+        prob = e.get("probability")
+        if prob is None:
+            prob = 100 if constant else 70          # 酒馆常见缺省：常驻=满权重
+        if matched and prob < 100:
+            # probability 作为注入权重：概率越低排越后（不做随机，保证简报确定性）
+            score = matched * 10 + prob // 10
+        else:
+            score = (matched or 1) * 10 + prob // 10
+        hits.append((score, e.get("order") if isinstance(e.get("order"), int) else 999,
+                     e.get("constant", False), e))
+
+    # constant 优先 → 命中权重降序 → order 升序（值小者优先）
+    hits.sort(key=lambda x: (0 if x[2] else 1, -x[0], x[1]))
+
+    # ⚠️ 预算配额：酒馆卡的 constant 条目容易多达十余条，若全部常驻会挤掉
+    #    关键词命中并导致爆窗（红线 A5：勿退化为全量常驻）。
+    #    因此常驻条目只占预算的 1/LORE_CONST_RATIO，其余名额留给关键词命中。
+    if budget:
+        const_cap = max(1, budget // LORE_CONST_RATIO)
+        const_hits = [h for h in hits if h[2]][:const_cap]
+        key_hits = [h for h in hits if not h[2]]
+        hits = const_hits + key_hits[:max(0, budget - len(const_hits))]
+    else:
+        # --full 为调试全量视图（不设常规预算），但仍加硬上限防刷屏失控
+        hits = hits[:LORE_FULL_HARD_CAP]
+
+    out = []
+    for _score, _order, _const, e in hits:
+        title = (e.get("keys") or ["（无关键词）"])[0]
+        if e.get("constant") and not any(k in (inp or "") for k in (e.get("keys") or [])):
+            title = f"{title}（常驻）"
+        summary = e.get("content") or ""
+        if len(summary) > LORE_ENTRY_INJECT_MAX:
+            summary = summary[:LORE_ENTRY_INJECT_MAX] + "…（详见 lorebook 原文）"
+        else:
+            summary = _first_sentence(summary, limit=LORE_ENTRY_INJECT_MAX)
+        out.append((title, summary, e.get("src", "酒馆卡")))
+    return out[:budget] if budget else out
 
 
 def lore_hits(n: "Novel", rt: dict, args, budget=None) -> list:
@@ -345,8 +509,24 @@ def cmd_brief(args):
     print("[事实]（须遵守的长期事实）")
     print("  · " + ("\n  · ".join(facts) if facts else "（无）"))
 
-    # [设定] 世界书式按需注入：仅命中本轮相关词条时输出（无命中不占行）
-    hits = lore_hits(n, rt, args, budget=None if args.full else LORE_MAX)
+    # [设定] 世界书式按需注入：两路来源合并
+    #   ① 既有世界书（worldbuilding/ + characters/ 的词条表）
+    #   ② 酒馆卡条目（lorebook/，按酒馆语义：constant 必入 / keys 命中 / order 排序）
+    # 合并口径：**以「词条标题」为键跨源去重**，酒馆卡命中优先（更贴本轮输入），
+    #          去重发生在两源合并之后、预算截断之前。
+    # 注意：去重必须把两源都算进 seen —— 只从单侧初始化会让同名条目重复注入
+    #      （曾实测：既有世界书与酒馆卡同名「功法」时被注入两次）。
+    budget = None if args.full else LORE_MAX
+    hits = lore_hits(n, rt, args, budget=budget)
+    tv = tavern_hits(n, rt, args, budget=budget)
+    if tv:
+        merged, seen = [], set()
+        for t, s, src in tv + [h for h in hits]:        # 酒馆卡优先入榜
+            if t in seen:
+                continue                                 # 跨源同名 → 只留先入者
+            seen.add(t)
+            merged.append((t, s, src))
+        hits = merged[:budget] if budget else merged
     if hits:
         print("[设定]（本轮相关，仅作事实参考）")
         for term, summary, src in hits:
@@ -390,7 +570,7 @@ def cmd_brief(args):
 
     # [提示]
     nxt = seg + 1
-    hook = f"，命中锚定钩子：回响核对 + 语域/关系重锚" if nxt % 8 == 0 else ""
+    hook = "，命中锚定钩子：回响核对 + 语域/关系重锚" if nxt % 8 == 0 else ""
     print(f"[提示] 下轮 seg_count={nxt}{hook} ｜ open 账本 {len(n.open_choices())} 条")
 
     print("⚖️ 简报守则：[行动] 须正面回收；[事实] 须遵守；[设定] 仅作事实参考；"
@@ -443,7 +623,8 @@ def cmd_record(args):
         raw = s.get("seg") if isinstance(s, dict) else s
         try:
             sseg = int(raw)
-        except (TypeError, ValueError):
+        except (TypeError, ValueError, OverflowError):
+            # OverflowError：inf / 超范围数（int(inf) 抛）——与非法字符串同属「无法归一为段号」
             changes.append(f"⚠️ 账本回收忽略非法 seg：{raw!r}")
             continue
         if sseg in ast["closed_choices"]:

@@ -1,0 +1,68 @@
+# CI workflow（dev 侧，不进发布包、不进 MANIFEST）
+#
+# 与本地 pre-commit 同源：跑项目既有门禁 + 单测 + 真 bug 静态检查 + 属性测试。
+# 属性测试需 hypothesis（第三方），因此**只存在于 CI / dev 侧**（tests/ 目录），
+# 不进入 scripts/，不破坏包内「纯标准库、零依赖」约束。
+#
+# 本地验证（无需 docker）：见 dev/run_ci_local.sh
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: 门禁 + 单测 + 属性测试
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # ⚠️ 下限必须 ≥3.11：hypothesis 与 pre-commit 均声明 requires-python>=3.11，
+        #    3.9/3.10 腿会因装不上依赖而必然失败（原写 3.9 是错误配置）。
+        #    包内运行时脚本仍保持 py3.9 兼容语法（见 ruff.toml target-version）。
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 设置 Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # ① 工程门禁（六类：data 约束 / load 路径 / MANIFEST diff / 版本一致 / md 引用 / 路由一致）
+      - name: 工程门禁 validate.py
+        run: python3 scripts/validate.py
+
+      # ② 既有单元测试（纯标准库，100 条）
+      - name: 单元测试（既有）
+        run: python3 -m unittest discover -s scripts -p "test_*.py" -v
+
+      # ③ 真 bug 静态检查（规则集见 ruff.toml：仅 F/E9）
+      #    作用域与 pre-commit hook 保持一致 = 整个仓库（含 dev/、tests/），
+      #    否则 dev 侧代码的问题会在 pre-commit 报错却逃过 CI（曾实测踩到此不一致）。
+      - name: ruff（仅 F/E9 真缺陷规则）
+        run: |
+          pip install ruff==0.17.1
+          ruff check . --config ruff.toml
+
+      # ④ 属性测试（Hypothesis）——dev 侧，不入发布包
+      - name: 安装属性测试依赖
+        run: pip install hypothesis==6.170.1
+      - name: 属性测试（novel.py / txt_prep.py）
+        run: python3 -m unittest discover -s tests -p "test_*.py" -v
+
+      # ⑤ dev 侧工具自测：版本同步边界 + 评测断言正反例
+      #    （这些是「尺子本身的校准」，不校准就会产出假信号）
+      - name: dev 工具自测
+        run: |
+          python3 -m unittest discover -s dev -p "test_*.py" -v
+          python3 -m unittest discover -s dev/promptfoo -p "test_*.py" -v
+
+      # ⑥ 发布包边界：用 npm pack 实际内容断言「无缓存/dev 文件/敏感路径泄露」
+      #    背景：files 白名单写目录名时 npm 会整目录收录且不应用 .gitignore，
+      #          曾把 11 个 __pycache__/*.pyc（内嵌本机路径）打进 tarball。
+      - name: 发布包边界检查
+        run: python3 dev/check_pack.py

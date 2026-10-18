@@ -5,7 +5,7 @@
 
 # interactive-fiction
 
-> **Complete interactive-fiction authoring spec v10.2.1** — turns any AI agent into a writer of tense, choice-driven, immersive stories.
+> **Complete interactive-fiction authoring spec v10.3.0** — turns any AI agent into a writer of tense, choice-driven, immersive stories.
 
 > **Not "AI writes a novel for you" — it's "you choose, it writes."**
 > You set the opening → the AI writes a segment and offers 5 choices → you pick → the story goes on.
@@ -14,7 +14,7 @@
 🌐 **[中文](README.md) | English**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-10.2.1-orange.svg)](VERSION)
+[![Version](https://img.shields.io/badge/version-10.3.0-orange.svg)](VERSION)
 
 ---
 
@@ -34,27 +34,21 @@
 
 ---
 
-## What's New (v10.2.1 · Smart Source-Novel Reading)
+## What's New (v10.3.0 · Tavern Character Cards, Ready to Play)
 
-**📖 Hand it a whole novel — long ones included (headline)**
+**🃏 Bring a SillyTavern card straight into your story (headline)**
 
-- **Drop it in**: a source novel arrives as a file or pasted text and is stored first — encoding detected (UTF-8 / GBK / UTF-16), chapters and volumes split, plus an intake card: chapters / word count / volumes / a cast-candidate list
-- **Read with a budget**: under 50k characters it is read in full; million-character epics are sampled in layers (opening + each volume's first chapter + lore-dense chapters + an even spread), then the protagonist and key cast are deep-read around their densest appearances — **the raw text never floods the context, only conclusions do**
-- **Evidence from the source**: every trait carries a chapter citation, and speech habits are kept as verbatim samples — closer to the original than second-hand notes
-- **No re-reading**: the raw text, index and canon timeline stay under `source/`; mid-story, "what happens in chapter 137" locates the passage for comparison
+- **All three formats**: PNG, JSON and CHARX cards from SillyTavern / Tavo / Chub import with a single "import tavern card" — you get an intake card first (who they are, whether the worldbook is complete), then it is archived
+- **Worldbook fires the tavern way**: always-on entries stay in play, keyword entries appear only when triggered, priority and ordering follow the original card — long stories keep their lore without blowing up the context
+- **Only what is relevant**: the full worldbook stays local, and each turn injects just the entries that matter (default <=4 entries, <=300 characters each)
+- **The source card is read-only**: verified byte-identical before and after, archived as-is with the original author's credit
+- **Writing rules stay ours**: the card's global rule fields (system_prompt etc.) are archived but never injected, so the five-option engine keeps its authority
 
-**🧭 Sharper canon anchoring**
+**🧪 Dev toolchain closed loop**
 
-- Source material now lives together under `source/` (raw text + index + timeline)
-- Comparison triggers on scene changes / new chapters / on request, with a fallback every 10 saves; deviations come back as a short report (aligned / deviation / suggested direction)
-
-**📐 Engineering**
-
-- New `scripts/txt_prep.py` (stdlib only): `scan` builds the index, `slice` returns windows by chapter, line range or keyword; the index can be rebuilt anytime
-- Unit tests **73 → 100** (27 new), `validate.py` green across all six checks
-
----
-
+- Pre-commit gates + CI: every change runs the project gates, unit tests and static checks
+- Property-based tests: thousands of generated inputs replace hand-written cases, turning past crash-class bugs into permanent defences
+- A hard-contract eval harness for model output: five-options / word count / symbol discipline / status bar become machine-checkable assertions
 ## Install
 
 ### Option 1: npx skills

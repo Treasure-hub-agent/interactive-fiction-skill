@@ -1,5 +1,29 @@
 # 更新日志
 
+## v10.3.0（2026-10-17）· 酒馆角色卡兼容 + 开发工具链闭环
+
+**🃏 酒馆卡导入与按需注入（核心）**
+- 新增 `scripts/tavern_prep.py`（纯标准库）：解析 PNG（tEXt `chara`/`ccv3`）、JSON（裸 V2 / 带 spec 的 V2·V3）、CHARX（zip）三种载体；`inspect` 出接入卡、`import` 落盘
+- 世界书条目按**酒馆语义**注入（`novel.py::tavern_hits`）：`keys` 命中词集 / `constant` 必入 / `probability` 注入权重 / `insertion_order` 排序；`position`·depth 与 `recursive_scanning` **降级**并入 `[设定]` 段（守 P0 常驻前缀顺序）
+- **预算硬约束防爆窗**：实测真实卡条目数 0～48、合计 683～70,912 字；单轮注入 ≤`LORE_MAX`(4) 条、常驻只占预算 1/2、单条 ≤300 字，完整内容留 `lorebook/` 与 `source/`
+- 源卡**只读**（导入前后 sha256 校验）并原样留档；卡内 `system_prompt` / `post_history_instructions` **只留档不注入**（规则主权归本 skill，避免与铁律 #0 冲撞）
+- 新增规范 `extended/tavern_import.md`（映射表 + 注入语义 + 边界）；指令入口三处接线（`data/commands.json` 新域 / `references/command_nav.md` / `SKILL.md` 路由表）
+- 单测 **100 → 140 个**（新增 40 例：三载体解析、宏替换、条目归一容错、预算硬约束、常驻配额、只读校验、position 降级、跨源去重、换版清理、字符串布尔归一）
+
+**🧪 开发工具链闭环（dev/CI 侧，不入发布包）**
+- `.pre-commit-config.yaml` + `.github/workflows/ci.yml`：串既有门禁（validate + 单测 + 拦缓存产物）+ ruff（仅 F/E9 真缺陷规则）+ 属性测试 + dev 工具自测；`dev/run_ci_local.sh` 为本地等价验证（本机 docker 未启用时的替代）
+- **属性测试 21 项 / 3400+ 例**（`tests/`，需 hypothesis，不入包）：对症历史崩溃类 bug（`sorted` 比较 dict、衰减缝隙、非 UTF-8 崩溃），并当场找出并修复 2 个同类新隐患——`int(float('inf'))` 抛 `OverflowError` 导致记账中断、`'¹'.isdigit()` 为真但 `int()` 拒绝导致章节解析崩溃
+- **模型输出硬契约评测基座**（`dev/promptfoo/`）：10 类断言（五选项 / 字数 / 符号分工 / 状态条 / 破折号 / AI 腔 / 未闭环 / D 主体 / E 快键 / 分隔符合规），42 条正反例自测校准断言本身；离线跑手产「断言 × 用例」矩阵（免烧额度）。首轮实测 10 用例 92%——唯一失败项定位为 prompt 未写清选项格式导致分隔符偏差
+- **版本与 changelog 接管**：`cliff.toml`（git-cliff 草稿，人工按用户视角精修）+ `dev/bump_version.py`（自动替换纯版本号位置、列出含语义的须人工段落；边界测试保证不误伤 `10.2.10` 之类）
+
+**🤝 工具链同步至 ai-with-u**
+- 按该仓**纯文本 skill**（无 scripts/）的实际结构重新界定：门禁脚本放 `dev/`（保持包内性质），检查项改为「角色卡对 schema 的 if/then/else 条件必填 / MANIFEST diff / 四源版本 / md 引用 / 路由可达」
+- 属性测试对象重界定为**数据层不变量**（条件必填分支穷尽性、lite⊂完整、任意畸形卡不崩、预置卡回归、MANIFEST 排除规则）；配套 pre-commit / CI / ruff / 本地 CI 脚本，全绿
+
+**📐 工程**
+- `gen_manifest.py` 增补排除规则：dev/CI 侧文件（`.pre-commit-config.yaml`、`ruff.toml`、`cliff.toml`、`promptfooconfig.yaml`、`tests/`、`dev/`、`eval/`）与工具缓存目录（`.ruff_cache`/`.mypy_cache`/`.pytest_cache`/`.hypothesis`）一律不进 MANIFEST
+- MANIFEST 65 文件；六类门禁全过
+
 ## v10.2.1（2026-10-09）· 原著 txt 智能读取 + 简介补触发场景
 
 **📇 技能简介补使用场景**

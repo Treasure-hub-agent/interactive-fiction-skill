@@ -1,0 +1,60 @@
+# git-cliff 配置（dev 侧，不进发布包、不进 MANIFEST）
+#
+# 作用：从 git commit 历史生成/更新 CHANGELOG 的新版本段，减少手工维护。
+#
+# ⚠️ 设计口径（重要，勿按通用模板改）：
+#   本项目的 CHANGELOG.md 是**面向用户的中文说明**，不是 commit 流水账——
+#   它按「用户看得懂的能力变化」分段（📇 / 🧠 / 📚 / 🐛 …），并且是单语中文
+#   （references/changelog.md 存完整历史；仓库无英文 CHANGELOG）。
+#   因此模板只负责**生成候选草稿**（按 commit 类型分组），最终 CHANGELOG 段
+#   仍由人工按用户视角精修——不直接把 commit 列表当发布说明。
+#
+# 用法：
+#   git-cliff --unreleased                    # 预览未发布提交生成的草稿
+#   git-cliff --latest --strip header         # 只出最近一段
+#   git-cliff -o /tmp/draft.md                # 导出草稿供精修
+
+[changelog]
+header = """# 更新日志
+
+完整版本历史与变更说明见 [references/changelog.md](references/changelog.md)。
+
+"""
+# 新版段插在 header 之后（prepend），保证最新版本在最前
+# 注意：`--unreleased` 时 version 与 timestamp 均为 null，必须给默认值，
+#       否则模板渲染直接报错（发版时最常用的正是这条路径）
+body = """
+## {{ version | default(value="未发布") | replace(from="v", to="") }} · 开发草稿
+
+> 本段由 `git-cliff` 从 commit 生成**候选草稿**，发版前需按用户视角精修
+> （补上发布日期，把分组改写为用户可读的能力变化，而非 commit 罗列）。
+
+{% for group, commits in commits | group_by(attribute="group") %}
+### {{ group | striptags | trim }}
+{% for commit in commits %}
+- {{ commit.message | upper_first | trim }}
+{%- endfor %}
+{% endfor %}
+"""
+footer = ""
+trim = true
+
+[git]
+conventional_commits = false        # 本项目历史 commit 混用「feat:」「门面优化:」「vX.Y.Z(阶段N):」等，不做强校验
+filter_unconventional = false       # 非规范 commit 也保留（否则会漏掉大量真实变更）
+split_commits = false
+protect_breaking_commits = false
+topo_order = false
+sort_commits = "oldest"
+# 按 commit message 前缀/关键词映射到用户可读分组
+commit_parsers = [
+  { message = "^feat", group = "✨ 新能力" },
+  { message = "^fix|^bugfix", group = "🐛 修复" },
+  { message = "(?i)门面|README|简介|topic|首屏|视觉", group = "🎨 门面与文档" },
+  { message = "(?i)版权|LICENSE|DISCLAIMER", group = "⚖️ 版权与声明" },
+  { message = "(?i)清理|精简|结构|重构|refactor", group = "🧹 结构与清理" },
+  { message = "(?i)测试|单测|门禁|validate|ci|workflow", group = "🧪 工程与测试" },
+  { message = "(?i)阶段|收尾|发布前", group = "📐 阶段推进" },
+  { message = ".*", group = "📦 其他变更" },
+]
+tag_pattern = "v[0-9].*"

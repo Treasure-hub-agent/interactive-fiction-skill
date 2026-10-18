@@ -1,0 +1,68 @@
+# promptfoo 评测用例（dev 侧）
+#
+# 每条用例 = 一个场景输入 + 期望命中的契约档位。
+# 断言在 promptfooconfig.yaml 的 defaultTest 中统一挂载（9 项硬契约）。
+# 产出报告：npx promptfoo@latest view
+
+- description: 日常过渡 · 灰调雨天相遇
+  vars:
+    input: |
+      主角林战在旧城巷口躲雨，遇见了三年未见的旧识苏晚。
+      她是来送一样东西的，但没说是什么。
+    scene: 日常过渡
+
+- description: 对话快速交换 · 短促对峙
+  vars:
+    input: |
+      两人在走廊尽头面对面站着。她说「你早就知道了吧」。
+      主角只回了一个字。空气里剩下的都是没说出口的话。
+    scene: 对话快速交换
+
+- description: 情感场景 · 关系升温后的沉默
+  vars:
+    input: |
+      她靠过来，把头搁在他肩上。没有话题了，但谁也不想动。
+      窗外雪还在下，屋里只有暖气的声音。
+    scene: 情感场景
+
+- description: 紧迫战斗 · 危机一瞬
+  vars:
+    input: |
+      匕首擦着他耳侧钉进墙里。对方第二击已经在路上，退路被堵死了。
+    scene: 紧迫战斗
+
+- description: 氛围展开 · 世界观初次铺陈
+  vars:
+    input: |
+      主角第一次踏入宗门内门。青石阶一路向上，云雾在半途就把来路吞了。
+    scene: 氛围展开
+
+- description: 主线推进 · 关键信息揭示
+  vars:
+    input: |
+      长老把一枚玉简推过案面：「你要找的人，三年前就死在这份名录里了。」
+    scene: 情感场景
+
+- description: 选项独立性压力测试（三钩子并置）
+  vars:
+    input: |
+      她递来一张字条，同时身后传来脚步声，而桌上那盏灯正好灭了。
+    scene: 日常过渡
+
+- description: 对话结句陷阱（最易忘选项场景）
+  vars:
+    input: |
+      她说完「我在这里等你回来」就转身走了，没回头。
+    scene: 日常过渡
+
+- description: 场景切换 · 设定核对触发
+  vars:
+    input: |
+      主角从北境雪原一路南下，踏进临安城的第二日，城中正在办灯会。
+    scene: 氛围展开
+
+- description: 自由输入推进（基础局势重置）
+  vars:
+    input: |
+      主角主动把袖子挽起来，露出小臂上那道旧疤，先开了口。
+    scene: 日常过渡

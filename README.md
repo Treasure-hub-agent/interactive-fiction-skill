@@ -8,7 +8,7 @@
 </h1>
 
 <p align="center" style="color:#8a7c6f;">
-  —— 互动小说创作完整规范 v10.2.1 ——
+  —— 互动小说创作完整规范 v10.3.0 ——
 </p>
 
 <p align="center" style="color:#4a3f35;line-height:1.95;">
@@ -27,7 +27,7 @@ An AI-agent skill for interactive fiction — Chinese-first: choice-driven story
 
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"/></a>
-  <a href="VERSION"><img alt="Version" src="https://img.shields.io/badge/version-10.2.1-orange.svg"/></a>
+  <a href="VERSION"><img alt="Version" src="https://img.shields.io/badge/version-10.3.0-orange.svg"/></a>
   <a href="https://github.com/Treasure-hub-agent/ai-with-u"><img alt="ai-with-u" src="https://img.shields.io/badge/ecosystem-ai--with--u-9cf.svg"/></a>
 </p>
 
@@ -46,26 +46,23 @@ An AI-agent skill for interactive fiction — Chinese-first: choice-driven story
 
 ---
 
-## 📌 新卷 · v10.2.1 原著 txt 智能读取
+## 📌 新卷 · v10.3.0 酒馆角色卡直接可用
 
 > 本栏目介绍最新版本的变化，只保留当前版本；历史版本见 `references/changelog.md`。
 
-**📖 发来一本原著，长篇也读得懂（本次重点）**
+**🃏 酒馆的角色卡，拿来就能接着演（本次重点）**
 
-- **发来即用**：原著 txt 无论是文件还是直接粘贴，都会先落盘再处理——自动识别编码（UTF-8 / GBK / UTF-16 都不必管）、切分章与卷，出一张「接入卡」：章数 / 字数 / 卷数 / 角色候选榜
-- **读得有分寸**：5 万字以内直接通读；百万字长篇按预算分层采样（开篇 + 各卷首章 + 世界观密度章 + 均匀抽样），主角与重要配角再按出场密度定点深采——**正文不进上下文，只进结论**
-- **取材有据**：每条设定与性格都带原文出处（章节号），角色的说话习惯直接落原句样本，比二手资料更贴近原作
-- **不重读全文**：原文、索引与原著时间线都留在 `source/`；剧情里一句「查第 137 章」即可定位对照，长篇也不会跑偏
+- **三种卡都认**：SillyTavern / Tavo / Chub 下载的 PNG、JSON、CHARX 卡，一句「导入酒馆卡」即可接入——先出一张「接入卡」让你看清他是谁、设定齐不齐，确认后自动归档
+- **设定按酒馆的规矩生效**：常驻条目始终在场、关键词条目该出现时才出现，优先级与顺序照原卡写法——长篇跑下来设定依然在场，又不会把上下文撑爆
+- **只取相关的那几条**：世界书完整内容留在本地随时回查，每轮只注入真正相关者（默认 ≤4 条、单条 ≤300 字）
+- **原卡只读**：解析前后校验一致，并原样留档（含原作者署名），随时可回溯
+- **写作规则仍由本 skill 统管**：卡内的全局规则字段（system_prompt 等）只留档不注入，五选项等既有机制不受外来规则干扰
 
-**🧭 原著锚定更准**
+**🧪 开发工具链闭环**
 
-- 原著素材统一存放 `source/`（原文 + 索引 + 时间线）
-- 比对时机改为「场景切换 / 进入新章节 / 主动查询」，每 10 个存档兜底一次；有偏差只出简短报告（一致 / 偏差项 / 建议推进方向）
-
-**📐 工程**
-
-- 新增 `scripts/txt_prep.py`（纯标准库）：`scan` 建索引 ／ `slice` 按章节、行范围、关键词取窗口；索引丢失可随时重建
-- 单元测试 **73 → 100 个**（新增 27 用例），`validate.py` 六类门禁全过
+- 提交前自动门禁 + CI：改一行即跑工程门禁、单测与静态检查
+- 属性测试：以随机生成的成千上万种输入代替手工用例，历史崩溃类问题变永久防线
+- 模型输出硬契约评测基座：五选项 / 字数区间 / 符号分工 / 状态条等规则可自动核对，改一版规则一键回归
 
 ---
 

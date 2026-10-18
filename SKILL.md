@@ -1,7 +1,7 @@
 ---
 name: interactive-fiction
 description: "可选项驱动的互动小说创作完整规范：支持穿越/自创/创世/随机开局，内置视角一致性、字数区间、选项机制、存档系统与角色卡体系。当用户想玩、想写互动小说，或说「加载小说包」「开个互动小说」「选项小说」「互动故事」时使用。"
-version: 10.2.1
+version: 10.3.0
 author: Treasure-hub-agent
 license: MIT
 copyright: "© 2026 Treasure-hub-agent"
@@ -69,6 +69,7 @@ metadata:
 | 事件触发（地点/seg场景切换/间隔/一致性） | `extended/event_behaviors.md` |
 | 场景卡 / 情感场景展开 | `extended/features.md` |
 | 蒸馏（作品名检索 / 原作 txt）/ 开局原著数据收集 | `extended/distillation.md`、`extended/title_distillation.md`、`extended/txt_distillation.md` |
+| 酒馆卡导入（SillyTavern / Tavo / Chub 卡） | `extended/tavern_import.md` |
 | 开局路线 / 路线冲突 / 进度查询 | `extended/route_system.md` |
 | 创世世界观 / 角色创建 | `extended/creation_world.md` |
 | 角色卡（弹出/修改/深度创建/短篇） | `extended/character_card.md` / `extended/deep_character_creation.md` |
