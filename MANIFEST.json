@@ -1,6 +1,6 @@
 {
   "version": "10.3.0",
-  "generated": "2026-10-18T06:45:40Z",
+  "generated": "2026-10-18T06:48:44Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -44,8 +44,8 @@
       "role": "runtime"
     },
     "README.md": {
-      "sha256": "bbd5917dd3d7abbaf39f388733cb65ba0a9b474d75fabca69bc1f6926c96c9e4",
-      "bytes": 12260,
+      "sha256": "1bad7389d0409a5f200bb3e1dbdd1764975f7a4fe91089e483db9e457c26265b",
+      "bytes": 12247,
       "role": "runtime"
     },
     "SECURITY.md": {
@@ -74,28 +74,28 @@
       "role": "meta"
     },
     "assets/clients.svg": {
-      "sha256": "3d54b55cf8a58eb0c10f6f61a73fd214e962da2387ba7289a923e9785c8c24a1",
-      "bytes": 7263,
+      "sha256": "257676e6d6a1a11f81da6888136557c936af8b144ce1b17e52e7c28a75fdc0d1",
+      "bytes": 7158,
       "role": "meta"
     },
     "assets/compare.svg": {
-      "sha256": "e088dad2508bb76b6c1a576ea2d45486f38c908ddc0d37513726ee789be4ad0e",
-      "bytes": 7089,
+      "sha256": "ee102fe13cac04851dd9b88e3dfdd7a1e81611d57e6f5dfca157fb2266c4356c",
+      "bytes": 6799,
       "role": "meta"
     },
     "assets/compat.svg": {
-      "sha256": "6e865a675f981193ff567fe01427831b405d6077d3b8d9b342f897a46f1d3479",
-      "bytes": 6422,
+      "sha256": "3eb8d9e7d85640833a109b6534dce870e25e11063553e27904b9cf8da927af65",
+      "bytes": 6115,
       "role": "meta"
     },
     "assets/features.svg": {
-      "sha256": "6000e5dc1ae3eab04a3986391c64262297ce6e42891cb9d209b701bcd7584983",
-      "bytes": 8140,
+      "sha256": "83d2faf74bf4d09c6d0f89be15c5815b1d4d15ff1212f9619ace9b5ac54c7f3f",
+      "bytes": 8032,
       "role": "meta"
     },
     "assets/how.svg": {
-      "sha256": "970b23c879b7a6a7a681c40d4d7d47922f24fc3142538bd553c13be2c1681ce8",
-      "bytes": 6180,
+      "sha256": "a7af90a86aa0b3c4ac530a7d9fc847bbae4ae62dc5f829ff7c1333ef79e98231",
+      "bytes": 6117,
       "role": "meta"
     },
     "data/_README.md": {

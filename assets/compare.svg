@@ -1,111 +1,97 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-labelledby="ttl desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-labelledby="ttl desc">
   <title id="ttl">普通 prompt 与装上 interactive-fiction 的对比</title>
   <desc id="desc">左：灰色卡片，正文写完就停、没有选项。右：磨砂玻璃卡片，同样一段剧情后强制给出 A–E 五个选项。</desc>
 
   <defs>
     <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FDFBF7"/>
-      <stop offset="0.6" stop-color="#F7F1E7"/>
-      <stop offset="1" stop-color="#F1E8DA"/>
+      <stop offset="0" stop-color="#FDFBF7"/><stop offset="0.6" stop-color="#F7F1E7"/><stop offset="1" stop-color="#F1E8DA"/>
     </linearGradient>
     <radialGradient id="b1" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="#FFC79B" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#FFB183" stop-opacity="0"/>
+      <stop offset="0" stop-color="#FFC79B" stop-opacity="0.55"/><stop offset="1" stop-color="#FFB183" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="b2" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="#A9D3F2" stop-opacity="0.52"/>
-      <stop offset="1" stop-color="#8BC0E8" stop-opacity="0"/>
+      <stop offset="0" stop-color="#A9D3F2" stop-opacity="0.52"/><stop offset="1" stop-color="#8BC0E8" stop-opacity="0"/>
     </radialGradient>
-
     <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.92"/>
-      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.66"/>
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.92"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.66"/>
     </linearGradient>
     <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#FFFFFF"/>
-      <stop offset="0.3" stop-color="#FFFFFF" stop-opacity="0.72"/>
-      <stop offset="0.76" stop-color="#3C2D1E" stop-opacity="0.08"/>
-      <stop offset="1" stop-color="#3C2D1E" stop-opacity="0.18"/>
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset="0.3" stop-color="#FFFFFF" stop-opacity="0.72"/>
+      <stop offset="0.76" stop-color="#3C2D1E" stop-opacity="0.08"/><stop offset="1" stop-color="#3C2D1E" stop-opacity="0.18"/>
     </linearGradient>
     <linearGradient id="chip" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.98"/>
-      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.74"/>
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.98"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.74"/>
     </linearGradient>
-    <filter id="lift" x="-12%" y="-16%" width="124%" height="136%">
-      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#4A3A2A" flood-opacity="0.16"/>
+    <filter id="lift" x="-14%" y="-18%" width="128%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#4A3A2A" flood-opacity="0.16"/>
     </filter>
   </defs>
 
-  <rect width="1280" height="420" fill="url(#paper)"/>
-  <circle cx="1200" cy="20" r="300" fill="url(#b1)"/>
-  <circle cx="60" cy="410" r="280" fill="url(#b2)"/>
+  <rect width="960" height="360" fill="url(#paper)"/>
+  <circle cx="900" cy="0" r="240" fill="url(#b1)"/>
+  <circle cx="40" cy="360" r="230" fill="url(#b2)"/>
 
   <g font-family="'PingFang SC','Microsoft YaHei',system-ui,sans-serif">
 
-    <!-- ========== 左：普通 prompt ========== -->
-    <rect x="44" y="34" width="572" height="352" rx="30" fill="#F2EDE4" opacity="0.9"/>
-    <rect x="44.6" y="34.6" width="570.8" height="350.8" rx="29.4" fill="none" stroke="#3C2D1E" stroke-opacity="0.12" stroke-width="1.2"/>
+    <!-- 左：普通 prompt -->
+    <rect x="28" y="26" width="440" height="308" rx="24" fill="#F2EDE4" opacity="0.92"/>
+    <rect x="28.6" y="26.6" width="438.8" height="306.8" rx="23.4" fill="none" stroke="#3C2D1E" stroke-opacity="0.13" stroke-width="1.2"/>
 
-    <rect x="80" y="66" width="152" height="32" rx="16" fill="#C4553F" fill-opacity="0.10" stroke="#C4553F" stroke-opacity="0.22" stroke-width="1"/>
-    <text x="98" y="87" font-size="13.5" fill="#B4483D">✕ 普通 prompt</text>
+    <rect x="50" y="46" width="124" height="26" rx="13" fill="#C4553F" fill-opacity="0.10" stroke="#C4553F" stroke-opacity="0.22"/>
+    <text x="64" y="63" font-size="11.5" fill="#B4483D">✕ 普通 prompt</text>
 
-    <text x="80" y="132" font-family="'Noto Serif SC','Songti SC','STSong',SimSun,serif" font-size="13.5" fill="#3C2D1E" fill-opacity="0.40">雨夜。她站在窗后看着你，你推开门走了</text>
-    <text x="80" y="156" font-family="'Noto Serif SC','Songti SC','STSong',SimSun,serif" font-size="13.5" fill="#3C2D1E" fill-opacity="0.28">进去，你们交谈起来，故事继续发展下去……</text>
+    <text x="50" y="104" font-family="'Noto Serif SC','Songti SC','STSong',SimSun,serif" font-size="12" fill="#3C2D1E" fill-opacity="0.40">雨夜。她站在窗后看着你，你推开门走了</text>
+    <text x="50" y="124" font-family="'Noto Serif SC','Songti SC','STSong',SimSun,serif" font-size="12" fill="#3C2D1E" fill-opacity="0.28">进去，你们交谈起来，故事继续发展下去……</text>
 
-    <g font-size="14.5" fill="#4E443A">
-      <circle cx="90" cy="194" r="9" fill="#C4553F" fill-opacity="0.13"/><text x="90" y="198.5" font-size="9.5" fill="#B4483D" text-anchor="middle">✕</text>
-      <text x="112" y="199">写完就停，没有选项，剧情变成单向广播</text>
+    <g font-size="12.5" fill="#4E443A">
+      <circle cx="60" cy="158" r="8" fill="#C4553F" fill-opacity="0.13"/><text x="60" y="162" font-size="8.5" fill="#B4483D" text-anchor="middle">✕</text>
+      <text x="78" y="163">写完就停，没有选项，剧情变成单向广播</text>
 
-      <circle cx="90" cy="230" r="9" fill="#C4553F" fill-opacity="0.13"/><text x="90" y="234.5" font-size="9.5" fill="#B4483D" text-anchor="middle">✕</text>
-      <text x="112" y="235">「你」和「他」混着用，视角漂移出戏</text>
+      <circle cx="60" cy="192" r="8" fill="#C4553F" fill-opacity="0.13"/><text x="60" y="196" font-size="8.5" fill="#B4483D" text-anchor="middle">✕</text>
+      <text x="78" y="197">「你」和「他」混着用，视角漂移出戏</text>
 
-      <circle cx="90" cy="266" r="9" fill="#C4553F" fill-opacity="0.13"/><text x="90" y="270.5" font-size="9.5" fill="#B4483D" text-anchor="middle">✕</text>
-      <text x="112" y="271">战斗只写 300 字，日常却水了 2000 字</text>
+      <circle cx="60" cy="226" r="8" fill="#C4553F" fill-opacity="0.13"/><text x="60" y="230" font-size="8.5" fill="#B4483D" text-anchor="middle">✕</text>
+      <text x="78" y="231">战斗只写 300 字，日常却水了 2000 字</text>
 
-      <circle cx="90" cy="302" r="9" fill="#C4553F" fill-opacity="0.13"/><text x="90" y="306.5" font-size="9.5" fill="#B4483D" text-anchor="middle">✕</text>
-      <text x="112" y="307">三条线一起开，后文互相矛盾，存档一团乱</text>
+      <circle cx="60" cy="260" r="8" fill="#C4553F" fill-opacity="0.13"/><text x="60" y="264" font-size="8.5" fill="#B4483D" text-anchor="middle">✕</text>
+      <text x="78" y="265">三条线一起开，后文互相矛盾</text>
     </g>
 
-    <text x="80" y="352" font-size="12.5" fill="#3C2D1E" fill-opacity="0.34">（正文结束，没有下文）</text>
+    <text x="50" y="304" font-size="11" fill="#3C2D1E" fill-opacity="0.34">（正文结束，没有下文）</text>
 
-    <!-- ========== 右：装上 interactive-fiction ========== -->
-    <rect x="664" y="34" width="572" height="352" rx="30" fill="url(#glass)" filter="url(#lift)"/>
-    <rect x="664.6" y="34.6" width="570.8" height="350.8" rx="29.4" fill="none" stroke="url(#ring)" stroke-width="1.2"/>
+    <!-- 右：装上 interactive-fiction -->
+    <rect x="492" y="26" width="440" height="308" rx="24" fill="url(#glass)" filter="url(#lift)"/>
+    <rect x="492.6" y="26.6" width="438.8" height="306.8" rx="23.4" fill="none" stroke="url(#ring)" stroke-width="1.2"/>
 
-    <rect x="700" y="66" width="228" height="32" rx="16" fill="#4FAE8C" fill-opacity="0.12" stroke="#4FAE8C" stroke-opacity="0.26" stroke-width="1"/>
-    <text x="718" y="87" font-size="13.5" fill="#2F7A5C">✓ 装上 interactive-fiction</text>
+    <rect x="514" y="46" width="190" height="26" rx="13" fill="#4FAE8C" fill-opacity="0.12" stroke="#4FAE8C" stroke-opacity="0.26"/>
+    <text x="528" y="63" font-size="11.5" fill="#2F7A5C">✓ 装上 interactive-fiction</text>
 
-    <g font-size="14.5" fill="#2F271F">
-      <circle cx="710" cy="132" r="9" fill="#4FAE8C" fill-opacity="0.18"/><text x="710" y="136.5" font-size="9.5" fill="#2F7A5C" text-anchor="middle">✓</text>
-      <text x="732" y="137">铁律 #0：每轮必跟 A–E 五选项</text>
+    <g font-size="12.5" fill="#2F271F">
+      <circle cx="524" cy="104" r="8" fill="#4FAE8C" fill-opacity="0.18"/><text x="524" y="108" font-size="8.5" fill="#2F7A5C" text-anchor="middle">✓</text>
+      <text x="542" y="109">铁律 #0：每轮必跟 A–E 五选项</text>
 
-      <circle cx="710" cy="174" r="9" fill="#4FAE8C" fill-opacity="0.18"/><text x="710" y="178.5" font-size="9.5" fill="#2F7A5C" text-anchor="middle">✓</text>
-      <text x="732" y="179">视角硬规则，多角色切换有格式约束</text>
+      <circle cx="524" cy="140" r="8" fill="#4FAE8C" fill-opacity="0.18"/><text x="524" y="144" font-size="8.5" fill="#2F7A5C" text-anchor="middle">✓</text>
+      <text x="542" y="145">视角硬规则，多角色切换有格式约束</text>
 
-      <circle cx="710" cy="216" r="9" fill="#4FAE8C" fill-opacity="0.18"/><text x="710" y="220.5" font-size="9.5" fill="#2F7A5C" text-anchor="middle">✓</text>
-      <text x="732" y="221">字数区间按场景分配，紧迫处不注水</text>
+      <circle cx="524" cy="176" r="8" fill="#4FAE8C" fill-opacity="0.18"/><text x="524" y="180" font-size="8.5" fill="#2F7A5C" text-anchor="middle">✓</text>
+      <text x="542" y="181">字数区间按场景分配，紧迫处不注水</text>
 
-      <circle cx="710" cy="258" r="9" fill="#4FAE8C" fill-opacity="0.18"/><text x="710" y="262.5" font-size="9.5" fill="#2F7A5C" text-anchor="middle">✓</text>
-      <text x="732" y="263">设定核对 · 伏笔回收 · 长线一致</text>
+      <circle cx="524" cy="212" r="8" fill="#4FAE8C" fill-opacity="0.18"/><text x="524" y="216" font-size="8.5" fill="#2F7A5C" text-anchor="middle">✓</text>
+      <text x="542" y="217">设定核对 · 伏笔回收 · 长线一致</text>
     </g>
 
-    <!-- 五选项小条 -->
-    <text x="700" y="306" font-size="11.5" fill="#3C2D1E" fill-opacity="0.42" letter-spacing="1">你想怎么做？</text>
-    <g font-size="12.5">
-      <rect x="700" y="318" width="92" height="36" rx="12" fill="url(#chip)" stroke="#FFFFFF" stroke-width="1"/>
-      <text x="746" y="341" fill="#2B2119" text-anchor="middle">A 推门</text>
-
-      <rect x="804" y="318" width="92" height="36" rx="12" fill="url(#chip)" stroke="#FFFFFF" stroke-width="1"/>
-      <text x="850" y="341" fill="#2B2119" text-anchor="middle">B 绕后窗</text>
-
-      <rect x="908" y="318" width="92" height="36" rx="12" fill="#FFFFFF" stroke="#E8925C" stroke-opacity="0.65" stroke-width="1.6"/>
-      <text x="954" y="341" fill="#2B2119" text-anchor="middle" font-weight="600">C 叫她</text>
-
-      <rect x="1012" y="318" width="92" height="36" rx="12" fill="url(#chip)" stroke="#FFFFFF" stroke-width="1"/>
-      <text x="1058" y="341" fill="#2B2119" text-anchor="middle">D 退一步</text>
-
-      <rect x="1116" y="318" width="92" height="36" rx="12" fill="url(#chip)" stroke="#FFFFFF" stroke-width="1"/>
-      <text x="1162" y="341" fill="#2B2119" fill-opacity="0.55" text-anchor="middle">自由输入</text>
+    <text x="514" y="252" font-size="10.5" fill="#3C2D1E" fill-opacity="0.42" letter-spacing="1">你想怎么做？</text>
+    <g font-size="11">
+      <rect x="514" y="264" width="72" height="32" rx="11" fill="url(#chip)" stroke="#FFFFFF"/>
+      <text x="550" y="285" fill="#2B2119" text-anchor="middle">A 推门</text>
+      <rect x="594" y="264" width="72" height="32" rx="11" fill="url(#chip)" stroke="#FFFFFF"/>
+      <text x="630" y="285" fill="#2B2119" text-anchor="middle">B 绕后窗</text>
+      <rect x="674" y="264" width="72" height="32" rx="11" fill="#FFFFFF" stroke="#E8925C" stroke-opacity="0.65" stroke-width="1.5"/>
+      <text x="710" y="285" fill="#2B2119" text-anchor="middle" font-weight="600">C 叫她</text>
+      <rect x="754" y="264" width="72" height="32" rx="11" fill="url(#chip)" stroke="#FFFFFF"/>
+      <text x="790" y="285" fill="#2B2119" text-anchor="middle">D 退一步</text>
+      <rect x="834" y="264" width="72" height="32" rx="11" fill="url(#chip)" stroke="#FFFFFF"/>
+      <text x="870" y="285" fill="#2B2119" fill-opacity="0.55" text-anchor="middle">自由输入</text>
     </g>
   </g>
 </svg>

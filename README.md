@@ -29,7 +29,7 @@ An AI-agent skill for interactive fiction — Chinese-first: choice-driven story
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"/></a>
   <a href="VERSION"><img alt="Version" src="https://img.shields.io/badge/version-10.3.0-orange.svg"/></a>
   <a href="https://github.com/Treasure-hub-agent/ai-with-u"><img alt="ai-with-u" src="https://img.shields.io/badge/ecosystem-ai--with--u-9cf.svg"/></a>
-  <a href="https://treasure-hub-agent.github.io/interactive-fiction-skill/"><img alt="网页版" src="https://img.shields.io/badge/%F0%9F%96%A5_%E7%BD%91%E9%A1%B5%E7%89%88-online-C4553F.svg"/></a>
+  <a href="https://treasure-hub-agent.github.io/interactive-fiction-skill/"><img alt="网页版" src="https://img.shields.io/badge/%E7%BD%91%E9%A1%B5%E7%89%88-online-C4553F.svg"/></a>
 </p>
 
 ---
