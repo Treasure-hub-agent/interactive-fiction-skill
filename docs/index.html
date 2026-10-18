@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="互动小说创作规范 v10.3.0 —— 选项驱动的互动小说 AI 创作规范：每轮正文后强制给出 A–E 五选项，内置视角一致、字数区间、三档存档、角色卡与酒馆卡直连。装进 AI 助手就能开演，无需部署、不配 API。">
+<meta name="theme-color" content="#F7F2E9"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="interactive-fiction"/>
+<meta property="og:title" content="interactive-fiction · 你选，它写"/>
+<meta property="og:description" content="选项驱动的互动小说创作规范 · 每轮给你五个选择，装进 AI 助手就能开演。"/>
+<meta property="og:url" content="https://treasure-hub-agent.github.io/interactive-fiction-skill/"/>
+<meta property="og:image" content="https://treasure-hub-agent.github.io/interactive-fiction-skill/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<title>interactive-fiction · 你选，它写</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F2E9;
+  --ink:#221D18;
+  --txt:#221D18;
+  --txt-2:rgba(34,29,24,.64);
+  --txt-3:rgba(34,29,24,.42);
+  --line:rgba(60,45,30,.10);
+  --seal:#C4553F;
+  --amber:#E8925C;
+  --sky:#7FB2DC;
+  --lilac:#A98BD8;
+  --jade:#4FAE8C;
+  --r-xl:36px; --r-lg:28px; --r-md:20px; --r-sm:14px;
+  --sans:"Inter","PingFang SC","Microsoft YaHei UI","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --serif:"Noto Serif SC","Songti SC","STSong",SimSun,serif;
+  --glass-fill:linear-gradient(180deg,rgba(255,255,255,.64) 0%,rgba(255,255,255,.36) 100%);
+  --glass-stroke:linear-gradient(160deg,#ffffff 0%,rgba(255,255,255,.65) 24%,rgba(60,45,30,.10) 76%,rgba(60,45,30,.20) 100%);
+  --glass-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(255,255,255,.55),
+    inset 1px 0 0 rgba(255,255,255,.75),
+    inset -1px 0 0 rgba(255,255,255,.75),
+    0 1px 2px rgba(74,58,42,.07),
+    0 26px 56px -26px rgba(74,58,42,.55);
+  --tint-a:var(--sky); --tint-b:var(--lilac);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper); color:var(--txt); font-family:var(--sans);
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+::selection{background:rgba(232,146,92,.28)}
+a{color:inherit;text-decoration:none}
+
+/* ============ 舞台背景（浅色：纸底 + 柔和光团） ============ */
+.stage{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.stage .base{position:absolute;inset:0;background:
+  linear-gradient(180deg,#FDFBF7 0%,#F8F3EA 46%,#F3ECE0 100%)}
+.orb{position:absolute;border-radius:50%;filter:blur(96px);will-change:transform}
+.o1{width:720px;height:720px;right:-180px;top:-280px;opacity:.55;
+  background:radial-gradient(circle at 38% 38%,#FFD9B8,#FFB183 50%,rgba(255,177,131,0) 72%);
+  animation:drift1 36s ease-in-out infinite}
+.o2{width:700px;height:700px;left:-240px;top:200px;opacity:.46;
+  background:radial-gradient(circle at 50% 50%,#BEDFF8,#8BC0E8 48%,rgba(139,192,232,0) 74%);
+  animation:drift2 44s ease-in-out infinite}
+.o3{width:620px;height:620px;right:-60px;bottom:-140px;top:auto;opacity:.32;
+  background:radial-gradient(circle at 50% 50%,#E2D2F6,#B49AE0 52%,rgba(180,154,224,0) 74%);
+  animation:drift3 50s ease-in-out infinite}
+.o4{width:560px;height:560px;left:16%;bottom:-300px;opacity:.34;
+  background:radial-gradient(circle at 50% 50%,#FFCEC4,#F5A291 52%,rgba(245,162,145,0) 74%);
+  animation:drift1 58s ease-in-out infinite reverse}
+@keyframes drift1{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-56px,64px,0)}}
+@keyframes drift2{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(64px,-48px,0)}}
+@keyframes drift3{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-38px,-72px,0)}}
+.softedge{position:absolute;inset:0;background:
+  radial-gradient(100% 86% at 50% 30%,rgba(252,249,243,0) 52%,rgba(250,245,236,.32) 92%,rgba(246,239,228,.5) 100%)}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.045;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>")}
+
+/* ============ 玻璃材质（浅色 iOS 26） ============ */
+.g{
+  position:relative;isolation:isolate;
+  background:var(--glass-fill);
+  -webkit-backdrop-filter:blur(30px) saturate(200%) brightness(1.02);
+  backdrop-filter:blur(30px) saturate(200%) brightness(1.02);
+  box-shadow:var(--glass-shadow);
+}
+.g::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;padding:1.2px;
+  background:var(--glass-stroke);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;z-index:3;
+}
+.g::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:radial-gradient(260px circle at var(--mx,32%) var(--my,-6%),rgba(255,255,255,.9),rgba(255,255,255,0) 62%);
+  opacity:0;transition:opacity .45s ease;
+}
+.g:hover::after{opacity:.6}
+.g.on::after{opacity:.4}
+
+/* ============ 导航 ============ */
+.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:50;
+  width:min(1180px,calc(100% - 40px));height:60px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:0 10px 0 18px;border-radius:999px;
+  transition:box-shadow .4s,background .4s}
+.nav.up{box-shadow:inset 0 1px 0 rgba(255,255,255,.98),0 16px 36px -18px rgba(74,58,42,.5)}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.mark{width:30px;height:30px;border-radius:9px;position:relative;flex:none;
+  background:linear-gradient(150deg,rgba(255,255,255,.98),rgba(255,255,255,.5));
+  box-shadow:inset 0 1px 0 #fff,inset 0 -1px 2px rgba(60,45,30,.12),0 3px 8px -3px rgba(74,58,42,.36)}
+.mark i{position:absolute;left:8px;top:7px;width:11px;height:16px;border-radius:2px;
+  border:1.4px solid rgba(34,29,24,.82);border-right:none;display:block}
+.mark i+i{left:auto;right:8px;border:1.4px solid rgba(34,29,24,.42);border-left:none}
+.brand b{display:block;font-size:14.5px;font-weight:600;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand s{text-decoration:none;font-size:11px;color:var(--txt-3);letter-spacing:.06em}
+.brand > div{min-width:0}
+.navlinks{display:flex;gap:4px;margin-left:auto;margin-right:12px;flex:none}
+.navlinks a{font-size:13px;color:var(--txt-2);padding:7px 13px;border-radius:999px;transition:.25s}
+.navlinks a:hover{color:var(--ink);background:rgba(255,255,255,.7)}
+.navbtns{display:flex;align-items:center;gap:8px;flex:none}
+.pillbtn{display:flex;align-items:center;gap:7px;height:40px;padding:0 17px;border-radius:999px;
+  font-size:13px;font-weight:500;border:none;cursor:pointer;color:var(--ink);font-family:inherit;
+  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.66));
+  box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(60,45,30,.07),0 4px 12px -6px rgba(74,58,42,.45);
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),background .25s}
+.pillbtn:hover{transform:translateY(-1px);background:linear-gradient(180deg,#fff,rgba(255,255,255,.82))}
+.pillbtn.solid{background:linear-gradient(180deg,#2E2620,#1D1813);color:#FBF7F0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 8px 20px -8px rgba(30,22,16,.6)}
+.pillbtn.ghost{background:rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(60,45,30,.09)}
+
+/* ============ Hero ============ */
+.hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;padding:116px 24px 80px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;height:34px;padding:0 15px 0 11px;
+  border-radius:999px;font-size:12.5px;color:var(--txt-2);letter-spacing:.02em}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--jade);
+  box-shadow:0 0 0 3px rgba(79,174,140,.16),0 0 10px rgba(79,174,140,.55)}
+.eyebrow b{color:var(--ink);font-weight:600}
+h1{font-size:clamp(50px,6.6vw,86px);line-height:1.06;font-weight:700;letter-spacing:.01em;margin:22px 0 0;
+  color:#1A1611;
+  filter:drop-shadow(0 16px 34px rgba(120,80,50,.16))}
+h1 em{font-style:normal;
+  background:linear-gradient(176deg,#C4553F 0%,#A33F2B 62%,#7E2E1E 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 10px 24px rgba(196,85,63,.22))}
+.sub{margin-top:20px;font-size:clamp(15px,1.5vw,18.5px);color:var(--txt-2);letter-spacing:.02em;line-height:1.75}
+.sub em{font-style:normal;color:var(--ink);font-weight:600}
+.cta{margin-top:32px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}
+.cmd{display:flex;align-items:center;gap:10px;height:52px;padding:0 8px 0 18px;border-radius:999px;
+  font-family:"SF Mono",ui-monospace,Consolas,monospace;font-size:13.5px;color:var(--txt-2)}
+.cmd b{color:var(--ink);font-weight:500}
+.cmd .cp{width:36px;height:36px;border-radius:999px;display:grid;place-items:center;cursor:pointer;
+  border:none;background:rgba(255,255,255,.85);color:var(--txt-2);transition:.25s;
+  box-shadow:inset 0 0 0 1px rgba(60,45,30,.09)}
+.cmd .cp:hover{background:#fff;color:var(--ink)}
+.hero-note{margin-top:18px;font-size:12px;color:var(--txt-3);letter-spacing:.04em}
+
+/* ---- 主角道具：章节卡 ---- */
+.artifact-wrap{position:relative;margin-top:42px;width:min(1040px,100%)}
+.artifact{border-radius:var(--r-xl);padding:30px 34px;text-align:left}
+.sc-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.sc-chapter{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--txt-3);letter-spacing:.08em}
+.sc-chapter .ln{width:22px;height:1px;background:linear-gradient(90deg,rgba(60,45,30,.4),transparent)}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{font-size:11.5px;padding:5px 11px;border-radius:999px;color:var(--txt-2);
+  background:rgba(255,255,255,.62);box-shadow:inset 0 0 0 1px rgba(60,45,30,.08)}
+.chip.hot{color:#A3402C;background:rgba(196,85,63,.10);box-shadow:inset 0 0 0 1px rgba(196,85,63,.20)}
+.prose{margin-top:22px;font-family:var(--serif);font-size:17.5px;line-height:2.05;
+  color:#2B2119;letter-spacing:.03em;text-indent:2em}
+.prose .hl{color:#9C4A2E;font-weight:600;
+  background:linear-gradient(180deg,transparent 62%,rgba(232,146,92,.30) 62%)}
+.hair{height:1px;margin:24px 0 18px;background:linear-gradient(90deg,rgba(60,45,30,.16),rgba(60,45,30,.04) 60%,transparent)}
+.ask{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--txt-3);letter-spacing:.06em;margin-bottom:13px}
+.ask .pulse{width:7px;height:7px;border-radius:50%;background:var(--amber);
+  box-shadow:0 0 0 0 rgba(232,146,92,.5);animation:pulse 2.2s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,146,92,.45)}70%{box-shadow:0 0 0 11px rgba(232,146,92,0)}100%{box-shadow:0 0 0 0 rgba(232,146,92,0)}}
+.opts{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.opt{display:flex;align-items:center;gap:9px;height:58px;padding:0 13px;border-radius:var(--r-md);
+  font-size:13.5px;color:#2B2119;font-family:inherit;cursor:pointer;text-align:left;
+  border:none;background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(255,255,255,.68));
+  box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(60,45,30,.06),0 3px 10px -5px rgba(74,58,42,.35);
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1),background .3s,box-shadow .3s}
+.opt:hover{transform:translateY(-2px);background:linear-gradient(180deg,#fff,rgba(255,255,255,.84))}
+.opt i{font-style:normal;width:21px;height:21px;flex:none;border-radius:7px;display:grid;place-items:center;
+  font-size:10.5px;font-weight:700;color:rgba(34,29,24,.58);
+  background:rgba(60,45,30,.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+.opt span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.opt.on{background:linear-gradient(180deg,#fff,#FFF4EA);
+  box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(232,146,92,.42),
+    0 0 0 4px rgba(232,146,92,.10),0 10px 26px -12px rgba(210,120,70,.6)}
+.opt.on i{background:linear-gradient(160deg,#F2A46B,#D2683E);color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 2px 6px -2px rgba(200,100,60,.6)}
+.opt.free i{background:rgba(60,45,30,.05);color:var(--txt-3)}
+.opt.free{opacity:.88}
+
+/* 浮动小卡 */
+.float{position:absolute;z-index:4;display:flex;align-items:center;gap:7px;padding:8px 12px;
+  border-radius:var(--r-sm);font-size:11px;color:var(--txt-2);white-space:nowrap;
+  animation:floaty 7s ease-in-out infinite}
+.float b{color:var(--ink);font-weight:600}
+.float .em{font-size:12px}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.f1{left:calc(100% + 14px);top:36px;animation-delay:-1s}
+.f2{right:calc(100% + 14px);top:150px;animation-delay:-3.4s}
+.f3{left:calc(100% + 14px);bottom:8px;animation-delay:-5.2s}
+
+/* ============ 通用区块 ============ */
+section.blk{position:relative;z-index:2;padding:120px 24px;scroll-margin-top:92px}
+.inner{width:min(1120px,100%);margin:0 auto}
+.kicker{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.22em;
+  color:var(--txt-3);text-transform:uppercase;margin-bottom:20px}
+.kicker .bar{width:26px;height:1px;background:linear-gradient(90deg,var(--seal),transparent)}
+h2{font-size:clamp(30px,3.6vw,46px);line-height:1.22;font-weight:700;letter-spacing:.02em;color:#1B1712}
+h2 em{font-style:normal;background:linear-gradient(180deg,#8A4429,#C4553F);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{margin-top:16px;font-size:15px;color:var(--txt-2);line-height:1.85;max-width:640px}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---- 循环三拍 ---- */
+.loop{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:14px;margin-top:56px}
+.beat{border-radius:var(--r-lg);padding:30px 26px;text-align:center}
+.beat .num{font-size:11px;letter-spacing:.24em;color:var(--txt-3);font-family:"SF Mono",ui-monospace,monospace}
+.beat .ic{margin:18px auto 16px;width:56px;height:56px;border-radius:18px;display:grid;place-items:center;
+  background:linear-gradient(165deg,#fff,rgba(255,255,255,.6));
+  box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(60,45,30,.07),0 6px 16px -10px rgba(74,58,42,.5)}
+.beat h3{font-size:17px;font-weight:600;letter-spacing:.02em;color:#1B1712}
+.beat p{margin-top:9px;font-size:12.5px;color:var(--txt-3);line-height:1.7}
+.arrow{position:relative;width:56px;height:2px;border-radius:2px;align-self:center;
+  background:linear-gradient(90deg,rgba(60,45,30,.06),rgba(60,45,30,.18),rgba(60,45,30,.06))}
+.arrow::after{content:'';position:absolute;top:-3px;left:0;width:8px;height:8px;border-radius:50%;
+  background:var(--amber);box-shadow:0 0 10px rgba(232,146,92,.8);animation:travel 2.6s linear infinite}
+@keyframes travel{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:48px;opacity:0}}
+
+/* ---- 对比 ---- */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:52px;align-items:stretch}
+.card{border-radius:var(--r-xl);padding:30px;position:relative;overflow:hidden}
+.card.bad{background:linear-gradient(180deg,rgba(255,255,255,.62),rgba(60,45,30,.055));
+  box-shadow:inset 0 0 0 1px rgba(60,45,30,.13)}
+.tag{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;padding:5px 12px;border-radius:999px;
+  letter-spacing:.08em;margin-bottom:20px}
+.tag.no{color:#B4483D;background:rgba(196,85,63,.09);box-shadow:inset 0 0 0 1px rgba(196,85,63,.20)}
+.tag.yes{color:#2F7A5C;background:rgba(79,174,140,.11);box-shadow:inset 0 0 0 1px rgba(79,174,140,.24)}
+.ghosttext{margin:4px 0 22px;font-family:var(--serif);font-size:14px;line-height:2;color:rgba(34,29,24,.40)}
+.ghosttext span{background:rgba(60,45,30,.09);border-radius:3px;padding:1px 2px}
+.xlist{display:flex;flex-direction:column;gap:11px}
+.xlist li{list-style:none;display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(34,29,24,.58);line-height:1.6}
+.xmark{width:17px;height:17px;border-radius:50%;flex:none;display:grid;place-items:center;margin-top:2px;
+  background:rgba(196,85,63,.12);color:#B4483D;font-size:10px}
+.oklist li{color:rgba(34,29,24,.82)}
+.okmark{background:rgba(79,174,140,.16);color:#2F7A5C}
+.mini-opts{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:22px}
+.mini-opts span{height:34px;border-radius:11px;display:grid;place-items:center;font-size:10.5px;color:rgba(34,29,24,.7);
+  background:linear-gradient(180deg,#fff,rgba(255,255,255,.68));
+  box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(60,45,30,.06)}
+.mini-opts span:nth-child(3){box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(232,146,92,.45),0 0 0 3px rgba(232,146,92,.10)}
+
+/* ---- 能力格 ---- */
+.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+.tile{border-radius:var(--r-lg);padding:26px 24px 24px;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.tile:hover{transform:translateY(-5px)}
+.tile .ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:18px;
+  background:linear-gradient(160deg,#fff,rgba(255,255,255,.55));
+  box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(60,45,30,.07),0 6px 14px -9px rgba(74,58,42,.5)}
+.tile h3{font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#1B1712}
+.tile p{margin-top:8px;font-size:12.5px;line-height:1.75;color:var(--txt-3)}
+.tile .meta{margin-top:16px;font-size:11px;color:rgba(34,29,24,.34);font-family:"SF Mono",ui-monospace,monospace;letter-spacing:.04em}
+svg.i{width:21px;height:21px;stroke:rgba(34,29,24,.78);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---- 模式切换 ---- */
+.modes{display:grid;grid-template-columns:.86fr 1.14fr;gap:48px;align-items:center}
+.seg{display:inline-flex;position:relative;padding:5px;border-radius:999px;gap:4px;margin-top:34px}
+.seg button{position:relative;z-index:1;border:none;cursor:pointer;font-family:inherit;font-size:13.5px;
+  padding:0 22px;height:44px;border-radius:999px;background:transparent;color:var(--txt-2);transition:color .3s}
+.seg button.on{color:#FBF7F0;font-weight:600}
+.seg .thumb{position:absolute;top:5px;bottom:5px;border-radius:999px;z-index:0;
+  background:linear-gradient(180deg,#3A302A,#211B16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 6px 16px -8px rgba(40,30,22,.7);
+  transition:left .45s cubic-bezier(.34,1.4,.64,1),width .45s cubic-bezier(.34,1.4,.64,1)}
+.modeCard{border-radius:var(--r-xl);padding:32px;position:relative;overflow:hidden;min-height:330px}
+.modeCard .glow{position:absolute;width:440px;height:440px;border-radius:50%;filter:blur(80px);
+  opacity:.62;right:-120px;top:-150px;transition:background .8s ease;
+  background:radial-gradient(circle,var(--tint-a),transparent 70%);z-index:-1}
+.modeCard .glow.b{left:-150px;bottom:-190px;top:auto;right:auto;opacity:.46;
+  background:radial-gradient(circle,var(--tint-b),transparent 70%)}
+.modeCard .mname{font-family:var(--serif);font-size:13px;letter-spacing:.3em;color:var(--txt-3)}
+.modeCard h3{margin-top:12px;font-size:26px;font-weight:600;letter-spacing:.02em;color:#1B1712}
+.modeCard .mbody{margin-top:20px;font-family:var(--serif);font-size:15px;line-height:2.05;
+  color:rgba(34,29,24,.86);text-indent:2em;min-height:150px}
+.modeCard .mfoot{margin-top:22px;display:flex;gap:8px;flex-wrap:wrap}
+.modeCard .mfoot span{font-size:11px;padding:5px 11px;border-radius:999px;color:var(--txt-2);
+  background:rgba(255,255,255,.66);box-shadow:inset 0 0 0 1px rgba(60,45,30,.08)}
+
+/* ---- 安装 ---- */
+.install{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px}
+.codebox{border-radius:var(--r-lg);padding:24px;font-family:"SF Mono",ui-monospace,Consolas,monospace;font-size:13px;line-height:2;overflow:hidden}
+.codebox .row{display:flex;align-items:center;gap:10px;color:var(--txt-2);white-space:nowrap;min-width:0}
+.codebox .row span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.codebox .row .p{flex:none;overflow:visible}
+.codebox .row+.row{margin-top:6px}
+.codebox .p{color:var(--seal);user-select:none}
+.codebox .c{color:rgba(34,29,24,.34)}
+.clients{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.client{border-radius:var(--r-md);padding:16px 14px;display:flex;flex-direction:column;gap:9px;justify-content:space-between;min-height:86px}
+.client .cn{font-size:12.5px;font-weight:500;color:#1B1712}
+.client .cp2{font-size:10px;color:var(--txt-3);font-family:"SF Mono",ui-monospace,monospace;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.client .ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+  background:rgba(255,255,255,.8);box-shadow:inset 0 0 0 1px rgba(60,45,30,.07)}
+
+/* ---- 数字条 ---- */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);border-radius:var(--r-lg);overflow:hidden;margin-top:52px}
+.stat{padding:30px 22px;text-align:center;background:rgba(255,255,255,.52)}
+.stat+.stat{box-shadow:inset 1px 0 0 rgba(60,45,30,.08)}
+.stat .v{font-size:clamp(24px,2.6vw,34px);font-weight:700;letter-spacing:-.01em;
+  background:linear-gradient(180deg,#241E18,#9C5236);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .k{margin-top:8px;font-size:11px;letter-spacing:.16em;color:var(--txt-3)}
+
+/* ---- 页脚 ---- */
+footer{position:relative;z-index:2;padding:70px 24px 60px;text-align:center}
+.seal{width:54px;height:54px;border-radius:15px;margin:0 auto 22px;display:grid;place-items:center;
+  background:linear-gradient(150deg,#C4553F,#8F3B2C);font-family:var(--serif);font-size:20px;color:#FDF6EF;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),inset 0 1px 0 rgba(255,255,255,.45),0 12px 28px -14px rgba(150,60,40,.85)}
+footer .fl{display:flex;gap:22px;justify-content:center;font-size:12.5px;color:var(--txt-3);flex-wrap:wrap}
+footer .fl a:hover{color:var(--ink)}
+footer .cp3{margin-top:26px;font-size:11.5px;color:rgba(34,29,24,.26);letter-spacing:.06em}
+
+@media (max-width:1260px){ .f1,.f2,.f3{display:none} }
+/* 矮屏幕（笔记本 630–730px 可视高）：压缩首屏，让五选项也落在首屏内 */
+@media (max-height:730px) and (min-width:900px){
+  .hero{padding-top:86px;padding-bottom:36px}
+  h1{font-size:clamp(44px,5.1vw,66px)}
+  .sub{margin-top:13px}
+  .cta{margin-top:20px}
+  .artifact-wrap{margin-top:24px}
+  .artifact{padding:22px 28px}
+  .sc-head{gap:10px}
+  .prose{margin-top:13px;font-size:16.5px;line-height:1.95}
+  .hair{margin:15px 0 11px}
+  .ask{margin-bottom:10px}
+  .opt{height:50px}
+}
+@media (max-width:1000px){
+  .navlinks{display:none}
+  .loop{grid-template-columns:1fr;gap:10px}
+  .arrow{width:2px;height:26px;margin:0 auto}
+  .arrow::after{animation:none;left:-3px;top:0}
+  .vs,.modes,.install{grid-template-columns:1fr}
+  .grid6{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .opts{grid-template-columns:1fr 1fr}
+  .clients{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .pillbtn.ghost{display:none}
+  .nav{padding:0 8px 0 12px;width:calc(100% - 24px)}
+  .brand b{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="base"></div>
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="orb o3"></div><div class="orb o4"></div>
+  <div class="softedge"></div>
+</div>
+<div class="grain"></div>
+
+<!-- ================= NAV ================= -->
+<nav class="nav g" id="nav">
+  <div class="brand">
+    <div class="mark"><i></i><i></i></div>
+    <div>
+      <b>interactive-fiction</b>
+      <s>v10.3.0 · MIT</s>
+    </div>
+  </div>
+  <div class="navlinks">
+    <a href="#loop">玩法</a>
+    <a href="#why">为何</a>
+    <a href="#feat">能力</a>
+    <a href="#modes">调子</a>
+    <a href="#install">安装</a>
+  </div>
+  <div class="navbtns">
+    <a class="pillbtn ghost" href="https://github.com/Treasure-hub-agent/interactive-fiction-skill" target="_blank" rel="noopener">GitHub ↗</a>
+    <a class="pillbtn solid" href="#install">开始创作</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="eyebrow g">
+    <span class="dot"></span>
+    <b>v10.3.0</b> · 酒馆角色卡直连
+  </div>
+
+  <h1>你选，<em>它写</em></h1>
+  <p class="sub">
+    不是让 AI 替你写小说 —— 是它写完一段，<em>停下来等你做决定</em>
+  </p>
+
+  <div class="cta">
+    <div class="cmd g">
+      <span><span style="color:rgba(34,29,24,.34)">$</span> <b>npx skills add</b> Treasure-hub-agent/interactive-fiction-skill</span>
+      <button class="cp" title="复制">
+        <svg class="i" style="width:15px;height:15px" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </div>
+    <a class="pillbtn" style="height:52px;padding:0 22px" href="#loop">看它怎么玩 →</a>
+  </div>
+  <p class="hero-note">不部署 · 不配 API · 不写代码 —— 装进 AI 助手就能开演　｜　<a href="#install" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(34,29,24,.3)">四步安装</a></p>
+
+  <!-- 主角道具 -->
+  <div class="artifact-wrap">
+    <div class="float g f1"><span class="em">🔖</span> 自动存档 · <b>已保存</b></div>
+    <div class="float g f2"><span class="em">💗</span> 好感 <b>+1</b></div>
+    <div class="float g f3"><span class="em">✍️</span> 本轮 <b>1,284</b> 字</div>
+
+    <div class="artifact g on">
+      <div class="sc-head">
+        <div class="sc-chapter"><span class="ln"></span>第一回 · 雨巷</div>
+        <div class="chips">
+          <span class="chip hot">主线</span>
+          <span class="chip">第 3 章</span>
+          <span class="chip">视角 · 你</span>
+        </div>
+      </div>
+
+      <p class="prose">
+        雨丝斜斜地切过灯笼的光。你把伞收在檐下，看见窗纸上映出一个人影——她似乎<span class="hl">已经等你很久了</span>。
+      </p>
+
+      <div class="hair"></div>
+      <div class="ask"><span class="pulse"></span>你想怎么做？</div>
+
+      <div class="opts">
+        <button class="opt"><i>A</i><span>推门进去</span></button>
+        <button class="opt"><i>B</i><span>绕到后窗</span></button>
+        <button class="opt on"><i>C</i><span>叫她的名字</span></button>
+        <button class="opt"><i>D</i><span>先退一步</span></button>
+        <button class="opt free"><i>←</i><span>自由输入</span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= 循环 ================= -->
+<section class="blk" id="loop">
+  <div class="inner">
+    <div class="rv">
+      <div class="kicker"><span class="bar"></span>HOW IT PLAYS</div>
+      <h2>一拍三式，永远<em>不断线</em></h2>
+      <p class="lead">普通 prompt 是「建议」，这里是「硬规则 + 每轮自检」。铁律 #0：正文之后必跟选项，正文结束不等于对话结束。</p>
+    </div>
+
+    <div class="loop rv">
+      <div class="beat g">
+        <div class="num">01</div>
+        <div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M12 19V5M12 5l-5 5M12 5l5 5"/></svg></div>
+        <h3>你说开头</h3>
+        <p>一句话、一个念头<br/>或直接「加载小说包」随机开局</p>
+      </div>
+      <div class="arrow"></div>
+      <div class="beat g">
+        <div class="num">02</div>
+        <div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M4 6h11M4 12h8M4 18h13"/><path d="M19 9l2 2-2 2"/></svg></div>
+        <h3>它写一段</h3>
+        <p>500–1200 字，视角、语态<br/>与上一章严丝合缝</p>
+      </div>
+      <div class="arrow"></div>
+      <div class="beat g">
+        <div class="num">03</div>
+        <div class="ic"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2.5"/><rect x="3" y="14" width="12" height="7" rx="2.5"/></svg></div>
+        <h3>你选 A–E</h3>
+        <p>五条分支互不重复<br/>也可以自由输入言行</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 对比 ================= -->
+<section class="blk" id="why">
+  <div class="inner">
+    <div class="rv">
+      <div class="kicker"><span class="bar"></span>THE DIFFERENCE</div>
+      <h2>别人的 AI vs <em>装上它之后</em></h2>
+    </div>
+
+    <div class="vs rv">
+      <div class="card bad">
+        <span class="tag no">✕ 普通 prompt</span>
+        <p class="ghosttext">
+          雨夜。她站在窗后看着你，<span>你推开门走了进去，你们交谈起来，气氛渐渐变得微妙，故事继续发展下去</span>……<br/><br/>
+          <span>（正文结束，没有下文）</span>
+        </p>
+        <ul class="xlist">
+          <li><span class="xmark">✕</span>写完就停，没有选项，剧情变成单向广播</li>
+          <li><span class="xmark">✕</span>「你」和「他」混着用，视角漂移出戏</li>
+          <li><span class="xmark">✕</span>战斗写 300 字，日常水 2000 字</li>
+          <li><span class="xmark">✕</span>三条线一起开，后文互相矛盾</li>
+          <li><span class="xmark">✕</span>断了就接不上，进度全靠自己记</li>
+        </ul>
+      </div>
+
+      <div class="card g on">
+        <span class="tag yes">✓ 装上 interactive-fiction</span>
+        <p class="ghosttext" style="color:rgba(34,29,24,.62)">
+          雨丝斜斜地切过灯笼的光……她似乎已经等你很久了。
+        </p>
+        <ul class="xlist oklist">
+          <li><span class="xmark okmark">✓</span>铁律 #0：每轮必跟 A–E 五选项</li>
+          <li><span class="xmark okmark">✓</span>视角硬规则，多角色切换有格式约束</li>
+          <li><span class="xmark okmark">✓</span>字数区间按场景分配，紧迫处不注水</li>
+          <li><span class="xmark okmark">✓</span>设定核对 · 伏笔回收 · 长线一致</li>
+          <li><span class="xmark okmark">✓</span>三档存档，断了能续，随时导出成书</li>
+        </ul>
+        <div class="mini-opts">
+          <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 能力 ================= -->
+<section class="blk" id="feat">
+  <div class="inner">
+    <div class="rv">
+      <div class="kicker"><span class="bar"></span>UNDER THE GLASS</div>
+      <h2>一眼看清它<em>管什么</em></h2>
+    </div>
+
+    <div class="grid6 rv">
+      <div class="tile g">
+        <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h13"/><circle cx="18.5" cy="12" r="2.5"/></svg></div>
+        <h3>选项机制</h3>
+        <p>每轮五选一，分支互斥不重复；自由输入等权推进。</p>
+        <div class="meta">RULE #0</div>
+      </div>
+      <div class="tile g">
+        <div class="ico"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c0-3.6 3.4-6.2 7.5-6.2s7.5 2.6 7.5 6.2"/></svg></div>
+        <h3>角色卡</h3>
+        <p>还原 / 自创 / 记忆人设，配角静默落卡不走样。</p>
+        <div class="meta">CAST</div>
+      </div>
+      <div class="tile g">
+        <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="3"/><path d="M8.5 9h7M8.5 13h7M8.5 17h4"/></svg></div>
+        <h3>存档系统</h3>
+        <p>轻量 / 持久 / 里程碑三档，断连恢复、切换、导出。</p>
+        <div class="meta">SAVE ×3</div>
+      </div>
+      <div class="tile g">
+        <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l2.6 5.8 6.4.6-4.8 4.3 1.4 6.3L12 16.8 6.4 20l1.4-6.3L3 9.4l6.4-.6z"/></svg></div>
+        <h3>三种调子</h3>
+        <p>主线 / 沉浸 / 爽文，同一部戏换一种讲法。</p>
+        <div class="meta">MODES</div>
+      </div>
+      <div class="tile g">
+        <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M12 4v6M12 14v6M4 12h6M14 12h6"/><circle cx="12" cy="12" r="2.2"/></svg></div>
+        <h3>记忆外置</h3>
+        <p>四级简报自动衰减，长篇设定不遗忘也不反复干扰。</p>
+        <div class="meta">OPTIONAL</div>
+      </div>
+      <div class="tile g">
+        <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M7 4h10a2 2 0 0 1 2 2v14l-7-3.5L5 20V6a2 2 0 0 1 2-2z"/></svg></div>
+        <h3>酒馆卡直连</h3>
+        <p>PNG / JSON / CHARX 一句导入，原卡只读留档。</p>
+        <div class="meta">v10.3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 模式 ================= -->
+<section class="blk" id="modes">
+  <div class="inner">
+    <div class="modes">
+      <div class="rv">
+        <div class="kicker"><span class="bar"></span>THREE VOICES</div>
+        <h2>同一段剧情<br/><em>三种讲法</em></h2>
+        <p class="lead">玻璃下的光会变，字不会走样。切换调子，语气、节奏与信息密度随之改变。</p>
+
+        <div class="seg g" id="seg">
+          <span class="thumb" id="thumb"></span>
+          <button class="on" data-m="0">主线</button>
+          <button data-m="1">沉浸</button>
+          <button data-m="2">爽文</button>
+        </div>
+      </div>
+
+      <div class="modeCard g" id="modeCard">
+        <div class="glow" id="glowA"></div>
+        <div class="glow b" id="glowB"></div>
+        <div class="mname" id="mname">MAINLINE · 主线</div>
+        <h3 id="mtitle">推着走，不绕路</h3>
+        <p class="mbody" id="mbody">雨还在下。你抬手敲了三下窗棂——里面的人影顿住，灯笼晃了一下，随即门闩被从里头抽开。她站在门槛内侧，没有让路，只是看着你湿透的肩。</p>
+        <div class="mfoot" id="mfoot"><span>单线推进</span><span>信息密度高</span><span>每章必有钩子</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 安装 ================= -->
+<section class="blk" id="install">
+  <div class="inner">
+    <div class="rv">
+      <div class="kicker"><span class="bar"></span>GET STARTED</div>
+      <h2>四个入口，<em>任选其一</em></h2>
+    </div>
+
+    <div class="install rv">
+      <div class="codebox g">
+        <div class="row"><span class="p">$</span><span>npx skills add</span><span style="color:#221D18">Treasure-hub-agent/interactive-fiction-skill</span></div>
+        <div class="row"><span class="p">$</span><span>hermes skills tap add</span><span style="color:#221D18">Treasure-hub-agent/…</span></div>
+        <div class="row c" style="margin-top:20px"># 手动：把仓库目录放进客户端的技能目录即可</div>
+        <div class="row c"># 装好后发送「加载小说包」即可开局</div>
+      </div>
+
+      <div class="clients">
+        <div class="client g">
+          <div class="ic"><svg class="i" style="width:14px;height:14px" viewBox="0 0 24 24"><path d="M4 7h16v10H4z"/><path d="M8 11h3"/></svg></div>
+          <div><div class="cn">DeepSeek Harness</div><div class="cp2">~/.dsh/skills/</div></div>
+        </div>
+        <div class="client g">
+          <div class="ic"><svg class="i" style="width:14px;height:14px" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M9 12h6"/></svg></div>
+          <div><div class="cn">Claude Code</div><div class="cp2">~/.claude/skills/</div></div>
+        </div>
+        <div class="client g">
+          <div class="ic"><svg class="i" style="width:14px;height:14px" viewBox="0 0 24 24"><path d="M5 19L19 5M14 5h5v5"/></svg></div>
+          <div><div class="cn">Cursor</div><div class="cp2">~/.cursor/skills/</div></div>
+        </div>
+        <div class="client g">
+          <div class="ic"><svg class="i" style="width:14px;height:14px" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="3"/><path d="M10 18h4"/></svg></div>
+          <div><div class="cn">Operit · Android</div><div class="cp2">/sdcard/Download/…</div></div>
+        </div>
+        <div class="client g">
+          <div class="ic"><svg class="i" style="width:14px;height:14px" viewBox="0 0 24 24"><path d="M12 3v18M4 8l8-5 8 5"/></svg></div>
+          <div><div class="cn">Hermes</div><div class="cp2">~/.hermes/skills/</div></div>
+        </div>
+        <div class="client g">
+          <div class="ic"><svg class="i" style="width:14px;height:14px" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M6.6 7.4l3 3M14.4 13.6l3 3"/></svg></div>
+          <div><div class="cn">通用约定</div><div class="cp2">~/.agents/skills/</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inner">
+    <div class="stats g rv">
+      <div class="stat"><div class="v">10.3</div><div class="k">VERSION</div></div>
+      <div class="stat"><div class="v">5</div><div class="k">选项 / 每轮</div></div>
+      <div class="stat"><div class="v">3</div><div class="k">叙事调子</div></div>
+      <div class="stat"><div class="v">6</div><div class="k">客户端</div></div>
+      <div class="stat"><div class="v">MIT</div><div class="k">LICENSE</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="seal">拾</div>
+  <div class="fl">
+    <a href="https://github.com/Treasure-hub-agent/interactive-fiction-skill">GitHub</a>
+    <a href="https://github.com/Treasure-hub-agent/interactive-fiction-skill/releases">Releases</a>
+    <a href="https://github.com/Treasure-hub-agent/interactive-fiction-skill/blob/main/SKILL.md">技能规范</a>
+    <a href="https://github.com/Treasure-hub-agent/interactive-fiction-skill/blob/main/README.en.md">English</a>
+    <a href="https://github.com/Treasure-hub-agent/interactive-fiction-skill/blob/main/LICENSE">License</a>
+  </div>
+  <div class="cp3">Treasure-hub-agent · 2026 · 第十二次修订</div>
+</footer>
+
+<script>
+document.querySelectorAll('.g').forEach(el=>{
+  el.addEventListener('pointermove',e=>{
+    const r=el.getBoundingClientRect();
+    el.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    el.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+});
+
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('up',scrollY>40),{passive:true});
+
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+const MODES=[
+ {n:'MAINLINE · 主线',t:'推着走，不绕路',
+  body:'雨还在下。你抬手敲了三下窗棂——里面的人影顿住，灯笼晃了一下，随即门闩被从里头抽开。她站在门槛内侧，没有让路，只是看着你湿透的肩。',
+  f:['单线推进','信息密度高','每章必有钩子'],ca:'#A9D4F2',cb:'#7FB2DC'},
+ {n:'IMMERSION · 沉浸',t:'慢下来，闻得到雨味',
+  body:'雨丝斜斜地切过灯笼的光，把你的影子拉长又揉碎。檐角的水一滴一滴落进石阶的凹处，声音很轻。你忽然发现自己一直没有说话，而她也没有——像是谁先开口，谁就输了。',
+  f:['氛围优先','心理与感官','留白与潜台词'],ca:'#FFD0AE',cb:'#F5A896'},
+ {n:'SHUANGWEN · 爽文',t:'开门见山，一击必中',
+  body:'「你来了。」她推开门，声音比雨还冷。<br/><br/>你笑了。三天前还高高在上的人，此刻站在你面前，手里那把伞已经彻底忘了开。',
+  f:['节奏快','反转密集','爽点前置'],ca:'#FFE0A3',cb:'#F2A16B'}
+];
+const seg=document.getElementById('seg'),thumb=document.getElementById('thumb');
+const btns=[...seg.querySelectorAll('button')];
+const gA=document.getElementById('glowA'),gB=document.getElementById('glowB');
+function setMode(i){
+  btns.forEach((b,j)=>b.classList.toggle('on',j===i));
+  const b=btns[i],sr=seg.getBoundingClientRect(),br=b.getBoundingClientRect();
+  thumb.style.left=(br.left-sr.left)+'px';
+  thumb.style.width=br.width+'px';
+  const m=MODES[i];
+  document.getElementById('mname').textContent=m.n;
+  document.getElementById('mtitle').textContent=m.t;
+  document.getElementById('mbody').innerHTML=m.body;
+  document.getElementById('mfoot').innerHTML=m.f.map(x=>`<span>${x}</span>`).join('');
+  gA.style.background=`radial-gradient(circle,${m.ca},transparent 70%)`;
+  gB.style.background=`radial-gradient(circle,${m.cb},transparent 70%)`;
+}
+btns.forEach((b,i)=>b.onclick=()=>setMode(i));
+requestAnimationFrame(()=>setMode(0));
+addEventListener('resize',()=>setMode(btns.findIndex(b=>b.classList.contains('on'))));
+
+document.querySelector('.cp')?.addEventListener('click',function(){
+  navigator.clipboard?.writeText('npx skills add Treasure-hub-agent/interactive-fiction-skill');
+  this.style.color='#2F7A5C';
+});
+</script>
+</body>
+</html>

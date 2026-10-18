@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="seal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D9663F"/>
+      <stop offset="1" stop-color="#8F3B2C"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#seal)"/>
+  <rect x="5.5" y="5.5" width="53" height="53" rx="11" fill="none" stroke="#FDF6EF" stroke-opacity=".34" stroke-width="1.2"/>
+  <text x="32" y="45.5" font-family="'Songti SC','STSong',SimSun,serif" font-size="33" fill="#FDF6EF" text-anchor="middle">拾</text>
+</svg>

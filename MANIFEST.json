@@ -1,6 +1,6 @@
 {
   "version": "10.3.0",
-  "generated": "2026-10-18T05:38:32Z",
+  "generated": "2026-10-18T06:36:21Z",
   "root": "interactive-fiction",
   "files": {
     ".gitignore": {
@@ -44,8 +44,8 @@
       "role": "runtime"
     },
     "README.md": {
-      "sha256": "1d6e97612030c24060fef0149c03e7411612ba8245d14e4807faba01cbeb30d9",
-      "bytes": 12873,
+      "sha256": "186b8bc2c868e2ce70f91d609291adbcf156a069df70b49f39bd4b160fdfaee3",
+      "bytes": 12977,
       "role": "runtime"
     },
     "SECURITY.md": {

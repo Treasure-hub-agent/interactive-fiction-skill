@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  🌐 <b>中文</b> ｜ <a href="README.en.md">English</a>
+  🌐 <b>中文</b> ｜ <a href="README.en.md">English</a> ｜ <a href="https://treasure-hub-agent.github.io/interactive-fiction-skill/"><b>🖥 网页版</b></a>
 </p>
 
 <p align="center"><sub>
